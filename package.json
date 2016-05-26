@@ -7,14 +7,14 @@
   "engines": {
     "node": ">=4.0.0"
   },
-  "scripts": {},
+  "scripts": {
+    "start": "nodemon server/server.js"
+  },
   "dependencies": {
     "body-parser": "^1.15.1",
     "express": "^4.4.5",
     "express-sessions": "^1.0.5",
-    "express-static": "^1.0.3",
     "mongoose": "^4.4.19",
     "request": "^2.36.0"
-  },
-  "devDependencies": {}
+  }
 }
