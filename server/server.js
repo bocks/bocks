@@ -1,11 +1,12 @@
 var express = require('express');
-var app = express();
-var static = require('express-static');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var port = 1337;
 
-console.log('listening on ', port);
+var app = express();
+
+app.use(bodyParser.json());
+app.use(express.static(__dirname + '/../public'));
 
 // allowCrossDomain = function(req, res, next) {
 //   res.header('Access-Control-Allow-Origin', '*');
@@ -17,26 +18,17 @@ console.log('listening on ', port);
 //     next();
 //   }
 // };
-
 // app.use(allowCrossDomain);
-app.use(bodyParser.json());
-app.use(static(__dirname + '/../public'));
-
-app.post('/', function (req, res) {
-
-});
-
+// app.post('/', function (req, res) {
+// });
 // app.get('/', function (req, res) {
 //   // res.send('hello world');
 // });
+// app.delete('/', function (req, res) {
+// });
 
-app.delete('/', function (req, res) {
-
+app.listen(port, function() {
+  console.log('listening on ', port);
 });
 
-
-
-app.listen(port);
-
-
-/*login, signin routes
+/*login, signin routes */
