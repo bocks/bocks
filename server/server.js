@@ -22,6 +22,9 @@ console.log('listening on ', port);
 app.use(bodyParser.json());
 app.use(static(__dirname + '/../public'));
 
+mongoose.connect('mongodb://localhost/bocks');
+
+
 app.post('/', function (req, res) {
 
 });
@@ -39,4 +42,3 @@ app.delete('/', function (req, res) {
 app.listen(port);
 
 
-/*login, signin routes
