@@ -32,6 +32,10 @@ Better than commenting. Use Bocks to add annotations next to your code to increa
 ## Problem ##
   > Describe the problem your product solves.
 
+* Teaching coding concepts
+* Blog post embedding / slides
+* Documention / documentating code repo
+
 ## Solution ##
   > Describe how your product elegantly solves the problem.
 
