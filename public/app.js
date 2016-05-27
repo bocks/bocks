@@ -8,12 +8,12 @@ angular.module('app', [
     .when('/main', {
       templateUrl: 'app/main.html',
       controller: 'MainController',
-      // authenticate: false
+      authenticate: false
     })
     .when('/snippet', {
       templateUrl: 'app/snippet.html',
       controller: 'SnippetController',
-      // authenticate: true
+      authenticate: true
     })
     .otherwise('/main');
 })
@@ -23,6 +23,17 @@ angular.module('app', [
     console.log('calling isLoggedIn');
     Auth.isLoggedIn();
   };
+})
+.run(function($rootScope, $location, $route, Auth) {
+  $rootScope.$on('$routeChangeStart', 
+    function(event, next, current) {
+      Auth.getUserStatus()
+      .then(function() {
+        if (next.$$route && next.$$route.authenticate && !Auth.isLoggedIn()) {
+          $location.path('/');
+        }
+      });
+    });
 });
 
 console.log('app.js loaded');

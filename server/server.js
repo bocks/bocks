@@ -58,30 +58,12 @@ passport.deserializeUser(function(obj, done) {
 // var bocksSchema = require('./schemaModel.js');
 mongoose.connect('mongodb://localhost/bocks');
 
-// app.get('/api/main', function (req, res) {
-//   res.send('hello world from express');
-// });
-
-// app.get('/test', function(req, res) {
-//   console.log('Hey Test worked!!!!!!!11!!!?');
-//   res.json({'key': 'Sending back some string'});
-//   res.end();
-
-//   // route: check user:  takes session id from request, matches to user in db, returns JWT token,
-//   // then sends token to localStorage on client
-//   // using setter
-// });
-
 app.get('/auth/github', passport.authenticate('github'));
 
 app.get('/auth/github/callback', 
   passport.authenticate('github', { failureRedirect: '/oops' }),
   function(req, res) {
-    // console.log('Github token: ', req.query.code);
-    // console.log('Github Username: ', req.user);
-    // Successful authentication, redirect home.
     console.log('in authentication callback, redirecting to home page');
-    // console.log(res.data);
     res.redirect('/');
 });
 
