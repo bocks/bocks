@@ -6,7 +6,8 @@ var passport = require('passport');
 var Strategy = require('passport-github').Strategy;
 var GITHUB_CLIENT_ID = process.env.BOCKS_CLIENT_ID || 'oops';
 var GITHUB_CLIENT_SECRET = process.env.BOCKS_CLIENT_SECRET || 'oops';
-var port = process.env.PORT || 1337;
+var BOCKS_SECRET = process.env.BOCKS_SESSION_SECRET;
+var PORT = process.env.PORT || 1337;
 
 var app = express();
 app.use(bodyParser.json());
@@ -16,7 +17,7 @@ app.use('/node_modules', express.static('node_modules'));
 var hour = 3600000;
 var cookieMaxAge = new Date(Date.now() + hour);
 app.use(session({
-    secret: process.env.BOCKS_SESSION_SECRET,
+    secret: BOCKS_SECRET,
     cookie: { maxAge: cookieMaxAge },
     resave: false,
     saveUninitialized: true,
@@ -36,7 +37,7 @@ app.use(passport.session());
 passport.use(new Strategy({
     clientID: GITHUB_CLIENT_ID,
     clientSecret: GITHUB_CLIENT_SECRET,
-    callbackURL: 'http://127.0.0.1:' + (process.env.PORT || 1337) + '/auth/github/callback'
+    callbackURL: 'http://127.0.0.1:' + PORT + '/auth/github/callback'
   },
   function(accessToken, refreshToken, profile, cb) {
     // User.findOrCreate({ githubId: profile.id }, function (err, user) {
@@ -80,6 +81,6 @@ app.get('/user/logout', function(req, res) {
  res.send('logged out');
 });
 
-app.listen(port, function() {
-  console.log('listening on ', port);
+app.listen(PORT, function() {
+  console.log('listening on ', PORT);
 });
