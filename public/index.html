@@ -5,9 +5,11 @@
     <link rel="stylesheet" type="text/css" href="assets/styles.css" /> 
   </head>
   <body>
-    <nav class="right">
-      <a href="/auth/github">Log In</a>
+    <nav class="right" ng-controller="NavController">
+     <!--  <a href="/auth/github">Log In</a> -->
+      <button ng-click="isLoggedIn()">Log In</button>
       <a href="https://github.com/join">Sign Up</a>
+      <a href="/logout">Log out</a>
     </nav>
     hello world from index.html!
     <div ng-view></div>
@@ -15,11 +17,8 @@
     <script src="node_modules/angular/angular.min.js"></script>
     <script src="node_modules/angular-route/angular-route.min.js"></script>
     <script src="app/main.js"></script>
+    <script src="app/snippet.js"></script>
     <script src="services.js"></script>
     <script src="app.js"></script>
   </body>
 </html>
-
-<!--     <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.min.js"></script>  -->
