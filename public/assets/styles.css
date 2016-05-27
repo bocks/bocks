@@ -1,3 +1,69 @@
-.right {
-  float: right;
+/* elements */
+
+nav {
+  width: 100%;
+  background: lightblue;
+  height: 75px;
+  top: 0;
+  left: 0;
+}
+
+nav a {
+  float:right;
+  padding: 10px 20px;
+  margin: 20px 10px 10px 0;
+  background: aliceblue;
+  border-radius: 5px;
+  color: #333;
+}
+
+footer {
+  border-top: 1px solid #ddd;
+  font-size: smaller;
+  color: #666;
+  text-align: center;
+}
+
+/* custom classes */
+
+.welcome {
+  text-align: center;
+  color: #333;
+}
+
+.demo {
+  width: 70%;
+  margin: 0 10%;
+  height: 15%;
+}
+
+.trio span {
+  width: 33%;
+  height: 200px ;
+  display:inline-block;
+  background: aliceblue;
+  margin: 2% 0 3% 0;
+}
+
+.search {
+  width: 60%;
+  padding: 20px 10%;
+  display: inline-block;
+}
+
+/* TODO: make this class responsive */
+.searchBtn {
+  text-align: center;
+  padding: 20px;
+  width: 10%;
+  display: inline-block;
+  border-radius: 10px;
+  background-color: lightblue;
+}
+
+.teaser {
+  width: 90%;
+  margin: 0 3%;
+  padding: 30px 2%;  
+  text-align: left;
 }
