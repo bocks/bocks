@@ -1,0 +1,27 @@
+<div class="welcome" ng-controller="MainController">
+  <h1>Annotate your code and share</h1>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br/>Some sort of demo below</p>
+  <img class="demo" src="assets/demo.jpg"/>
+  
+  <div class="trio">
+    <span>Hey here's a feature</span>
+    <span>Look another feature</span>
+    <span>Would be handy for...</span>
+  </div>
+
+  <input class="search" placeholder="Browse snippets by title, author or tag"/>
+  <button class="searchBtn">Search</button>
+  
+  <div class="teaser" ng-repeat="snippet in snippets">
+    <li>{{ snippet }}</li>
+  </div>
+
+</div>
+
+<!-- 
+TODO: Snippets 
+editor filler
+button for save
+-->
+
+

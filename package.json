@@ -19,6 +19,7 @@
     "express-session": "^1.13.0",
     "express-sessions": "^1.0.5",
     "mongoose": "^4.4.19",
+    "normalize.css": "^4.1.1",
     "passport": "^0.3.2",
     "passport-github": "^1.1.0",
     "request": "^2.72.0"
