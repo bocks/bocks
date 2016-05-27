@@ -19,10 +19,10 @@ angular.module('app', [
 })
 .controller('NavController', function($scope, Auth) {
   console.log('hello from NavController');
-  $scope.isLoggedIn = function() {
-    console.log('calling isLoggedIn');
-    Auth.isLoggedIn();
-  };
+  // $scope.isLoggedIn = function() {
+  //   console.log('calling isLoggedIn');
+  //   Auth.isLoggedIn();
+  // };
 })
 .run(function($rootScope, $location, $route, Auth) {
   $rootScope.$on('$routeChangeStart', 
