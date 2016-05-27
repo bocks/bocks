@@ -97,13 +97,13 @@ label {
   font-family: "courier", "monospace";
 }
 
-.testWrap {
+.btn-wrap {
   display: block;
   width: 100%;
   height: 50px;
 }
 
-.editor-wrap .btn {
+.btn-wrap .btn {
   float: left;
 }
 
