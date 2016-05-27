@@ -1,17 +1,32 @@
 angular.module('app.services', [])
 .factory('Auth', function($http) {
-  var isLoggedIn = function() {
-    console.log('in Auth Service');
+  
+  var user = null;
+
+  var getUserStatus = function() {
+    console.log('in getUserStatus Service');
     return $http({
       method: 'GET',
-      url: '/test'
-      // url: '/auth/github'
-    }).then( function(response) {
-      console.log('response', response.data, response.session);
+      url: '/user/status'
+    }).success( function(data) {
+      console.log('data', data);
+      if (data === 'true') {
+        user = true;
+      } else {
+        user = false;
+      }
+    }).error(function(err) {
+      console.log('error in getUserStatus', err);
+      user = false;
     });
   };
 
+  var isLoggedIn = function() {
+    return user ? true : false;
+  };
+
   return {
+    getUserStatus: getUserStatus,
     isLoggedIn: isLoggedIn
   };
 });
