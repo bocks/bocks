@@ -27,7 +27,7 @@ app.use(session({
         port: 27017, // optional 
         db: 'bocks', // optional 
         collection: 'sessions', // optional 
-        // expire: 86400 // optional 
+        expire: 86400 // optional 
     })
 }));
 
@@ -42,7 +42,7 @@ passport.use(new Strategy({
     // User.findOrCreate({ githubId: profile.id }, function (err, user) {
     //   return cb(err, user);
     // });
-    console.log('Hey I logged in', accessToken, refreshToken, profile, cb);
+    console.log('Hey I logged in');
     return cb(null, profile);
   }
 ));
@@ -55,16 +55,21 @@ passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
 
-var bocksSchema = require('./schemaModel.js');
+// var bocksSchema = require('./schemaModel.js');
 mongoose.connect('mongodb://localhost/bocks');
 
-app.get('/api/main', function (req, res) {
-  res.send('hello world from express');
-});
-// app.post('/', function (req, res) {
+// app.get('/api/main', function (req, res) {
+//   res.send('hello world from express');
 // });
 
-// app.delete('/', function (req, res) {
+// app.get('/test', function(req, res) {
+//   console.log('Hey Test worked!!!!!!!11!!!?');
+//   res.json({'key': 'Sending back some string'});
+//   res.end();
+
+//   // route: check user:  takes session id from request, matches to user in db, returns JWT token,
+//   // then sends token to localStorage on client
+//   // using setter
 // });
 
 app.get('/auth/github', passport.authenticate('github'));
@@ -72,13 +77,25 @@ app.get('/auth/github', passport.authenticate('github'));
 app.get('/auth/github/callback', 
   passport.authenticate('github', { failureRedirect: '/oops' }),
   function(req, res) {
-    console.log('Github token: ', req.query.code);
-    console.log('Github Username: ', req.user);
+    // console.log('Github token: ', req.query.code);
+    // console.log('Github Username: ', req.user);
     // Successful authentication, redirect home.
     console.log('in authentication callback, redirecting to home page');
-    
-    console.log(res);
+    // console.log(res.data);
     res.redirect('/');
+});
+
+app.get('/user/status', function(req, res) {
+ if (req.session.passport && req.session.passport.user) {
+   res.send( JSON.stringify(true) );
+ } else {
+   res.send( JSON.stringify(false) );
+ }
+});
+
+app.get('/user/logout', function(req, res) {
+ req.logout();
+ res.send('logged out');
 });
 
 app.listen(port, function() {
