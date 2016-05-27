@@ -1,2 +1,2 @@
-angular.module('app')
-  .factory('', )
+angular.module('app.services', [])
+  .factory();

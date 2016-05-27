@@ -11,6 +11,7 @@ var port = process.env.PORT || 1337;
 var app = express();
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/../public'));
+app.use('/node_modules', express.static('node_modules'));
 
 var hour = 3600000;
 var cookieMaxAge = new Date(Date.now() + hour);
@@ -57,22 +58,12 @@ passport.deserializeUser(function(obj, done) {
 var bocksSchema = require('./schemaModel.js');
 mongoose.connect('mongodb://localhost/bocks');
 
-// allowCrossDomain = function(req, res, next) {
-//   res.header('Access-Control-Allow-Origin', '*');
-//   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-//   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
-//   if ('OPTIONS' === req.method) {
-//     res.sendStatus(200);
-//   } else {
-//     next();
-//   }
-// };
-// app.use(allowCrossDomain);
+app.get('/api/main', function (req, res) {
+  res.send('hello world from express');
+});
 // app.post('/', function (req, res) {
 // });
-// app.get('/', function (req, res) {
-//   // res.send('hello world');
-// });
+
 // app.delete('/', function (req, res) {
 // });
 
@@ -85,6 +76,8 @@ app.get('/auth/github/callback',
     console.log('Github Username: ', req.user);
     // Successful authentication, redirect home.
     console.log('in authentication callback, redirecting to home page');
+    
+    console.log(res);
     res.redirect('/');
 });
 
