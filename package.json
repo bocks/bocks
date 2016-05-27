@@ -8,7 +8,8 @@
     "node": ">=4.0.0"
   },
   "scripts": {
-    "start": "nodemon server/server.js"
+    "start": "nodemon server/server.js",
+    "test": "mocha --reporter spec"
   },
   "dependencies": {
     "angular": "^1.5.5",
@@ -21,5 +22,10 @@
     "passport": "^0.3.2",
     "passport-github": "^1.1.0",
     "request": "^2.72.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.5.3",
+    "supertest": "^1.2.0"
   }
 }
