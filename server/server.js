@@ -64,8 +64,8 @@ app.get('/auth/github', passport.authenticate('github'));
 app.get('/auth/github/callback', 
   passport.authenticate('github', { failureRedirect: '/oops' }),
   function(req, res) {
-    console.log('in authentication callback, redirecting to home page');
-    res.redirect('/');
+    console.log('in authentication callback, redirecting to home page via /#/testing');
+    res.redirect('/#/testing');
 });
 
 app.get('/user/status', function(req, res) {
@@ -77,8 +77,9 @@ app.get('/user/status', function(req, res) {
 });
 
 app.get('/user/logout', function(req, res) {
+ console.log('in /user/logout');
  req.logout();
- res.send('logged out');
+ res.end();
 });
 
 app.listen(PORT, function() {
