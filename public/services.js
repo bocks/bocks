@@ -1,10 +1,9 @@
 angular.module('app.services', [])
-.factory('Auth', function($http) {
+.factory('Auth', function($http, $route, $window) {
   
   var user = null;
 
   var getUserStatus = function() {
-    console.log('in getUserStatus Service');
     return $http({
       method: 'GET',
       url: '/user/status'
@@ -25,8 +24,44 @@ angular.module('app.services', [])
     return user ? true : false;
   };
 
+  // var logUserIn = function() {
+  //   console.log('in logUserIn Service');
+  //   return $http({
+  //     method: 'GET',
+  //     url: '/auth/github'
+  //   });
+  //   // .success( function() {
+  //   //   console.log('in success callback');
+  //   //   getUserStatus();
+  //   // }).error( function(err) {
+  //   //   console.log('error in logUserOut Service');
+  //   // });
+  // };
+
+  var logUserOut = function() {
+    console.log('in logUserOut Service');
+    $http({
+      method: 'GET',
+      url: '/user/logout'
+    }).success( function() {
+      console.log('in success callback');
+      user = false;
+    }).error( function(err) {
+      console.log('error in logUserOut Service');
+    });
+  };
+
+  var reloadPage = function($route) {
+    console.log('running reload Page');
+    console.log($window.location);
+    $window.location.reload();
+  };
+
   return {
     getUserStatus: getUserStatus,
-    isLoggedIn: isLoggedIn
+    isLoggedIn: isLoggedIn,
+    // logUserIn: logUserIn,
+    logUserOut: logUserOut,
+    reloadPage: reloadPage
   };
 });

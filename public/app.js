@@ -18,14 +18,23 @@ angular.module('app', [
     .otherwise('/main');
 })
 .controller('NavController', function($scope, Auth) {
-  console.log('hello from NavController');
-  // $scope.isLoggedIn = function() {
-  //   console.log('calling isLoggedIn');
-  //   Auth.isLoggedIn();
-  // };
+
+  // upon index.html reload, decide which nav links to render
+  $scope.init = function() {
+    Auth.getUserStatus()
+    .then( function() {
+      $scope.display = Auth.isLoggedIn(); 
+    });  
+  }();
+  
+  // reset our nav links upon logout
+  $scope.logUserOut = function() {
+    Auth.logUserOut();
+    Auth.reloadPage();
+  };
 })
-.run(function($rootScope, $location, $route, Auth) {
-  $rootScope.$on('$routeChangeStart', 
+.run(function($location, $route, $rootScope, Auth) {
+  $rootScope.$on('$routeChangeStart',
     function(event, next, current) {
       Auth.getUserStatus()
       .then(function() {
@@ -35,5 +44,3 @@ angular.module('app', [
       });
     });
 });
-
-console.log('app.js loaded');
