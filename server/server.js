@@ -7,6 +7,8 @@ var Strategy = require('passport-github').Strategy;
 var GITHUB_CLIENT_ID = process.env.BOCKS_CLIENT_ID || 'oops';
 var GITHUB_CLIENT_SECRET = process.env.BOCKS_CLIENT_SECRET || 'oops';
 var BOCKS_SECRET = process.env.BOCKS_SESSION_SECRET;
+
+var SERVER = (process.env.NODE_ENV === 'production') ? '159.203.207.96' : '127.0.0.1';
 var PORT = process.env.PORT || 1337;
 
 var app = express();
@@ -23,12 +25,12 @@ app.use(session({
     saveUninitialized: true,
     store: new (require('express-sessions'))({
         storage: 'mongodb',
-        instance: mongoose, // optional 
-        host: 'localhost', // optional 
-        port: 27017, // optional 
-        db: 'bocks', // optional 
-        collection: 'sessions', // optional 
-        expire: 86400 // optional 
+        instance: mongoose, // optional
+        host: 'localhost', // optional
+        port: 27017, // optional
+        db: 'bocks', // optional
+        collection: 'sessions', // optional
+        expire: 86400 // optional
     })
 }));
 
@@ -37,7 +39,7 @@ app.use(passport.session());
 passport.use(new Strategy({
     clientID: GITHUB_CLIENT_ID,
     clientSecret: GITHUB_CLIENT_SECRET,
-    callbackURL: 'http://127.0.0.1:' + PORT + '/auth/github/callback'
+    callbackURL: 'http://' + SERVER + ':' + PORT + '/auth/github/callback'
   },
   function(accessToken, refreshToken, profile, cb) {
     // User.findOrCreate({ githubId: profile.id }, function (err, user) {
@@ -61,7 +63,7 @@ mongoose.connect('mongodb://localhost/bocks');
 
 app.get('/auth/github', passport.authenticate('github'));
 
-app.get('/auth/github/callback', 
+app.get('/auth/github/callback',
   passport.authenticate('github', { failureRedirect: '/oops' }),
   function(req, res) {
     console.log('in authentication callback, redirecting to home page via /#/testing');
@@ -83,5 +85,5 @@ app.get('/user/logout', function(req, res) {
 });
 
 app.listen(PORT, function() {
-  console.log('listening on ', PORT);
+  console.log('Server listening', SERVER + ':' + PORT);
 });
