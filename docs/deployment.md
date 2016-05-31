@@ -11,7 +11,11 @@ TODO
 
 ## Deployment Setup
 
+### Create a Digital Ocean Droplet
+
 Create a Digital Ocean Droplet using the `MEAN on 14.04` one-click app.
+
+### Set up a user with access
 
 Log onto droplet.
 
@@ -22,7 +26,7 @@ Log onto droplet.
 	adduser deploy
 	chown -R deploy:deploy /var/www
 
-(Locally) Create an ssh key for Travis to log in with. When asked, provide the output filename of `deploy_key`.
+(Local) Create an ssh key for Travis to log in with. When asked, provide the output filename of `deploy_key`.
 
 	ssh-keygen
 
@@ -36,9 +40,56 @@ Log onto droplet.
 	chmod 700 .ssh
 	nano .ssh/authorized_keys
 
-(Locally / Droplet) Copy the contents of `deploy_key` that was created earlier into the `authorized_keys` file that is on the server.
+(Local / Droplet) Copy the contents of `deploy_key` that was created earlier into the `authorized_keys` file that is on the server.
 
 (Droplet) Restrict permissions on `authorized_keys` file.
 
 	chmod 600 .ssh/authorized_keys
+
+### Create Remote (Repo) on Droplet
+
+(Droplet) Create a bare repo
+
+	mkdir bocks.git
+	cd bocks.git
+	git init --bare
+
+(Droplet) Add post-receive hook to repo so commits will copy to the live directory.
+
+	cd hooks
+	nano post-receive
+
+Then add the following to the `post-receive` file:
+
+	#!/bin/sh
+	git --work-tree=/home/deploy/bocks/ --git-dir=/home/deploy/bocks.git checkout -f
+
+Save the file and exit the editor, then set permissions on the file so that it can be executed.
+
+	chmod +x post-receive
+
+### Set up Travis CI
+
+(Local) Create a `.travis.yml` file in your project root.
+
+	touch .travis.yml
+
+...
+
+### Digital Ocean Run Setup
+
+As root
+
+	`npm install -g nodemon`
+
+As root, `nano /etc/environment` and add the following lines to the file:
+
+	export BOCKS_CLIENT_ID="<GITHUB_CLIENT_ID>"
+	export BOCKS_CLIENT_SECRET="<GITHUB_CLIENT_SECRET>"
+	export BOCKS_SESSION_SECRET="<EXPRESS_SESSION_SECRET>"
+	export PORT=3000
+
+As root, add port forwarding from `80` to `3000`
+
+	sudo iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 3000
 
