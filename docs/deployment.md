@@ -88,6 +88,7 @@ As root, `nano /etc/environment` and add the following lines to the file:
 	export BOCKS_CLIENT_SECRET="<GITHUB_CLIENT_SECRET>"
 	export BOCKS_SESSION_SECRET="<EXPRESS_SESSION_SECRET>"
 	export PORT=3000
+	export NODE_ENV=production
 
 As root, add port forwarding from `80` to `3000`
 
