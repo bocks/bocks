@@ -38,8 +38,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new Strategy({
     clientID: GITHUB_CLIENT_ID,
-    clientSecret: GITHUB_CLIENT_SECRET,
-    callbackURL: 'http://' + SERVER + ':' + PORT + '/auth/github/callback'
+    clientSecret: GITHUB_CLIENT_SECRET
   },
   function(accessToken, refreshToken, profile, cb) {
     // User.findOrCreate({ githubId: profile.id }, function (err, user) {
