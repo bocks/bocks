@@ -16,9 +16,6 @@ module.exports = {
       console.log(data);
     });
     console.log(req);
-    // .fail(function (err) {
-    //   next(err);
-    // });
   },
   
   getAllUserBocks: function (req, res, next) {
@@ -33,46 +30,57 @@ module.exports = {
       if (data) {
           res.json(data);
       }
-    }).fail(function (err) {
-      next(err);
+      console.log(data);
     });
+    console.log(req);
   },
   
   getOneBocks: function (req, res, next) {
     Bocks.findOne({
       _id: req.body.id
+    }).where({
+      $or : [
+        {isPrivate: false},
+        {userName: req.session.passport.user.username}
+      ]
     }).then(function (data) {
       if (data) {
-        if (!data.isPrivate || data.userName === req.session.passport.user.username) {
-          res.json(data);
-        } else {
-          res.status(401);
-        }
+        res.json(data);
       }
-    }).fail(function (err) {
-      next(err);
+      console.log(data);
     });
+    console.log(req);
   },
   
   changeBocks: function (req, res, next) {
     Bocks.update({
-      _id: req.body.id
+      _id: req.body.id,
+      userName: req.session.passport.user.username
+    }, {      
+      title: req.body.title,
+      text: req.body.text,
+      isPrivate: req.body.isPrivate,
+      modifiedAt: Date.now()
     }).then(function (data) {
-      // TODO: filter for access
-      // TODO: inform user of successful removal
-    }).fail(function (err) {
-      next(err);
-    })    
+      if (data) {
+        res.json(data);
+      }
+      console.log(data);
+    });
+    console.log(req);
   },
   
   remBocks: function (req, res, next) {
     Bocks.remove({
       _id: req.body.id
+    }).where({
+      userName: req.session.passport.user.username
     }).then(function (data) {
-      // TODO: filter for access
-      // TODO: inform user of successful removal
-    }).fail(function (err) {
-      next(err);
-    })
+      if (data) {
+        res.json(data);
+      }
+      console.log(data);
+    });
+    console.log(req);
   }
-}
+};
