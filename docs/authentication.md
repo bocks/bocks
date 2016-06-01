@@ -35,5 +35,8 @@ Contains a closure variable `user` which may be `null` or a boolean.
 
 `getUserStatus` is a setter method for `user` which queries the server at `/user/status` endpoint, which queries passport as to whether or not this session has a valid user.  Returns a boolean. 
 
+Navigation: 
+Visibility of navigation links is controlled by 'NavController' in app.js, which queries the Auth service to establish the user's logged-in status each time index.html is reloaded in order to set the `$scope.display` boolean.  Upon user logout, index.html reload is manually triggered to in order to refresh nav link visibility.
+
 ### Caveat: 
 No sign-up option is provided: a user is presumed to be familiar with Github as a prequisite for consumption of myBocks.

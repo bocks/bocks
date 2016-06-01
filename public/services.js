@@ -24,20 +24,6 @@ angular.module('app.services', [])
     return user ? true : false;
   };
 
-  // var logUserIn = function() {
-  //   console.log('in logUserIn Service');
-  //   return $http({
-  //     method: 'GET',
-  //     url: '/auth/github'
-  //   });
-  //   // .success( function() {
-  //   //   console.log('in success callback');
-  //   //   getUserStatus();
-  //   // }).error( function(err) {
-  //   //   console.log('error in logUserOut Service');
-  //   // });
-  // };
-
   var logUserOut = function() {
     console.log('in logUserOut Service');
     $http({
@@ -60,7 +46,6 @@ angular.module('app.services', [])
   return {
     getUserStatus: getUserStatus,
     isLoggedIn: isLoggedIn,
-    // logUserIn: logUserIn,
     logUserOut: logUserOut,
     reloadPage: reloadPage
   };
