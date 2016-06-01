@@ -74,13 +74,17 @@ Save the file and exit the editor, then set permissions on the file so that it c
 
 	touch .travis.yml
 
-...
+---
+
+TODO Finish Auto Deployment
+
+---
 
 ### Digital Ocean Run Setup
 
 As root
 
-	`npm install -g nodemon`
+	`npm install -g forever`
 
 As root, `nano /etc/environment` and add the following lines to the file:
 
@@ -94,3 +98,20 @@ As root, add port forwarding from `80` to `3000`
 
 	sudo iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 3000
 
+As root, add the following to your `/etc/rc.local` file so that the above iptables rule sticks around after a reboot. Add this before the `exit 0` line.
+
+	iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 3000
+
+	# do something here
+
+As `deploy` (user), start up the express app server with
+
+	forever start server/server.js
+
+See [Process Managers for Express Apps](http://expressjs.com/en/advanced/pm.html#forever) for more details on using Forever.
+
+---
+
+TODO setup forever to start on restart.
+
+---
