@@ -2,8 +2,6 @@
 
 Passport provides OAuth 2.0 API authentication support via a given user's github account.
 
-## Crib Notes
-
 ### Config
 `GITHUB_CLIENT_ID`, 
 
