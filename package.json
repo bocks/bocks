@@ -12,6 +12,7 @@
     "test": "mocha --reporter spec"
   },
   "dependencies": {
+    "ace-builds": "^1.2.2",
     "angular": "^1.5.5",
     "angular-route": "^1.5.5",
     "body-parser": "^1.15.1",
