@@ -13,9 +13,7 @@ module.exports = {
       if (data) {
         res.json(data);
       }
-      console.log(data);
     });
-    console.log(req);
   },
   
   getAllUserBocks: function (req, res, next) {
@@ -30,9 +28,7 @@ module.exports = {
       if (data) {
           res.json(data);
       }
-      console.log(data);
     });
-    console.log(req);
   },
   
   getOneBocks: function (req, res, next) {
@@ -47,9 +43,7 @@ module.exports = {
       if (data) {
         res.json(data);
       }
-      console.log(data);
     });
-    console.log(req);
   },
   
   changeBocks: function (req, res, next) {
@@ -65,9 +59,7 @@ module.exports = {
       if (data) {
         res.json(data);
       }
-      console.log(data);
     });
-    console.log(req);
   },
   
   remBocks: function (req, res, next) {
@@ -79,8 +71,6 @@ module.exports = {
       if (data) {
         res.json(data);
       }
-      console.log(data);
     });
-    console.log(req);
   }
 };
