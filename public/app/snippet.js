@@ -77,7 +77,16 @@ angular.module('app.snippet', [])
       if (colorCount === 4) {
         colorCount = 0;
       }
+
+      // To extract snippets from editor, do this: editor.getValue();
+      console.log('Text in editor =========> ', editor.getValue());
+      
+      // To repopulate editor: editor.setValue( < saved snippet > );
+      // We can play this on the borwser console
+
+      // Note: Yet we can only do with plain text. We may need to create other variables to store all data about highlights.
  
+
       return;
   };
 });
