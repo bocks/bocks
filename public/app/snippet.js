@@ -77,7 +77,38 @@ angular.module('app.snippet', [])
       if (colorCount === 4) {
         colorCount = 0;
       }
+
+      // To extract snippets from editor, do this: editor.getValue();
+      console.log('Text in editor =========> ', editor.getValue());
+      
+      // To repopulate editor: editor.setValue( < saved snippet > );
+      // We can play this on the borwser console
+
+      // Note: Yet we can only do with plain text. We may need to create other variables to store all data about highlights.
+      /*
+        Suggested data structure: an array of object
+        $scope.highlight = [
+          {
+            startRow: <num>,
+            endRow: <num>,
+            startCol: <num>,
+            endCol: <num>,
+            highlighter: <string>
+          },
+          {
+            // another highlight data
+          },
+          ......
+        ];
+
+        Then we can use for-loop to traverse the array and do the following to highlight the text
+        for ( var i = 0; i < arr.length; i++ ) {
+          var range = new Range(startRow[i], startCol[i], endRow[i], endCol[i]);
+          editor.session.addMarker(range, highlighter[i], "line");  
+        }
+      */
  
+
       return;
   };
 });
