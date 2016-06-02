@@ -1,12 +1,12 @@
 <div ng-controller="SnippetController" class="form-wrap">
-  <form>
-    <input type="radio" name="isPublic" value="true" checked>
+  <form ng-submit="snippetsCreate()">
+    <input type="radio" name="isPrivate" ng-model="isPrivate" value="false" checked>
     <label>Public Snippet</label>
-    <input type="radio" name="isPublic" value="false">
+    <input type="radio" name="isPrivate" ng-model="isPrivate" value="true">
     <label>Private Snippet</label>
-    <input type="text" placeholder="Snippet title goes here" />
+    <input type="text" name="title" ng-model="title" placeholder="Snippet title goes here" />
     <div class="editor-wrap">
-      <div id="editor" ng-mouseup="mouseUp()">function foo(items) {
+      <div id="editor" ng-model="code" ng-mouseup="mouseUp()">function foo(items) {
   var x = "Fill me in!";
   return x;
 }

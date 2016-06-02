@@ -12,7 +12,10 @@ var SERVER = (process.env.NODE_ENV === 'production') ? '159.203.207.96' : '127.0
 var PORT = process.env.PORT || 1337;
 
 var app = express();
+
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use(express.static(__dirname + '/../public'));
 app.use('/node_modules', express.static('node_modules'));
 
@@ -57,7 +60,6 @@ passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
 
-// var bocksSchema = require('./schemaModel.js');
 mongoose.connect('mongodb://localhost/bocks');
 
 app.get('/auth/github', passport.authenticate('github'));
@@ -82,6 +84,27 @@ app.get('/user/logout', function(req, res) {
  req.logout();
  res.end();
 });
+
+/*
+  Snippets Endpoints
+*/
+var bocksController = require('./bocksController');
+
+// GET /snippets
+// Retreive a list of all snippets
+
+// POST /snippets
+// Create a new snippet
+app.post('/snippets', bocksController.newBocks);
+
+// GET /snippets/:id
+// Retreieve a specific snippet
+
+// PATCH /snippets/:id
+// Edit a specific snippet
+
+// DELETE /snippets/:id
+// Delete a specific snippet
 
 app.listen(PORT, function() {
   console.log('Server listening', SERVER + ':' + PORT);
