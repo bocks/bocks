@@ -130,7 +130,7 @@ angular.module('app.snippet', [])
       author: 'taptapdan',
       title: $scope.title,
       isPrivate: $scope.isPrivate,
-      code: $scope.code,
+      code: editor.getValue(),
     };
 
     $http({
