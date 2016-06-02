@@ -1,10 +1,16 @@
 <div ng-controller="SnippetController" class="form-wrap">
   <form ng-submit="snippetsCreate()">
-    <input type="radio" name="isPrivate" ng-model="isPrivate" value="false" checked>
-    <label>Public Snippet</label>
-    <input type="radio" name="isPrivate" ng-model="isPrivate" value="true">
-    <label>Private Snippet</label>
+    <h3>Create a new snippet:</h3>
     <input type="text" name="title" ng-model="title" placeholder="Snippet title goes here" />
+    <div class="btn-wrap">
+      <label>Public Snippet</label>
+      <input type="radio" name="isPrivate" ng-model="isPrivate" value="false" checked>
+      <label>Private Snippet</label>
+      <input type="radio" name="isPrivate" ng-model="isPrivate" value="true">
+      <label>Font size:</label>
+      <button ng-click='enlargeText()'>+</button>
+      <button ng-click='reduceText()'>-</button>
+    </div>
     <div class="editor-wrap">
       <div id="editor" ng-model="code" ng-mouseup="mouseUp()">function foo(items) {
   var x = "Fill me in!";
@@ -17,8 +23,5 @@
     <div class="btn-wrap">
       <button class="btn" type="submit">Save snippet</button>
     </div>
-
-    <button ng-click='enlargeText()'>+</button>
-    <button ng-click='reduceText()'>-</button>
   </form>
 </div>
