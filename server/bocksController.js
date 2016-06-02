@@ -1,21 +1,25 @@
 var Bocks = require('./bocksModel.js');
 
 module.exports = {
-  
+
   newBocks: function (req, res, next) {
+    console.log('REQ', req.body);
+
     Bocks.create({
-      userName: req.body.userName,
+      userName: req.session.passport.user.username,
       title: req.body.title,
-      text: req.body.text,
-      isPrivate: req.body.isPrivate
+      code: req.body.code,
+      isPrivate: !!req.body.isPrivate
     })
     .then(function (data) {
+      console.log('DATA', data);
+
       if (data) {
         res.json(data);
       }
     });
   },
-  
+
   getAllUserBocks: function (req, res, next) {
     Bocks.find({
       userName: req.body.userName
@@ -30,7 +34,7 @@ module.exports = {
       }
     });
   },
-  
+
   getOneBocks: function (req, res, next) {
     Bocks.findOne({
       _id: req.body.id
@@ -45,12 +49,12 @@ module.exports = {
       }
     });
   },
-  
+
   changeBocks: function (req, res, next) {
     Bocks.update({
       _id: req.body.id,
       userName: req.session.passport.user.username
-    }, {      
+    }, {
       title: req.body.title,
       text: req.body.text,
       isPrivate: req.body.isPrivate,
@@ -61,7 +65,7 @@ module.exports = {
       }
     });
   },
-  
+
   remBocks: function (req, res, next) {
     Bocks.remove({
       _id: req.body.id
