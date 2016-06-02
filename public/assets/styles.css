@@ -1,14 +1,25 @@
 /* elements */
 body {
   font-family: "Arial", "sans-serif";
+  background: #eee;
+  background: -webkit-linear-gradient(#eee, #fff); 
+  background: -o-linear-gradient(#eee, #fff); 
+  background: -moz-linear-gradient(#eee, #fff);
+  background: linear-gradient(#eee, #fff);
 }
 
 nav {
-  width: 100%;
-  background: lightblue;
+  width: 90%;
+  padding: 0 5%;
   height: 75px;
   top: 0;
   left: 0;
+  margin-bottom: 40px;
+  background: #666;
+  background: -webkit-linear-gradient(lightblue, #eee); 
+  background: -o-linear-gradient(lightblue, #eee); 
+  background: -moz-linear-gradient(lightblue, #eee);
+  background: linear-gradient(lightblue, #eee);
 }
 
 footer {
@@ -18,15 +29,24 @@ footer {
   text-align: center;
 }
 
+h1 {
+  text-decoration: underline;
+}
+
 /* custom classes */
 
 .btn {
   float:right;
   padding: 10px 20px;
-  margin: 20px 10px 10px 0;
-  background: aliceblue;
+  margin: 20px 0 10px 10px;
+  background: #fff;
+  border: 1px solid #ccc;
   border-radius: 5px;
   color: #333;
+}
+
+.btn:hover {
+  background: #eee;
 }
 
 /* home page */
@@ -34,20 +54,27 @@ footer {
 .welcome {
   text-align: center;
   color: #333;
+  width: 90%;
+  margin: 0 5%;
 }
 
 .demo {
-  width: 70%;
-  margin: 0 10%;
-  height: 15%;
+  width: 100%;
+  height: 500px;
 }
 
 .trio span {
-  width: 33%;
-  height: 200px ;
+  width: 32%;
+  height: 150px ;
   display:inline-block;
-  background: aliceblue;
   margin: 2% 0 3% 0;
+  border: 1px dotted #ccc;
+}
+
+.browse-wrap {
+  border: 1px solid #eee;
+  padding-top: 25px;
+  margin-bottom: 25px;
 }
 
 .search {
@@ -63,7 +90,7 @@ footer {
   width: 10%;
   display: inline-block;
   border-radius: 10px;
-  background-color: lightblue;
+  background-color: white;
 }
 
 .teaser {
@@ -76,7 +103,7 @@ footer {
 /* snippets page */
 
 label {
-  padding: 0 25px 0 5px;
+  padding: 0 5px 0 25px;
 }
 
 .form-wrap {
@@ -87,7 +114,7 @@ label {
 .form-wrap input[type="text"] {
   width: 90%;
   padding: 2% 5%;
-  margin: 20px 0;
+  margin: 0 0 20px 0;
   border: 1px solid #ccc;
   border-radius: 10px;
 }
@@ -96,6 +123,9 @@ label {
 /* editor styles */
 .editor-wrap {
   width: 100%;
+  border: 5px solid white;
+  border-radius: 15px;
+  height: 500px;
 }
 
 #editor {
@@ -109,7 +139,7 @@ label {
 
 #annotations {
   display: inline-block;
-  background: #eee;
+  background: #000;
   height: 500px;
   width: 30%;
   border-top-right-radius: 15px;
