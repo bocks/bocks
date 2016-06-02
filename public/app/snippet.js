@@ -13,7 +13,19 @@ angular.module('app.snippet', [])
   editor.$blockScrolling = 0; 
 
   // font size is customizable, could have an +/- button
-  editor.setFontSize(18);
+  $scope.fontSize = 18;
+  editor.setFontSize($scope.fontSize);
+  // When either +/- button is clicked, its corresponding function would be invoked.
+  $scope.enlargeText = function () {
+    $scope.fontSize += 2;
+    editor.setFontSize($scope.fontSize);
+  }
+  $scope.reduceText = function () {
+    $scope.fontSize -= 2;
+    editor.setFontSize($scope.fontSize);
+  }
+
+
 
   // this script fires when the user releases the mouse after highlighting something in the editor
   $scope.mouseUp = function() {
