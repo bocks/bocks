@@ -5,30 +5,28 @@ angular.module('app.snippet', [])
   var editor = ace.edit("editor");
   editor.setTheme("ace/theme/solarized_dark");
   editor.session.setMode("ace/mode/javascript");
-
+  
   // use Ace's Range instead of the window's
   var Range = ace.require('ace/range').Range;
 
   // stop the browser's warning message
   editor.$blockScrolling = 0;
 
-  // font size is customizable, could have an +/- button
+  // Adjust font size in editor when +/- button is clicked
   $scope.fontSize = 18;
   editor.setFontSize($scope.fontSize);
-  // When either +/- button is clicked, its corresponding function would be invoked.
+  
   $scope.enlargeText = function () {
     $scope.fontSize += 2;
     editor.setFontSize($scope.fontSize);
-  }
+  };
   $scope.reduceText = function () {
     $scope.fontSize -= 2;
     editor.setFontSize($scope.fontSize);
-  }
+  };
 
-
-
-  // this script fires when the user releases the mouse after highlighting something in the editor
-  $scope.mouseUp = function() {
+  // Highlight selected text and create an annotation
+  $scope.annotate = function() {
 
       // find the perimeter of the highlighted area
       var startRow = editor.session.selection.selectionLead.row;
@@ -140,6 +138,6 @@ angular.module('app.snippet', [])
     })
     .then(function(res) {
       console.log(res.data);
-    })
+    });
   };
 });
