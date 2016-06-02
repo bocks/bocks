@@ -3,23 +3,26 @@
     <h3>Create a new snippet:</h3>
     <input type="text" name="title" ng-model="title" placeholder="Snippet title goes here" />
     <div class="btn-wrap">
-      <label>Public Snippet</label>
+      <label>Public Snippet:</label>
       <input type="radio" name="isPrivate" ng-model="isPrivate" value="false" checked>
-      <label>Private Snippet</label>
+      <label>Private Snippet:</label>
       <input type="radio" name="isPrivate" ng-model="isPrivate" value="true">
+      <label>Highlight:</label>
+      <button ng-click='annotate()'>[icon]</button>
       <label>Font size:</label>
       <button ng-click='enlargeText()'>+</button>
       <button ng-click='reduceText()'>-</button>
+      <label>Export:</label>
+      <button></button>
     </div>
     <div class="editor-wrap">
-      <div id="editor" ng-model="code" ng-mouseup="mouseUp()">function foo(items) {
+      <div id="editor" ng-model="code">function foo(items) {
   var x = "Fill me in!";
   return x;
 }
       </div><!-- remove space between inline-blocks
      --><div id="annotations"></div>
     </div>
-
     <div class="btn-wrap">
       <button class="btn" type="submit">Save snippet</button>
     </div>
