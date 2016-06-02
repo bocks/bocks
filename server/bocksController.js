@@ -37,7 +37,7 @@ module.exports = {
 
   getOneBocks: function (req, res, next) {
     Bocks.findOne({
-      _id: req.body.id
+      _id: req.params.id
     }).where({
       $or : [
         {isPrivate: false},
@@ -52,7 +52,7 @@ module.exports = {
 
   changeBocks: function (req, res, next) {
     Bocks.update({
-      _id: req.body.id,
+      _id: req.params.id,
       userName: req.session.passport.user.username
     }, {
       title: req.body.title,
@@ -68,7 +68,7 @@ module.exports = {
 
   remBocks: function (req, res, next) {
     Bocks.remove({
-      _id: req.body.id
+      _id: req.params.id
     }).where({
       userName: req.session.passport.user.username
     }).then(function (data) {
