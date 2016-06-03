@@ -90,21 +90,20 @@ app.get('/user/logout', function(req, res) {
 */
 var bocksController = require('./bocksController');
 
-// GET /snippets
-// Retreive a list of all snippets
+// Retrieve a list of all snippets
+app.get('/snippets', bocksController.getAllUserBocks);
 
-// POST /snippets
 // Create a new snippet
 app.post('/snippets', bocksController.newBocks);
 
-// GET /snippets/:id
-// Retreieve a specific snippet
+// Retrieve a specific snippet
+app.get('/snippets/:id', bocksController.getOneBocks);
 
-// PATCH /snippets/:id
 // Edit a specific snippet
+app.put('/snippets/:id', bocksController.changeBocks);
 
-// DELETE /snippets/:id
 // Delete a specific snippet
+app.delete('/snippets/:id', bocksController.remBocks);
 
 app.listen(PORT, function() {
   console.log('Server listening', SERVER + ':' + PORT);
