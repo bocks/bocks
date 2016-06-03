@@ -29,7 +29,7 @@ angular.module('app.snippet', [])
 
   // Highlight selected text and create an annotation
   $scope.annotate = function() {
-
+      $('.sortable').sortable();
       // find the perimeter of the highlighted area
       var startRow = editor.session.selection.selectionLead.row;
       var startCol = editor.session.selection.selectionLead.column;
@@ -83,12 +83,17 @@ angular.module('app.snippet', [])
 
       console.log('Also notice that the cursor automatically jumped over to the annotations text box, so we can just start typing our annotation immediately');
       var elem = document.getElementById('annotations');
+      // var elem = document.getElementById('sortable');
+      // var list = document.createElement('li');
       var note = document.createElement('div');
       note.setAttribute('id', 'annotation-' + rangeCount);
+      note.setAttribute('data-id', 'annotation-' + rangeCount)
       note.classList.add('note');
       note.setAttribute("contenteditable", "true");
       note.setAttribute("spellcheck", "false");
+      note.setAttribute("draggable", "true");
       note.classList.add('highlighted-' + colorCount);
+      // list.appendChild(note);
       elem.appendChild(note);
       note.focus();
 
