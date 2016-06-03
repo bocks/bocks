@@ -1,4 +1,14 @@
-angular.module('app.snippet', [])
+// A function which compiles an element into angular form
+function compile(element){
+  var el = angular.element(element);    
+  $scope = el.scope();
+  $injector = el.injector();
+  $injector.invoke(function($compile){
+    $compile(el)($scope);
+  });
+}
+
+angular.module('app.snippet', ['multipleDrag'])
 .controller('SnippetController', function($scope, $http) {
 
   var ranges = [];
@@ -89,6 +99,15 @@ angular.module('app.snippet', [])
       note.setAttribute("contenteditable", "true");
       note.setAttribute("spellcheck", "false");
       note.classList.add('highlighted-' + colorCount);
+      // Make annotation draggable
+      // Reference: https://www.npmjs.com/package/angular-multiple-drag
+      // Example: http://jsfiddle.net/r2vb1ahy/
+      // Example: http://maxazan.github.io/angular-multiple-drag/ => we can view the page source as well
+      note.setAttribute("multiple-selection-item");
+      note.setAttribute("multiple-drag-item");
+      note.setAttribute("ng-class", "{'selecting': isSelecting ,'selected': isSelected,'dragging': isDragging}");
+      // Since we include angular classes and attributes we need to compile the element
+      compile(note);
       elem.appendChild(note);
       note.focus();
 
