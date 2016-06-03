@@ -26,8 +26,6 @@
     "request": "^2.72.0"
   },
   "devDependencies": {
-    "angular-multiple-drag": "0.0.1",
-    "angular-multiple-selection": "0.0.3",
     "chai": "^3.5.0",
     "mocha": "^2.5.3",
     "supertest": "^1.2.0"
