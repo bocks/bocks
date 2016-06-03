@@ -1,7 +1,13 @@
-<div class="form-wrap">
+<div class="form-wrap" ng-show="displayEditor">
     <div class="editor-wrap">
       <div id="editor" ng-model="code">
       </div><!-- remove space between inline-blocks
      --><div id="annotations"></div>
     </div>
+</div>
+
+<div class="form-wrap" ng-hide="displayEditor">
+  <div class="missing-snippet">
+    That snippet could not be found.
+  </div>
 </div>
