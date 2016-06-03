@@ -2,8 +2,8 @@
 body {
   font-family: "Arial", "sans-serif";
   background: #eee;
-  background: -webkit-linear-gradient(#eee, #fff); 
-  background: -o-linear-gradient(#eee, #fff); 
+  background: -webkit-linear-gradient(#eee, #fff);
+  background: -o-linear-gradient(#eee, #fff);
   background: -moz-linear-gradient(#eee, #fff);
   background: linear-gradient(#eee, #fff);
 }
@@ -16,8 +16,8 @@ nav {
   left: 0;
   margin-bottom: 40px;
   background: #666;
-  background: -webkit-linear-gradient(lightblue, #eee); 
-  background: -o-linear-gradient(lightblue, #eee); 
+  background: -webkit-linear-gradient(lightblue, #eee);
+  background: -o-linear-gradient(lightblue, #eee);
   background: -moz-linear-gradient(lightblue, #eee);
   background: linear-gradient(lightblue, #eee);
 }
@@ -96,7 +96,7 @@ h1 {
 .teaser {
   width: 90%;
   margin: 0 3%;
-  padding: 30px 2%;  
+  padding: 30px 2%;
   text-align: left;
 }
 
@@ -147,7 +147,7 @@ label {
   vertical-align: top;
 }
 
-.contentEditable {
+.note {
    display:inline-block;
    height: auto;
    width: 90%;
@@ -159,8 +159,8 @@ label {
 }
 
 .highlighter-0, .highlighter-1, .highlighter-2, .highlighter-3 {
-  position: absolute; 
-} 
+  position: absolute;
+}
 .highlighter-0 { background-color: lightblue; }
 .highlighter-1 { background-color: lavender; }
 .highlighter-2 { background-color: bisque; }
