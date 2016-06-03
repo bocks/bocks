@@ -92,6 +92,11 @@ angular.module('app.snippet', [])
       elem.appendChild(note);
       note.focus();
 
+      var options = document.createElement('span');
+      options.classList.add('note-options');
+      options.innerHTML = '<button type="button" ng-click="removeAnnotation()">Remove</button>';
+      note.appendChild(options);
+
       // increment the colorCount for next annotation
       colorCount++;
       if (colorCount === 4) {
@@ -155,5 +160,9 @@ angular.module('app.snippet', [])
     .then(function(res) {
       console.log(res.data);
     });
+  };
+
+  $scope.removeAnnotation = function() {
+    console.log('Remove Annotation');
   };
 });

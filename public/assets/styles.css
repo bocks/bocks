@@ -119,6 +119,12 @@ label {
   border-radius: 10px;
 }
 
+.missing-snippet {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
 
 /* editor styles */
 .editor-wrap {
