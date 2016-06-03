@@ -1,5 +1,5 @@
 angular.module('app.snippet', [])
-.controller('SnippetController', function($scope, $http) {
+.controller('SnippetController', function($scope, $http, $location) {
 
   var ranges = [];
   var rangeCount = 0;
@@ -153,7 +153,9 @@ angular.module('app.snippet', [])
       data: snippet
     })
     .then(function(res) {
-      console.log(res.data);
+      if (res.data._id) {
+        $location.path('/snippet/' + res.data._id);
+      }
     });
   };
 });

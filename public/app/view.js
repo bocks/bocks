@@ -26,6 +26,9 @@ angular.module('app.view', [])
         $scope.displayEditor = true;
         console.log('Viewcontroller snippet not false')
 
+        // set snippet title
+        $scope.title = snippet.data.title;
+
         // add code to editor
         editor.setValue(snippet.data.code);
 
