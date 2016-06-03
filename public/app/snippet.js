@@ -156,8 +156,4 @@ angular.module('app.snippet', [])
       console.log(res.data);
     });
   };
-
-  $scope.removeAnnotation = function() {
-    console.log('Remove Annotation');
-  };
 });
