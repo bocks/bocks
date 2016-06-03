@@ -86,7 +86,8 @@ angular.module('app.snippet', [])
       var note = document.createElement('div');
       note.setAttribute('id', 'annotation-' + rangeCount);
       note.classList.add('contentEditable');
-      note.setAttribute("contentEditable", "true");
+      note.setAttribute("contenteditable", "true");
+      note.setAttribute("spellcheck", "false");
       note.classList.add('highlighted-' + colorCount);
       elem.appendChild(note);
       note.focus();
