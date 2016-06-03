@@ -68,6 +68,8 @@ angular.module('app.snippet', [])
       range.color = colorCount;
       ranges.push(range);
 
+      console.log(ranges);
+
       // addMarker supports "fullLine", "line" and "text"
       editor.session.addMarker(range, "highlighter-" + colorCount, "line");
 
@@ -131,26 +133,13 @@ angular.module('app.snippet', [])
   $scope.snippetsCreate = function() {
     console.log('Snippets Create');
 
+    console.log('!!', ranges);
+
     var snippet = {
       title: $scope.title,
       isPrivate: $scope.isPrivate,
       code: editor.getValue(),
-      highlights: [
-        {
-          startRow: 0,
-          endRow: 2,
-          startCol: 5,
-          endCol: 48,
-          annotation: "This is a hardcoded annotation."
-        },
-        {
-          startRow: 0,
-          endRow: 2,
-          startCol: 5,
-          endCol: 48,
-          annotation: "This is another hardcoded annotation."
-        },
-      ]
+      highlights: ranges
     };
 
     $http({

@@ -4,14 +4,14 @@
     <input type="text" name="title" ng-model="title" placeholder="Snippet title goes here" />
     <div class="btn-wrap">
       <label>Public Snippet:</label>
-      <input type="radio" name="isPrivate" ng-model="isPrivate" value="false" checked>
+      <input type="radio" name="isPrivate" ng-model="isPrivate" value="false" ng-checked="true">
       <label>Private Snippet:</label>
       <input type="radio" name="isPrivate" ng-model="isPrivate" value="true">
       <label>Highlight:</label>
-      <button ng-click='annotate()'>[icon]</button>
+      <button type="button" ng-click='annotate()'>[icon]</button>
       <label>Font size:</label>
-      <button ng-click='enlargeText()'>+</button>
-      <button ng-click='reduceText()'>-</button>
+      <button type="button" ng-click='enlargeText()'>+</button>
+      <button type="button" ng-click='reduceText()'>-</button>
       <label>Export:</label>
       <button></button>
     </div>
