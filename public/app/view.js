@@ -22,13 +22,19 @@ angular.module('app.view', [])
       // add code to editor
       editor.setValue(snippet.data.code);
 
-      // set markers for highlighted code
       snippet.data.highlights.forEach(function(highlight) {
+        // set markers for highlighted code
         var range = new Range(highlight.start.row, highlight.start.column, highlight.end.row, highlight.end.column);
         editor.session.addMarker(range, "highlighter-" + highlight.color);
+
+        // add annotations
+        var elem = document.getElementById('annotations');
+        var note = document.createElement('div');
+        note.innerText = highlight.text;
+        note.classList.add('highlighted-' + highlight.color);
+        note.classList.add('note');
+        elem.appendChild(note);
       });
     });
-
-
   }();
 })

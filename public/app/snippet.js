@@ -15,7 +15,7 @@ angular.module('app.snippet', [])
   editor.$blockScrolling = 0;
 
   // Adjust font size in editor when +/- button is clicked
-  $scope.fontSize = 18;
+  $scope.fontSize = 12;
   editor.setFontSize($scope.fontSize);
 
   $scope.enlargeText = function () {
@@ -85,7 +85,7 @@ angular.module('app.snippet', [])
       var elem = document.getElementById('annotations');
       var note = document.createElement('div');
       note.setAttribute('id', 'annotation-' + rangeCount);
-      note.classList.add('contentEditable');
+      note.classList.add('note');
       note.setAttribute("contenteditable", "true");
       note.setAttribute("spellcheck", "false");
       note.classList.add('highlighted-' + colorCount);
