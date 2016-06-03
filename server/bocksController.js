@@ -9,6 +9,7 @@ module.exports = {
       userName: req.session.passport.user.username,
       title: req.body.title,
       code: req.body.code,
+      highlights: req.body.highlights,
       isPrivate: !!req.body.isPrivate
     })
     .then(function (data) {
