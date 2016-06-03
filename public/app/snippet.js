@@ -64,7 +64,7 @@ angular.module('app.snippet', [])
         endCol = temp;
       }
       var range = new Range(startRow, startCol, endRow, endCol);
-      range.id = rangeCount++;
+      range.id = rangeCount;
       range.color = colorCount;
       ranges.push(range);
 
@@ -127,13 +127,20 @@ angular.module('app.snippet', [])
         }
       */
 
+      rangeCount++;
+
       return;
   };
 
   $scope.snippetsCreate = function() {
     console.log('Snippets Create');
 
-    console.log('!!', ranges);
+    ranges.forEach(function(range) {
+      console.log('RANGE', 'annotation-' + range.id);
+      console.log(document.getElementById('annotation-' + range.id));
+
+      range.text = document.getElementById('annotation-' + range.id).innerText;
+    });
 
     var snippet = {
       title: $scope.title,
