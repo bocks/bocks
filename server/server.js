@@ -91,7 +91,7 @@ app.get('/user/logout', function(req, res) {
 var bocksController = require('./bocksController');
 
 // Retrieve a list of all snippets
-app.get('/snippets', bocksController.getAllUserBocks);
+app.get('/snippets', bocksController.retrieveAll);
 
 // Create a new snippet
 app.post('/snippets', bocksController.newBocks);
