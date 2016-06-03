@@ -136,9 +136,6 @@ angular.module('app.snippet', [])
     console.log('Snippets Create');
 
     ranges.forEach(function(range) {
-      console.log('RANGE', 'annotation-' + range.id);
-      console.log(document.getElementById('annotation-' + range.id));
-
       range.text = document.getElementById('annotation-' + range.id).innerText;
     });
 
