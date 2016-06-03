@@ -5,7 +5,7 @@ angular.module('app.snippet', [])
   var editor = ace.edit("editor");
   editor.setTheme("ace/theme/solarized_dark");
   editor.session.setMode("ace/mode/javascript");
-  
+
   // use Ace's Range instead of the window's
   var Range = ace.require('ace/range').Range;
 
@@ -15,7 +15,7 @@ angular.module('app.snippet', [])
   // Adjust font size in editor when +/- button is clicked
   $scope.fontSize = 18;
   editor.setFontSize($scope.fontSize);
-  
+
   $scope.enlargeText = function () {
     $scope.fontSize += 2;
     editor.setFontSize($scope.fontSize);
@@ -125,7 +125,6 @@ angular.module('app.snippet', [])
     console.log('Snippets Create');
 
     var snippet = {
-      author: 'taptapdan',
       title: $scope.title,
       isPrivate: $scope.isPrivate,
       code: editor.getValue(),
