@@ -156,12 +156,29 @@ label {
 .note {
    display:inline-block;
    height: auto;
-   width: 90%;
-   font-size: 18px;
+   width: 80%;
+   font-size: 12px;
    padding: 2%;
-   margin: 2% 3%;
+   margin: 2% 0 2% 2%;
    vertical-align: top;
    border-radius: 10px;
+}
+
+.trash {
+  display:inline-block;
+  width: 8%;
+  margin: 2% 0;
+  padding: 2% 0;
+  background: none;
+  display:inline-block;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: smaller;
+}
+
+.trash:hover {
+  background: #333;
 }
 
 .highlighter-0, .highlighter-1, .highlighter-2, .highlighter-3 {

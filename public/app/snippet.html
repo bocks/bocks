@@ -1,4 +1,4 @@
-<div ng-controller="SnippetController" class="form-wrap">
+<div class="form-wrap">  <!-- ng-controller="SnippetController" -->
   <form ng-submit="snippetsCreate()">
     <h3>Create a new snippet:</h3>
     <input type="text" name="title" ng-model="title" placeholder="Snippet title goes here" />
@@ -21,7 +21,14 @@
   return x;
 }
       </div><!-- remove space between inline-blocks
-     --><div id="annotations"></div>
+   --><div id="annotations">
+        <div ng-repeat="annotation in ranges" id="annotation-{{ annotation.id }}">
+          {{ note.message }}
+          <div class="note highlighted-{{ annotation.color }}" spellcheck="false" contenteditable="true">
+          </div>
+          <button type="button" class="trash" ng-click="removeAnnotation()">x</button>
+        </div>
+      </div>
     </div>
     <div class="btn-wrap">
       <button class="btn" type="submit">Save snippet</button>
