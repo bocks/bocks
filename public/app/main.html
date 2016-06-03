@@ -1,4 +1,4 @@
-<div class="welcome" ng-controller="MainController">
+<div class="welcome">  <!-- ng-controller="MainController" -->
   <h1>Annotate your code and share</h1>
   <div class="trio">
     <span>Hey here's a feature</span>
@@ -11,7 +11,7 @@
   <br/>
   <div class="browse-wrap">
     <input class="search" placeholder="Browse snippets by title, author or tag"/>
-    <button class="searchBtn">Search</button> 
+    <button class="searchBtn">Search</button>
     <div class="teaser" ng-repeat="snippet in snippets">
       <li>{{ snippet }}</li>
     </div>
