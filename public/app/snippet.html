@@ -21,10 +21,32 @@
   return x;
 }
       </div><!-- remove space between inline-blocks
-     --><div id="annotations"></div>
+     --><div id="annotations"><!-- <ul id="sortable"></ul> --></div>
     </div>
     <div class="btn-wrap">
       <button class="btn" type="submit">Save snippet</button>
     </div>
   </form>
 </div>
+
+<script>
+  $(function() {
+
+    $(document).on('click', '.note', function(e){
+      if (! $(this).is(":focus") ) {
+        this.focus();
+      }
+    });
+
+    $(document).on('drag', '.note', function(e){
+      console.log('on drag');
+      e.preventDefault();
+      this.addClass('note')
+    });
+    $( "#annotations" ).sortable({
+      draggingClass: '.note' // Defaults to false
+    });
+    // $( "#annotations" ).enableSelection();
+    // $( "#sortable" ).disableSelection();
+  });
+</script>
