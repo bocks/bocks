@@ -128,6 +128,22 @@ angular.module('app.snippet', [])
       title: $scope.title,
       isPrivate: $scope.isPrivate,
       code: editor.getValue(),
+      highlights: [
+        {
+          startRow: 0,
+          endRow: 2,
+          startCol: 5,
+          endCol: 48,
+          annotation: "This is a hardcoded annotation."
+        },
+        {
+          startRow: 0,
+          endRow: 2,
+          startCol: 5,
+          endCol: 48,
+          annotation: "This is another hardcoded annotation."
+        },
+      ]
     };
 
     $http({
