@@ -22,6 +22,18 @@ module.exports = {
     });
   },
 
+  retrieveAll: function(req, res, next) {
+    Bocks.find()
+      .sort({ modifiedAt: -1 })
+      .skip(req.body.skip || 0)
+      .limit(req.body.limit || 5)
+      .then(function(snippets) {
+        if (snippets) {
+          res.json(snippets);
+        }
+      });
+  },
+
   getAllUserBocks: function (req, res, next) {
     Bocks.find({
       userName: req.body.userName
