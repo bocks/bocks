@@ -1,6 +1,6 @@
 angular.module('app.services', [])
 .factory('Auth', function($http, $route, $window) {
-  
+
   var user = null;
 
   var getUserStatus = function() {

@@ -1,6 +1,8 @@
 angular.module('app.snippet', [])
 .controller('SnippetController', function($scope, $http) {
 
+  var ranges = [];
+  var rangeCount = 0;
   var colorCount = 0;
   var editor = ace.edit("editor");
   editor.setTheme("ace/theme/solarized_dark");
@@ -62,6 +64,10 @@ angular.module('app.snippet', [])
         endCol = temp;
       }
       var range = new Range(startRow, startCol, endRow, endCol);
+      range.id = rangeCount++;
+      range.color = colorCount;
+      ranges.push(range);
+
       // addMarker supports "fullLine", "line" and "text"
       editor.session.addMarker(range, "highlighter-" + colorCount, "line");
 
@@ -76,6 +82,7 @@ angular.module('app.snippet', [])
       console.log('Also notice that the cursor automatically jumped over to the annotations text box, so we can just start typing our annotation immediately');
       var elem = document.getElementById('annotations');
       var note = document.createElement('div');
+      note.setAttribute('id', 'annotation-' + rangeCount);
       note.classList.add('contentEditable');
       note.setAttribute("contentEditable", "true");
       note.classList.add('highlighted-' + colorCount);
