@@ -1,6 +1,7 @@
 angular.module('app', [
   'app.main',
   'app.snippet',
+  'app.view',
   'app.services',
   'ngRoute'
 ]).config(function ($routeProvider) {
@@ -15,6 +16,11 @@ angular.module('app', [
       controller: 'SnippetController',
       authenticate: true
     })
+    .when('/snippet/:id', {
+      templateUrl: 'app/view.html',
+      controller: 'ViewController',
+      authenticate: false
+    })
     .otherwise('/main');
 })
 .controller('NavController', function($scope, Auth) {
@@ -23,10 +29,10 @@ angular.module('app', [
   $scope.init = function() {
     Auth.getUserStatus()
     .then( function() {
-      $scope.display = Auth.isLoggedIn(); 
-    });  
+      $scope.display = Auth.isLoggedIn();
+    });
   }();
-  
+
   // reset our nav links upon logout
   $scope.logUserOut = function() {
     Auth.logUserOut();

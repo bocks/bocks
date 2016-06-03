@@ -1,4 +1,5 @@
 var Bocks = require('./bocksModel.js');
+var ObjectId = require('mongoose').Types.ObjectId;
 
 module.exports = {
 
@@ -37,17 +38,23 @@ module.exports = {
   },
 
   getOneBocks: function (req, res, next) {
-    Bocks.findOne({
-      _id: req.params.id
-    }).where({
-      $or : [
-        {isPrivate: false},
-        {userName: req.session.passport.user.username}
-      ]
-    }).then(function (data) {
+    console.log('getOneBocks', req.params.id);
+
+    Bocks.findById(req.params.id)
+    // .where({
+    //   $or : [
+    //     {isPrivate: false},
+    //     {userName: req.session.passport.user.username}
+    //   ]
+    // })
+    .then(function (data) {
+      console.log('getOneBocks then', data);
       if (data) {
         res.json(data);
       }
+    }, function(err) {
+      console.log('getOneBocks error', err);
+      res.status(404);
     });
   },
 

@@ -49,4 +49,21 @@ angular.module('app.services', [])
     logUserOut: logUserOut,
     reloadPage: reloadPage
   };
+})
+
+.factory('Snippets', function($http) {
+  var retrieveSnippet = function(id) {
+    return $http({
+      method: 'GET',
+      url: '/snippets/' + id
+    })
+    .then(function(res) {
+      console.log('Snippet Res', res);
+      return res;
+    })
+  };
+
+  return {
+    retrieveSnippet: retrieveSnippet
+  };
 });
