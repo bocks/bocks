@@ -1,12 +1,21 @@
 angular.module('app.snippets', [])
 
-.controller('SnippetsController', function($scope, $routeParams, Snippets) {
+.controller('SnippetsController', function($scope, $location, $routeParams, Snippets) {
   $scope.snippets = [];
   $scope.highlights = {};
 
   var editors = [];
   var Range = ace.require('ace/range').Range;
-
+  
+  $scope.goToSnippet = function (id) {
+    $location.path('/snippet/' + id);
+  };
+  
+  $scope.convertTime = function (mongoTime) {
+    date = new Date(mongoTime);
+    return (date.getMonth() + 1) + '.' + date.getDate() + '.' + date.getFullYear();
+  };
+  
   $scope.init = function() {
     Snippets.retrieveSnippets({ username: $routeParams.username })
       .then(function(snippets) {
