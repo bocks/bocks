@@ -45,16 +45,6 @@
       }
     });
 
-    $(document).on('drag', '.note', function(e){
-      console.log('on drag');
-      e.preventDefault();
-      this.addClass('note')
-    });
-    
-    $( "#annotations" ).sortable({
-      draggingClass: '.note' // Defaults to false
-    });
-    // $( "#annotations" ).enableSelection();
-    // $( "#sortable" ).disableSelection();
+    $( "#annotations" ).sortable();
   });
 </script>
