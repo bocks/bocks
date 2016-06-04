@@ -212,3 +212,13 @@ label {
 .btn-wrap .btn {
   float: left;
 }
+
+/* UX flash message */
+
+.flash {
+  width: 90%;
+  padding: 2% 5%;
+  border: 1px solid lightgreen;
+  text-align: center;
+  border-radius: 15px;
+}

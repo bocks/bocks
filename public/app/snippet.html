@@ -1,7 +1,7 @@
-<div class="form-wrap">  <!-- ng-controller="SnippetController" -->
+<div class="form-wrap">
   <form ng-submit="snippetsCreate()">
     <h3>Create a new snippet:</h3>
-    <input type="text" class="snippet-title" ng-model="title" placeholder="Snippet title goes here" />
+    <input type="text" class="snippet-title" ng-model="title" placeholder="Snippet title goes here"/>
     <div class="btn-wrap">
       <label>Public Snippet:</label>
       <input type="radio" name="isPrivate" ng-model="isPrivate" value="false" ng-checked="true">
