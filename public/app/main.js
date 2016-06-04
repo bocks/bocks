@@ -22,7 +22,8 @@ angular.module('app.main', [])
         $scope.snippets = snippets.data;
 
         // set annotations/highlights
-        $scope.highlights[snippets.data._id] = snippets.data.highlights;
+        // $scope.highlights[snippets.data._id] = snippets.data.highlights;
+        // console.log('highlights', snippets.data);
       });
   }();
 
@@ -55,11 +56,17 @@ angular.module('app.main', [])
       // add code to editor
       editors[snippet._id].setValue(snippet.code);
 
+      // setup highlights/annotations array
+      $scope.highlights[snippet._id] = [];
+
       // add highlights to code
       snippet.highlights.forEach(function(highlight) {
         // set markers for highlighted code
         var range = new Range(highlight.start.row, highlight.start.column, highlight.end.row, highlight.end.column);
         editors[snippet._id].session.addMarker(range, "highlighter-" + highlight.color);
+
+        // set annotations
+        $scope.highlights[snippet._id].push(highlight);
       });
     });
   });
