@@ -97,7 +97,6 @@ angular.module('app.snippet', [])
   };
 
   $scope.snippetsCreate = function() {
-
     $scope.ranges.forEach(function(range) {
       range.text = document.getElementById('annotation-' + range.id).childNodes[1].innerText;
     });
@@ -106,7 +105,8 @@ angular.module('app.snippet', [])
       title: $scope.title,
       isPrivate: $scope.isPrivate,
       code: editor.getValue(),
-      highlights: $scope.ranges
+      highlights: $scope.ranges,
+      tags: $scope.tags.split(' ')
     };
 
     $http({
