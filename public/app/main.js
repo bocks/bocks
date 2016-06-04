@@ -17,7 +17,7 @@ angular.module('app.main', [])
   }
 
   $scope.init = function() {
-    Snippets.retrieveSnippets()
+    Snippets.retrieveSnippets({})
       .then(function(snippets) {
         // set snippets data
         $scope.snippets = snippets.data;

@@ -24,15 +24,33 @@ module.exports = {
   },
 
   retrieveAll: function(req, res, next) {
-    Bocks.find()
-      .sort({ modifiedAt: -1 })
-      .skip(req.body.skip || 0)
-      .limit(req.body.limit || 5)
-      .then(function(snippets) {
-        if (snippets) {
-          res.json(snippets);
-        }
-      });
+    var skip = parseInt(req.query.skip) || 0;
+    var limit = parseInt(req.query.limit) || 5;
+    var username = req.query.username || null;
+
+    if (username) {
+      Bocks.find({
+        userName: username
+      })
+        .sort({ modifiedAt: -1 })
+        .skip(skip)
+        .limit(limit)
+        .then(function(snippets) {
+          if (snippets) {
+            res.json(snippets);
+          }
+        });
+    } else {
+      Bocks.find()
+        .sort({ modifiedAt: -1 })
+        .skip(skip)
+        .limit(limit)
+        .then(function(snippets) {
+          if (snippets) {
+            res.json(snippets);
+          }
+        });
+    }
   },
 
   getAllUserBocks: function (req, res, next) {

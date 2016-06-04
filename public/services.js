@@ -69,10 +69,19 @@ angular.module('app.services', [])
     })
   };
 
-  var retrieveSnippets = function(offset, limit) {
+  var retrieveSnippets = function(options) {
+    skip = parseInt(options.skip) || 0;
+    limit = parseInt(options.limit) || 5;
+    username = options.username || null;
+
     return $http({
       method: 'GET',
-      url: '/snippets'
+      url: '/snippets',
+      params: {
+        skip: skip,
+        limit: limit,
+        username: username
+      }
     })
     .then(function(res) {
       console.log('Snippets Res', res);

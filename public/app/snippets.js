@@ -1,6 +1,6 @@
 angular.module('app.snippets', [])
 
-.controller('SnippetsController', function($scope, Snippets) {
+.controller('SnippetsController', function($scope, $routeParams, Snippets) {
   $scope.snippets = [];
   $scope.highlights = {};
 
@@ -8,7 +8,9 @@ angular.module('app.snippets', [])
   var Range = ace.require('ace/range').Range;
 
   $scope.init = function() {
-    Snippets.retrieveSnippets()
+    console.log('routeParams', $routeParams);
+
+    Snippets.retrieveSnippets({ username: $routeParams.username })
       .then(function(snippets) {
         // set snippets data
         $scope.snippets = snippets.data;
