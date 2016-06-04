@@ -54,9 +54,9 @@ angular.module('app.snippets', [])
     if ($scope.page < 1) { return; }
     $scope.page--;
     skip = $scope.page * limit;
-    $scope.paginateIsNewer = ($scope.page > 0) ? true : false;
-    updatePagination();
+    // $scope.paginateIsNewer = ($scope.page > 0) ? true : false;
     retrieveSnippets();
+    // updatePagination();
   };
 
   $scope.paginateOlder = function() {
@@ -68,9 +68,9 @@ angular.module('app.snippets', [])
     if ($scope.snippets.length < limit) { return; }
     $scope.page++;
     skip = $scope.page * limit;
-    $scope.paginateIsOlder = ($scope.snippets.length >= limit) ? true : false;
-    updatePagination();
+    // $scope.paginateIsOlder = ($scope.snippets.length >= limit) ? true : false;
     retrieveSnippets();
+    // updatePagination();
   };
 
   var updatePagination = function() {
@@ -82,11 +82,12 @@ angular.module('app.snippets', [])
     $scope.paginateIsNewer = ($scope.page > 0) ? true : false;
     $scope.paginateIsOlder = ($scope.snippets.length >= limit) ? true : false;
     console.log('page', $scope.page, 'skip', skip);
+    console.log('length', $scope.snippets.length, 'limit', limit);
   };
 
   $scope.init = function() {
-    updatePagination();
     retrieveSnippets();
+    // updatePagination();
   }();
 
   $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
@@ -118,6 +119,9 @@ angular.module('app.snippets', [])
         $scope.highlights[snippet._id].push(highlight);
       });
     });
+
+    // update pagination
+    updatePagination();
   });
 
 });
