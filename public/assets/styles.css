@@ -139,14 +139,14 @@ label {
   width: 100%;
   border: 5px solid white;
   border-radius: 15px;
-  height: 500px;
+  min-height: 500px;
 }
 
 #editor {
   margin: 0;
   display: inline-block;
   width: 70%;
-  height: 500px;
+  min-height: 500px;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
 }
@@ -154,7 +154,7 @@ label {
 #annotations {
   display: inline-block;
   background: #000;
-  height: 500px;
+  min-height: 500px;
   width: 30%;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;

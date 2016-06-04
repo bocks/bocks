@@ -128,4 +128,34 @@ angular.module('app.snippet', [])
       console.log('an error occurred in snippetsCreate');
     });
   };
+
+  // Make editor of adjustable height
+  interact('.editor-wrap')
+  .resizable({
+    preserveAspectRatio: true,
+    edges: { left: false, right: false, bottom: true, top: false }
+  })
+  .on('resizemove', function (event) {
+    var target = event.target,
+        x = (parseFloat(target.getAttribute('data-x')) || 0),
+        y = (parseFloat(target.getAttribute('data-y')) || 0);
+
+    // update the element's style
+    target.style.height = event.rect.height + 'px';
+
+    target.style.webkitTransform = target.style.transform =
+        'translate(' + 0 + 'px,' + y + 'px)';
+
+    // $( "#annotations, #editor" ).animate({
+    //   height: event.rect.height
+    // }, 0);
+    $( "#annotations, #editor" ).height(event.rect.height)
+    editor.resize();
+
+    target.setAttribute('data-x', x);
+    target.setAttribute('data-y', y);
+  });
+
+
+
 });
