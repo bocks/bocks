@@ -63,7 +63,19 @@ angular.module('app.services', [])
     })
   };
 
+  var retrieveSnippets = function(offset, limit) {
+    return $http({
+      method: 'GET',
+      url: '/snippets'
+    })
+    .then(function(res) {
+      console.log('Snippets Res', res);
+      return res;
+    })
+  };
+
   return {
-    retrieveSnippet: retrieveSnippet
+    retrieveSnippet: retrieveSnippet,
+    retrieveSnippets: retrieveSnippets
   };
 });

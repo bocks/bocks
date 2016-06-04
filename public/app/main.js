@@ -1,6 +1,6 @@
 angular.module('app.main', []
 
-).controller('MainController', function($scope) {
+).controller('MainController', function($scope, Snippets) {
 
   $scope.snippets = [
     'some collection  of snippets',
@@ -8,5 +8,5 @@ angular.module('app.main', []
     'searchable/filterable',
     'paginated probably'
   ];
- 
+
 });
