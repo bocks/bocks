@@ -15,6 +15,11 @@ angular.module('app.view', [])
   // make editor read only
   editor.setReadOnly(true);
 
+  $scope.convertTime = function (mongoTime) {
+    date = new Date(mongoTime);
+    return (date.getMonth() + 1) + '.' + date.getDate() + '.' + date.getFullYear();
+  }
+
   $scope.init = function() {
     Snippets.retrieveSnippet($routeParams.id)
     .then(function(snippet) {

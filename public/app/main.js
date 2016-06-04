@@ -9,12 +9,12 @@ angular.module('app.main', [])
   
   $scope.goToSnippet = function (id) {
     $location.path('/snippet/' + id);
-  }
+  };
   
   $scope.convertTime = function (mongoTime) {
     date = new Date(mongoTime);
     return (date.getMonth() + 1) + '.' + date.getDate() + '.' + date.getFullYear();
-  }
+  };
 
   $scope.init = function() {
     Snippets.retrieveSnippets({})
