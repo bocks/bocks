@@ -1,6 +1,6 @@
 angular.module('app.snippets', [])
 
-.controller('SnippetsController', function($scope, $location, $routeParams, Snippets) {
+.controller('SnippetsController', function($scope, $location, $routeParams, $anchorScroll, Snippets) {
   // snippets
   $scope.snippets = [];
   $scope.highlights = {};
@@ -25,12 +25,6 @@ angular.module('app.snippets', [])
   };
 
   var retrieveSnippets = function() {
-    console.log('retrieveSnippets', {
-      skip: skip,
-      limit: limit,
-      username: $routeParams.username
-    });
-
     Snippets.retrieveSnippets({
       skip: skip,
       limit: limit,
@@ -38,59 +32,38 @@ angular.module('app.snippets', [])
     })
     .then(function(snippets) {
       $scope.snippets = snippets.data;
-
-      $scope.snippets.forEach(function(snippet) {
-        console.log(snippet.title, snippet.modifiedAt);
-      });
     });
   };
 
   $scope.paginateNewer = function() {
-    console.log('Paginate Newer');
-    // if (!$scope.paginateIsNewer) { return; }
-    // if ($scope.page > 0) { $scope.page--; }
-    // updatePagination();
-
     if ($scope.page < 1) { return; }
     $scope.page--;
     skip = $scope.page * limit;
-    // $scope.paginateIsNewer = ($scope.page > 0) ? true : false;
     retrieveSnippets();
-    // updatePagination();
+    $anchorScroll();
   };
 
   $scope.paginateOlder = function() {
-    console.log('Paginate Older');
-    // if (!$scope.paginateIsOlder) { return; }
-    // if ($scope.paginateIsOlder) { $scope.page++; }
-    // updatePagination();
-
     if ($scope.snippets.length < limit) { return; }
     $scope.page++;
     skip = $scope.page * limit;
-    // $scope.paginateIsOlder = ($scope.snippets.length >= limit) ? true : false;
     retrieveSnippets();
-    // updatePagination();
+    $anchorScroll();
   };
 
   var updatePagination = function() {
-    // skip = $scope.page * limit;
-    // $scope.paginateIsNewer = ($scope.page > 0) ? true : false;
-    // $scope.paginateIsOlder = ($scope.snippets.length > 0) ? true : false;
-    // retrieveSnippets();
-
     $scope.paginateIsNewer = ($scope.page > 0) ? true : false;
     $scope.paginateIsOlder = ($scope.snippets.length >= limit) ? true : false;
-    console.log('page', $scope.page, 'skip', skip);
-    console.log('length', $scope.snippets.length, 'limit', limit);
   };
 
   $scope.init = function() {
     retrieveSnippets();
-    // updatePagination();
   }();
 
   $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
+    // clear out old editors
+    editors = [];
+
     $scope.snippets.forEach(function(snippet) {
       // setup ace editor
       editors[snippet._id] = ace.edit('editor-' + snippet._id);
@@ -120,7 +93,7 @@ angular.module('app.snippets', [])
       });
     });
 
-    // update pagination
+    // update pagination buttons
     updatePagination();
   });
 
