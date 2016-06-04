@@ -1,5 +1,5 @@
 angular.module('app.snippet', [])
-.controller('SnippetController', function($scope, $http, $location) {
+.controller('SnippetController', function($scope, $http, $location, flash, $rootScope) {
 
   // a collection of highlighted ranges belonging to the current snippet
   $scope.ranges = [];
@@ -123,6 +123,9 @@ angular.module('app.snippet', [])
       if (res.data._id) {
         $location.path('/snippet/' + res.data._id);
       }
+      $rootScope.successMsg = ['Successfully saved ' + res.data.title];
+    }, function(err) {
+      console.log('an error occurred in snippetsCreate');
     });
   };
 });

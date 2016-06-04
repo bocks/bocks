@@ -3,7 +3,8 @@ angular.module('app', [
   'app.snippet',
   'app.view',
   'app.services',
-  'ngRoute'
+  'ngRoute',
+  'flash'
 ]).config(function ($routeProvider) {
   $routeProvider
     .when('/main', {
@@ -38,6 +39,28 @@ angular.module('app', [
     Auth.logUserOut();
     Auth.reloadPage();
   };
+})
+.directive('spFlash', function() {
+  return {
+    restrict : 'A',
+    replace : true,
+    template : '<div class="flash" ng-show="{{ successMsg.length }}"><div class="flash-inner" data-ng-repeat="msg in successMsg">{{msg}}</div></div>',
+    link : function($rootScope, scope, element, attrs) {
+      $rootScope.$watch('successMsg', function(val) {
+       if (val && val.length) {
+        update();
+       }
+      }, true);
+
+      function update() {
+      $('.flash')
+       .fadeIn(500).delay(3000)
+       .fadeOut(500, function() {
+         $rootScope.successMsg.splice(0, 1);
+        });
+      }
+    } // end link
+  }; // end return
 })
 .run(function($location, $route, $rootScope, Auth) {
   $rootScope.$on('$routeChangeStart',
