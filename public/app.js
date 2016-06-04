@@ -37,6 +37,7 @@ angular.module('app', [
     Auth.getUserStatus()
     .then( function() {
       $scope.display = Auth.isLoggedIn();
+      $scope.username = Auth.getUserName();
     });
   }();
 
