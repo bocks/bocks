@@ -9,4 +9,11 @@ angular.module('app.main', []
     'paginated probably'
   ];
 
+  $scope.init = function() {
+    Snippets.retrieveSnippets()
+      .then(function(snippets) {
+        console.log('MainController snippets', snippets);
+      })
+  }();
+
 });
