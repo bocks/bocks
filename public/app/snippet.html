@@ -1,7 +1,7 @@
 <div class="form-wrap">  <!-- ng-controller="SnippetController" -->
   <form ng-submit="snippetsCreate()">
     <h3>Create a new snippet:</h3>
-    <input type="text" name="title" ng-model="title" placeholder="Snippet title goes here" />
+    <input type="text" class="snippet-title" ng-model="title" placeholder="Snippet title goes here" />
     <div class="btn-wrap">
       <label>Public Snippet:</label>
       <input type="radio" name="isPrivate" ng-model="isPrivate" value="false" ng-checked="true">
@@ -30,6 +30,10 @@
         </div>
       </div>
     </div>
+    <h4>Tag this snippet:</h4>
+    <input type="text" class="tags" ng-model="tags1" placeholder="Enter a tag" />
+    <input type="text" class="tags" ng-model="tags2" placeholder="Enter a tag" />
+    <input type="text" class="tags" ng-model="tags3" placeholder="Enter a tag" />
     <div class="btn-wrap">
       <button class="btn" type="submit">Save snippet</button>
     </div>

@@ -6,6 +6,7 @@ var bocksSchema = new mongoose.Schema({
   code: String,
   highlights: Array,
   isPrivate: Boolean,
+  tags: Array,
   createdAt: {type: Date, default: Date.now},
   modifiedAt: {type: Date, default: Date.now}
 });
