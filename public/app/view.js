@@ -18,19 +18,19 @@ angular.module('app.view', [])
   $scope.init = function() {
     Snippets.retrieveSnippet($routeParams.id)
     .then(function(snippet) {
-
+      console.log(snippet);
       if (snippet !== false) {
         // set editor to display
         $scope.displayEditor = true;
 
         // set snippet title
         $scope.title = snippet.data.title;
+        $scope.username = snippet.data.userName;
+        $scope.createdAt = snippet.data.createdAt;
         $scope.highlights = snippet.data.highlights;
 
-        if (snippet.data.tags) {
-          $scope.tags = snippet.data.tags;
-          $scope.displayTags = $scope.tags.length > 0;
-        }
+        $scope.tags = snippet.data.tags;
+
 
         // add code to editor
         editor.setValue(snippet.data.code);

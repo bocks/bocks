@@ -1,6 +1,12 @@
 <div class="form-wrap" ng-show="displayEditor">
   <div data-sp-flash></div>
-  <h3>{{ title }}</h3>
+  <h2>{{ title }}</h2>
+  <p class="minutiae">
+    Created by: {{ username }} at {{ createdAt }}&nbsp;&nbsp;&nbsp;&nbsp;Tags:
+    <span ng-repeat="tag in tags">
+      <i class="fa fa-tag" aria-hidden="true"></i>&nbsp;{{ tag }}
+    </span>
+  </p>
   <div class="editor-wrap">
     <div id="editor" ng-model="code">
     </div><!-- remove space between inline-blocks
@@ -11,12 +17,6 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="form-wrap" ng-show="displayTags">
-    Tags:
-    <span ng-repeat="tag in tags">
-      {{ tag }}
-    </span>
   </div>
 </div>
 
