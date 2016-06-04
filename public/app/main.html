@@ -19,7 +19,7 @@
         <h3>{{ snippet.title }}</h3>
 
         <div class="editor-wrap">
-          <div id="editor-{{ snippet._id }}" class="editor" ng-model="code">
+          <div id="editor-{{ snippet._id }}" class="editor">
           </div><!-- remove space between inline-blocks
        --><div id="annotations">
             <div ng-repeat="range in highlights" id="annotation-{{ range.id }}">
