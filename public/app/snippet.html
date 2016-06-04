@@ -35,3 +35,16 @@
     </div>
   </form>
 </div>
+
+<script>
+  $(function() {
+
+    $(document).on('click', '.note', function(e){
+      if (! $(this).is(":focus") ) {
+        this.focus();
+      }
+    });
+
+    $( "#annotations" ).sortable();
+  });
+</script>
