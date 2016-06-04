@@ -132,6 +132,7 @@ label {
 
 .form-wrap p {
   padding: 5px 10px;
+  font-weight: bold;
 }
 
 .form-wrap .tags {
