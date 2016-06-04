@@ -32,11 +32,19 @@ angular.module('app.main', [])
   //   });
   // });
 
-  $scope.renderEditor = function(id) {
-    console.log('renderEditor', id);
-    editors[id] = ace.edit('editor-' + id);
-    editors[id].setTheme('ace/theme/solarized_dark');
-    editors[id].session.setMode('ace/mode/javascript');
-  };
+  $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
+    $scope.snippets.forEach(function(snippet) {
+      editors[snippet._id] = ace.edit('editor-' + snippet._id);
+      editors[snippet._id].setTheme('ace/theme/solarized_dark');
+      editors[snippet._id].session.setMode('ace/mode/javascript');
+    });
+  });
 
-});
+  // $scope.renderEditor = function(id) {
+  //   console.log('renderEditor', id);
+  //   editors[id] = ace.edit('editor-' + id);
+  //   editors[id].setTheme('ace/theme/solarized_dark');
+  //   editors[id].session.setMode('ace/mode/javascript');
+  // };
+
+})
