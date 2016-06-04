@@ -8,8 +8,6 @@ angular.module('app.snippets', [])
   var Range = ace.require('ace/range').Range;
 
   $scope.init = function() {
-    console.log('routeParams', $routeParams);
-
     Snippets.retrieveSnippets({ username: $routeParams.username })
       .then(function(snippets) {
         // set snippets data
