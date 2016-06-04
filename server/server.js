@@ -73,7 +73,7 @@ app.get('/auth/github/callback',
 
 app.get('/user/status', function(req, res) {
  if (req.session.passport && req.session.passport.user) {
-   res.send( JSON.stringify(true) );
+   res.send( JSON.stringify(req.session.passport.user.username) );
  } else {
    res.send( JSON.stringify(false) );
  }

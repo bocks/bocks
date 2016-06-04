@@ -28,6 +28,11 @@ angular.module('app', [
       controller: 'SnippetsController',
       authenticate: false
     })
+    .when('/snippets/:username', {
+      templateUrl: 'app/snippets.html',
+      controller: 'SnippetsController',
+      authenticate: false
+    })
     .otherwise('/main');
 })
 .controller('NavController', function($scope, Auth) {
@@ -37,6 +42,7 @@ angular.module('app', [
     Auth.getUserStatus()
     .then( function() {
       $scope.display = Auth.isLoggedIn();
+      $scope.username = Auth.getUserName();
     });
   }();
 

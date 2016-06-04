@@ -2,6 +2,7 @@ angular.module('app.services', [])
 .factory('Auth', function($http, $route, $window) {
 
   var user = null;
+  var username;
 
   var getUserStatus = function() {
     return $http({
@@ -9,8 +10,8 @@ angular.module('app.services', [])
       url: '/user/status'
     }).success( function(data) {
       console.log('data', data);
-      if (data === 'true') {
-        user = true;
+      if (data !== 'false') {
+        user = JSON.parse(data);
       } else {
         user = false;
       }
@@ -22,6 +23,10 @@ angular.module('app.services', [])
 
   var isLoggedIn = function() {
     return user ? true : false;
+  };
+
+  var getUserName = function() {
+    return user;
   };
 
   var logUserOut = function() {
@@ -45,6 +50,7 @@ angular.module('app.services', [])
 
   return {
     getUserStatus: getUserStatus,
+    getUserName: getUserName,
     isLoggedIn: isLoggedIn,
     logUserOut: logUserOut,
     reloadPage: reloadPage
@@ -63,10 +69,19 @@ angular.module('app.services', [])
     })
   };
 
-  var retrieveSnippets = function(offset, limit) {
+  var retrieveSnippets = function(options) {
+    skip = parseInt(options.skip) || 0;
+    limit = parseInt(options.limit) || 5;
+    username = options.username || null;
+
     return $http({
       method: 'GET',
-      url: '/snippets'
+      url: '/snippets',
+      params: {
+        skip: skip,
+        limit: limit,
+        username: username
+      }
     })
     .then(function(res) {
       console.log('Snippets Res', res);
