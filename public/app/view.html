@@ -1,16 +1,23 @@
 <div class="form-wrap" ng-show="displayEditor">
-    <h3>{{ title }}</h3>
+  <h3>{{ title }}</h3>
 
-    <div class="editor-wrap">
-      <div id="editor" ng-model="code">
-      </div><!-- remove space between inline-blocks
-   --><div id="annotations">
-        <div ng-repeat="range in highlights" id="annotation-{{ range.id }}">
-          <div class="note highlighted-{{ range.color }}" spellcheck="false" contenteditable="true">
-            {{ range.text }}
-          </div>
+  <div class="editor-wrap">
+    <div id="editor" ng-model="code">
+    </div><!-- remove space between inline-blocks
+ --><div id="annotations">
+      <div ng-repeat="range in highlights" id="annotation-{{ range.id }}">
+        <div class="note highlighted-{{ range.color }}">
+          {{ range.text }}
         </div>
       </div>
+    </div>
+  </div>
+  <div class="form-wrap" ng-show="displayTags">
+    Tags:
+    <span ng-repeat="tag in tags">
+      {{ tag }}
+    </span>
+  </div>
 </div>
 
 <div class="form-wrap" ng-hide="displayEditor">

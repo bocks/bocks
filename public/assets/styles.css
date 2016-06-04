@@ -111,12 +111,20 @@ label {
   margin: 5%;
 }
 
-.form-wrap input[type="text"] {
+.form-wrap .snippet-title {
   width: 90%;
   padding: 2% 5%;
   margin: 0 0 20px 0;
   border: 1px solid #ccc;
   border-radius: 10px;
+}
+
+.form-wrap .tags {
+  width: 28%;
+  padding: 2%;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  display: inline-block;
 }
 
 .missing-snippet {

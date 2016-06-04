@@ -11,7 +11,8 @@ module.exports = {
       title: req.body.title,
       code: req.body.code,
       highlights: req.body.highlights,
-      isPrivate: !!req.body.isPrivate
+      isPrivate: !!req.body.isPrivate,
+      tags: req.body.tags
     })
     .then(function (data) {
       console.log('DATA', data);

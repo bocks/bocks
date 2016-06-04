@@ -22,12 +22,15 @@ angular.module('app.view', [])
       if (snippet !== false) {
         // set editor to display
         $scope.displayEditor = true;
-        // console.log('Viewcontroller snippet not false')
 
         // set snippet title
         $scope.title = snippet.data.title;
-
         $scope.highlights = snippet.data.highlights;
+
+        if (snippet.data.tags) {
+          $scope.tags = snippet.data.tags;
+          $scope.displayTags = $scope.tags.length > 0;
+        }
 
         // add code to editor
         editor.setValue(snippet.data.code);
