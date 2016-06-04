@@ -1,38 +1,52 @@
 <div class="welcome">  <!-- ng-controller="MainController" -->
+  <img class="demo" src="assets/demo.jpg"/>
+  <br/>
   <h1>Annotate your code and share</h1>
   <div class="trio">
-    <span>Hey here's a feature</span>
-    <span>Look another feature</span>
-    <span>Would be handy for...</span>
+    <span>
+      <i class="fa fa-code fa-5x" aria-hidden="true"></i>
+      <p>Semantic Code Highlighting</p>
+    </span>
+    <span>
+      <i class="fa fa-pencil-square-o fa-5x" aria-hidden="true"></i>
+      <p>Landscape-Oriented Comments</p>
+    </span>
+    <span>
+      <i class="fa fa-commenting-o fa-5x" aria-hidden="true"></i>
+      <p>Embed your Custom Slide</p>
+    </span>
   </div>
-  <img class="demo" src="assets/demo.jpg"/>
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna consectetur adipiscing elit, sed do eiusmod tempor aliqua.  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna consectetur adipiscing elit, sed do eiusmod tempor aliqua.  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
   <br/>
+  <hr/>
   <br/>
-  <div class="browse-wrap">
-    <input class="search" placeholder="Browse snippets by title, author or tag"/>
-    <button class="searchBtn">Search</button>
+  <h2>See what others have been building</h2>
 
-    <div class="teaser" ng-repeat="snippet in snippets" on-finish-render="ngRepeatFinished">
-      <!-- snippet start -->
-      <div class="form-wrap">
-        <h3>{{ snippet.title }}</h3>
+  <input class="search" placeholder="Browse snippets by title, author or tag"/>
+  <button class="searchBtn">Search</button>
 
-        <div class="editor-wrap">
-          <div id="editor-{{ snippet._id }}" class="editor">
-          </div><!-- remove space between inline-blocks
-       --><div id="annotations">
-            <div ng-repeat="range in highlights[snippet._id]" id="annotation-{{ range.id }}">
-              <div class="note highlighted-{{ range.color }}" spellcheck="false">
-                {{ range.text }}
-              </div>
+  <div class="teaser" ng-repeat="snippet in snippets" on-finish-render="ngRepeatFinished">
+    <!-- snippet start -->
+    <div class="form-wrap">
+      <h2>{{ snippet.title }}</h2>
+      <p class="minutiae">
+        Created by: {{ snippet.userName }} at {{ snippet.createdAt }}&nbsp;&nbsp;&nbsp;&nbsp;Tags:
+        <span ng-repeat="tag in snippet.tags">
+          <i class="fa fa-tag" aria-hidden="true"></i>&nbsp;{{ tag }}
+        </span>
+      </p>
+      <div class="editor-wrap">
+        <div id="editor-{{ snippet._id }}" class="editor">
+        </div><!-- remove space between inline-blocks
+     --><div id="annotations">
+          <div ng-repeat="range in highlights[snippet._id]" id="annotation-{{ range.id }}">
+            <div class="note highlighted-{{ range.color }}" spellcheck="false">
+              {{ range.text }}
             </div>
           </div>
         </div>
       </div>
-      <!-- snippet end -->
     </div>
-
+    <!-- snippet end -->
   </div>
-
 </div>

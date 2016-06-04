@@ -20,6 +20,7 @@
     "express": "^4.13.4",
     "express-session": "^1.13.0",
     "express-sessions": "^1.0.5",
+    "font-awesome": "^4.6.3",
     "mongoose": "^4.4.19",
     "normalize.css": "^4.1.1",
     "passport": "^0.3.2",

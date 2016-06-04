@@ -4,6 +4,7 @@
     <title>Bocks</title>
     <link rel="stylesheet" type="text/css" href="assets/styles.css" />
     <link rel="stylesheet" type="text/css" href="node_modules/normalize.css/normalize.css" />
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
   </head>
   <body>
     <nav ng-controller="NavController">
@@ -12,10 +13,10 @@
       </a>
       <!-- float right; arrange inverse -->
       <a class="btn" ng-show="display" ng-click="logUserOut()">Log out</a>
-      <a class="btn" ng-hide="display" href="/auth/github">Log In</a>
+      <a class="btn" ng-hide="display" href="/auth/github">Log In with Github</a>
       <a class="btn" ng-show="display" href="#/snippet">Create Snippet</a>
       <a class="btn" ng-show="display" href="#/snippet">My Snippets</a>
-      <a class="btn" href="#/snippet">All Snippets</a>
+      <a class="btn" href="#/snippet">Browse Snippets</a>
     </nav>
     <div ng-view></div>
 

@@ -29,24 +29,42 @@ footer {
   text-align: center;
 }
 
-h1 {
+h1, h2 {
   text-decoration: underline;
+  color: #333;
+}
+
+p.minutiae {
+  font-size: smaller;
+  color: #888;
 }
 
 /* custom classes */
 
 .btn {
   float:right;
-  padding: 10px 20px;
+  padding: 5px 10px;
   margin: 20px 0 10px 10px;
-  background: #fff;
-  border: 1px solid #ccc;
+  background: none;
+  border: 1px solid lightblue;
   border-radius: 5px;
   color: #333;
+  font-size: smaller;
 }
 
 .btn:hover {
   background: #eee;
+}
+
+.mute {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  background: none;
+}
+
+.mute:hover {
+  background: #ccc;
 }
 
 /* home page */
@@ -59,8 +77,9 @@ h1 {
 }
 
 .demo {
-  width: 100%;
-  height: 500px;
+  width: 90%;
+  height: 350px;
+  margin: 0 5% 25px 5%;
 }
 
 .trio span {
@@ -68,14 +87,13 @@ h1 {
   height: 150px ;
   display:inline-block;
   margin: 2% 0 3% 0;
-  border: 1px dotted #ccc;
 }
 
-.browse-wrap {
+/*.browse-wrap {
   border: 1px solid #eee;
   padding-top: 25px;
   margin-bottom: 25px;
-}
+}*/
 
 .search {
   width: 60%;
@@ -112,17 +130,23 @@ label {
 }
 
 .form-wrap .snippet-title {
-  width: 90%;
-  padding: 2% 5%;
+  width: 96%;
+  padding: 1% 2%;
   margin: 0 0 20px 0;
   border: 1px solid #ccc;
   border-radius: 10px;
 }
 
+.form-wrap h2, .form-wrap p {
+  padding: 5px 10px;
+  font-weight: bold;
+}
+
 .form-wrap .tags {
-  width: 28%;
-  padding: 2%;
-  border: 1px solid #ccc;
+  width: 25%;
+  margin: 0 0 5px 10px;
+  padding: 0.5% 1%;
+  border: 1px solid #ddd;
   border-radius: 10px;
   display: inline-block;
 }
@@ -137,7 +161,7 @@ label {
 /* editor styles */
 .editor-wrap {
   width: 100%;
-  border: 5px solid white;
+  border: 2px solid white;
   border-radius: 15px;
   min-height: 500px;
 }
@@ -206,7 +230,7 @@ label {
 .btn-wrap {
   display: block;
   width: 100%;
-  height: 50px;
+  height: 40px;
 }
 
 .btn-wrap .btn {

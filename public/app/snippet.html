@@ -1,19 +1,28 @@
 <div class="form-wrap">
   <form ng-submit="snippetsCreate()">
+    <br/>
     <h3>Create a new snippet:</h3>
     <input type="text" class="snippet-title" ng-model="title" placeholder="Snippet title goes here"/>
     <div class="btn-wrap">
+      <label>Highlight:</label>
+      <button type="button" class="mute" ng-click='annotate()'>
+        <i class="fa fa-magic" aria-hidden="true"></i>
+      </button>
+      <label>Font size:</label>
+      <button type="button" class="mute" ng-click='enlargeText()'>
+        <i class="fa fa-plus-square" aria-hidden="true"></i>
+      </button>
+      <button type="button" class="mute" ng-click='reduceText()'>
+        <i class="fa fa-minus-square" aria-hidden="true"></i>
+      </button>
       <label>Public Snippet:</label>
       <input type="radio" name="isPrivate" ng-model="isPrivate" value="false" ng-checked="true">
       <label>Private Snippet:</label>
       <input type="radio" name="isPrivate" ng-model="isPrivate" value="true">
-      <label>Highlight:</label>
-      <button type="button" ng-click='annotate()'>[icon]</button>
-      <label>Font size:</label>
-      <button type="button" ng-click='enlargeText()'>+</button>
-      <button type="button" ng-click='reduceText()'>-</button>
       <label>Export:</label>
-      <button></button>
+      <button class="mute">
+        <i class="fa fa-external-link-square" aria-hidden="true"></i>
+      </button>
     </div>
     <div class="editor-wrap">
       <div id="editor" ng-model="code">function foo(items) {
@@ -26,14 +35,16 @@
           {{ note.message }}
           <div class="note highlighted-{{ annotation.color }}" spellcheck="false" contenteditable="true">
           </div>
-          <button type="button" class="trash" ng-click="removeAnnotation()">x</button>
+          <button type="button" class="trash" ng-click="removeAnnotation()">
+            <i class="fa fa-trash-o" aria-hidden="true"></i>
+          </button>
         </div>
       </div>
     </div>
-    <h4>Tag this snippet:</h4>
-    <input type="text" class="tags" ng-model="tags1" placeholder="Enter a tag" />
-    <input type="text" class="tags" ng-model="tags2" placeholder="Enter a tag" />
-    <input type="text" class="tags" ng-model="tags3" placeholder="Enter a tag" />
+    <p >Tags:</p>
+    <input type="text" class="tags" ng-model="tags1" placeholder="Enter a tag" /><br/>
+    <input type="text" class="tags" ng-model="tags2" placeholder="Enter a tag" /><br/>
+    <input type="text" class="tags" ng-model="tags3" placeholder="Enter a tag" /><br/>
     <div class="btn-wrap">
       <button class="btn" type="submit">Save snippet</button>
     </div>
