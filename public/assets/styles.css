@@ -151,10 +151,18 @@ label {
   display: inline-block;
 }
 
+/* snippets view page */
+
 .missing-snippet {
   width: 100%;
   text-align: center;
   margin-bottom: 10px;
+}
+
+/* all snippets page */
+
+.snippets {
+  /* reserving class name */
 }
 
 
