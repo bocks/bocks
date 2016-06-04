@@ -1,11 +1,15 @@
 angular.module('app.main', [])
 
-.controller('MainController', function($scope, Snippets) {
+.controller('MainController', function($scope, $location, Snippets) {
   $scope.snippets = [];
   $scope.highlights = {};
 
   var editors = [];
   var Range = ace.require('ace/range').Range;
+  
+  $scope.goToSnippet = function (id) {
+    $location.path('/snippet/' + id);
+  }
 
   $scope.init = function() {
     Snippets.retrieveSnippets()
