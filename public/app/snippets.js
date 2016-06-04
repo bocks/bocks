@@ -1,27 +1,92 @@
 angular.module('app.snippets', [])
 
 .controller('SnippetsController', function($scope, $location, $routeParams, Snippets) {
+  // snippets
   $scope.snippets = [];
   $scope.highlights = {};
 
   var editors = [];
   var Range = ace.require('ace/range').Range;
-  
+
+  // pagination
+  $scope.paginateIsNewer = false;
+  $scope.paginateIsOlder = true;
+  $scope.page = $routeParams.page || 0;
+  var limit = $routeParams.limit || 5;
+  var skip = $scope.page * limit;
+
   $scope.goToSnippet = function (id) {
     $location.path('/snippet/' + id);
   };
-  
+
   $scope.convertTime = function (mongoTime) {
     date = new Date(mongoTime);
     return (date.getMonth() + 1) + '.' + date.getDate() + '.' + date.getFullYear();
   };
-  
-  $scope.init = function() {
-    Snippets.retrieveSnippets({ username: $routeParams.username })
-      .then(function(snippets) {
-        // set snippets data
-        $scope.snippets = snippets.data;
+
+  var retrieveSnippets = function() {
+    console.log('retrieveSnippets', {
+      skip: skip,
+      limit: limit,
+      username: $routeParams.username
+    });
+
+    Snippets.retrieveSnippets({
+      skip: skip,
+      limit: limit,
+      username: $routeParams.username
+    })
+    .then(function(snippets) {
+      $scope.snippets = snippets.data;
+
+      $scope.snippets.forEach(function(snippet) {
+        console.log(snippet.title, snippet.modifiedAt);
       });
+    });
+  };
+
+  $scope.paginateNewer = function() {
+    console.log('Paginate Newer');
+    // if (!$scope.paginateIsNewer) { return; }
+    // if ($scope.page > 0) { $scope.page--; }
+    // updatePagination();
+
+    if ($scope.page < 1) { return; }
+    $scope.page--;
+    skip = $scope.page * limit;
+    $scope.paginateIsNewer = ($scope.page > 0) ? true : false;
+    updatePagination();
+    retrieveSnippets();
+  };
+
+  $scope.paginateOlder = function() {
+    console.log('Paginate Older');
+    // if (!$scope.paginateIsOlder) { return; }
+    // if ($scope.paginateIsOlder) { $scope.page++; }
+    // updatePagination();
+
+    if ($scope.snippets.length < limit) { return; }
+    $scope.page++;
+    skip = $scope.page * limit;
+    $scope.paginateIsOlder = ($scope.snippets.length >= limit) ? true : false;
+    updatePagination();
+    retrieveSnippets();
+  };
+
+  var updatePagination = function() {
+    // skip = $scope.page * limit;
+    // $scope.paginateIsNewer = ($scope.page > 0) ? true : false;
+    // $scope.paginateIsOlder = ($scope.snippets.length > 0) ? true : false;
+    // retrieveSnippets();
+
+    $scope.paginateIsNewer = ($scope.page > 0) ? true : false;
+    $scope.paginateIsOlder = ($scope.snippets.length >= limit) ? true : false;
+    console.log('page', $scope.page, 'skip', skip);
+  };
+
+  $scope.init = function() {
+    updatePagination();
+    retrieveSnippets();
   }();
 
   $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
@@ -54,4 +119,5 @@ angular.module('app.snippets', [])
       });
     });
   });
+
 });

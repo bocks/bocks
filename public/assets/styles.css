@@ -126,7 +126,7 @@ label {
 
 .form-wrap {
   width: 90%;
-  margin: 5%;
+  margin: 20px auto;
 }
 
 .form-wrap .snippet-title {
@@ -165,6 +165,30 @@ label {
   text-align: left;
 }
 
+.pagination {
+  text-align: center;
+  margin: 25px;
+}
+
+.pagination span {
+  border: 1px solid rgb(173, 216, 230);
+  border-radius: 5px;
+  padding: 10px 15px;
+}
+
+.pagination span:hover {
+  background: rgb(173, 216, 230);
+  cursor: pointer;
+}
+
+.pagination span.inactive {
+  color: #ccc;
+}
+
+.pagination span.inactive:hover {
+  background: inherit;
+  cursor: default;
+}
 
 /* editor styles */
 .editor-wrap {

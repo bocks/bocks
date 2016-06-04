@@ -24,5 +24,8 @@
 </div>
 
 <div class="pagination">
-  <a href=""
+  <span ng-click="paginateNewer()" ng-class="!paginateIsNewer ? 'inactive' : ''">Newer</span>
+  <span ng-click="paginateOlder()" ng-class="!paginateIsOlder ? 'inactive' : ''">Older</span>
 </div>
+
+Page {{ page }}
