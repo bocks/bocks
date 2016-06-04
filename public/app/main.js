@@ -10,7 +10,7 @@ angular.module('app.main', [])
   // ];
 
   $scope.snippets = [];
-  $scope.highligts = [];
+  $scope.highlights = {};
 
   var editors = [];
   var Range = ace.require('ace/range').Range;
