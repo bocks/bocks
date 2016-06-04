@@ -62,6 +62,18 @@ angular.module('app', [
     } // end link
   }; // end return
 })
+.directive('onFinishRender', function ($timeout) {
+  return {
+    restrict: 'A',
+    link: function (scope, element, attr) {
+      if (scope.$last === true) {
+        $timeout(function () {
+          scope.$emit('ngRepeatFinished');
+        });
+      }
+    }
+  }
+})
 .run(function($location, $route, $rootScope, Auth) {
   $rootScope.$on('$routeChangeStart',
     function(event, next, current) {

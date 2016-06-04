@@ -12,9 +12,27 @@
   <div class="browse-wrap">
     <input class="search" placeholder="Browse snippets by title, author or tag"/>
     <button class="searchBtn">Search</button>
-    <div class="teaser" ng-repeat="snippet in snippets">
-      <li>{{ snippet }}</li>
+
+    <div class="teaser" ng-repeat="snippet in snippets" on-finish-render="ngRepeatFinished">
+      <!-- snippet start -->
+      <div class="form-wrap">
+        <h3>{{ snippet.title }}</h3>
+
+        <div class="editor-wrap">
+          <div id="editor-{{ snippet._id }}" class="editor">
+          </div><!-- remove space between inline-blocks
+       --><div id="annotations">
+            <div ng-repeat="range in highlights[snippet._id]" id="annotation-{{ range.id }}">
+              <div class="note highlighted-{{ range.color }}" spellcheck="false">
+                {{ range.text }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- snippet end -->
     </div>
+
   </div>
 
 </div>
