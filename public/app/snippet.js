@@ -84,7 +84,7 @@ angular.module('app.snippet', [])
     var range = new Range(startRow, startCol, endRow, endCol);
 
     // highlight the specified range in the editor
-    var marker = editor.session.addMarker(range, "highlighter-" + $scope.colorCount, "line");
+    var marker = editor.session.addMarker(range, "highlighter-" + $scope.colorCount, "text");
 
     // append pertinent info to this range object
     range.id = $scope.rangeId;

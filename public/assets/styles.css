@@ -49,6 +49,17 @@ h1 {
   background: #eee;
 }
 
+.mute {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  background: none;
+}
+
+.mute:hover {
+  background: #ccc;
+}
+
 /* home page */
 
 .welcome {
@@ -112,17 +123,22 @@ label {
 }
 
 .form-wrap .snippet-title {
-  width: 90%;
-  padding: 2% 5%;
+  width: 96%;
+  padding: 1% 2%;
   margin: 0 0 20px 0;
   border: 1px solid #ccc;
   border-radius: 10px;
 }
 
+.form-wrap p {
+  padding: 5px 10px;
+}
+
 .form-wrap .tags {
-  width: 28%;
-  padding: 2%;
-  border: 1px solid #ccc;
+  width: 25%;
+  margin: 0 0 5px 10px;
+  padding: 0.5% 1%;
+  border: 1px solid #ddd;
   border-radius: 10px;
   display: inline-block;
 }
@@ -206,7 +222,7 @@ label {
 .btn-wrap {
   display: block;
   width: 100%;
-  height: 50px;
+  height: 40px;
 }
 
 .btn-wrap .btn {
