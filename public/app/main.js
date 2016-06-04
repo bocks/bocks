@@ -19,18 +19,18 @@ angular.module('app.main', [])
       });
   }();
 
-  $scope.$watch('snippets', function(snippets) {
-    if (snippets.length === 0) { return; }
+  // $scope.$watch('snippets', function(snippets) {
+  //   if (snippets.length === 0) { return; }
 
-    console.log('watch');
-    console.log(snippets);
+  //   console.log('watch');
+  //   console.log(snippets);
 
-    snippets.forEach(function(snippet) {
-      editors[snippet._id] = ace.edit('editor-' + snippet._id);
-      editors[snippet._id].setTheme('ace/theme/solarized_dark');
-      editors[snippet._id].session.setMode('ace/mode/javascript');
-    });
-  });
+  //   snippets.forEach(function(snippet) {
+  //     editors[snippet._id] = ace.edit('editor-' + snippet._id);
+  //     editors[snippet._id].setTheme('ace/theme/solarized_dark');
+  //     editors[snippet._id].session.setMode('ace/mode/javascript');
+  //   });
+  // });
 
   $scope.renderEditor = function(id) {
     console.log('renderEditor', id);
