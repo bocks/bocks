@@ -60,6 +60,21 @@
       }
     });
 
-    $( "#annotations" ).sortable();
+    $( "#annotations" ).sortable({
+      start: function(event, div) {
+        var start_pos = div.item.index();
+        div.item.data('start_pos', start_pos);
+        console.log('starting position ===========>', start_pos);
+      },
+
+      change: function(event, div) {
+        var start_pos = div.item.data('start_pos');
+        var end_pos = div.placeholder.index();
+        if ( start_pos < end_pos ) {
+          end_pos -= 1;
+        }
+        console.log('ending position =============>', end_pos);
+      }
+    });
   });
 </script>

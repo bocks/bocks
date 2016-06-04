@@ -113,7 +113,7 @@ angular.module('app.snippet', [])
       highlights: $scope.ranges,
       tags: tags
     };
-
+    console.log('Data of snippet that need to be saved into database =======>', snippet);
     $http({
       method: 'POST',
       url: '/snippets',
