@@ -1,0 +1,24 @@
+<div class="teaser" ng-repeat="snippet in snippets" on-finish-render="ngRepeatFinished">
+  <!-- snippet start -->
+  <div class="form-wrap">
+    <h2>{{ snippet.title }}</h2>
+    <p class="minutiae">
+      Created by: {{ snippet.userName }} at {{ snippet.createdAt }}&nbsp;&nbsp;&nbsp;&nbsp;Tags:
+      <span ng-repeat="tag in snippet.tags">
+        <i class="fa fa-tag" aria-hidden="true"></i>&nbsp;{{ tag }}
+      </span>
+    </p>
+    <div class="editor-wrap">
+      <div id="editor-{{ snippet._id }}" class="editor">
+      </div><!-- remove space between inline-blocks
+   --><div id="annotations">
+        <div ng-repeat="range in highlights[snippet._id]" id="annotation-{{ range.id }}">
+          <div class="note highlighted-{{ range.color }}" spellcheck="false">
+            {{ range.text }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- snippet end -->
+</div>

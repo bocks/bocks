@@ -1,6 +1,7 @@
 angular.module('app', [
   'app.main',
   'app.snippet',
+  'app.snippets',
   'app.view',
   'app.services',
   'ngRoute',
@@ -20,6 +21,11 @@ angular.module('app', [
     .when('/snippet/:id', {
       templateUrl: 'app/view.html',
       controller: 'ViewController',
+      authenticate: false
+    })
+    .when('/snippets', {
+      templateUrl: 'app/snippets.html',
+      controller: 'SnippetsController',
       authenticate: false
     })
     .otherwise('/main');
