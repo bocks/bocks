@@ -1,6 +1,6 @@
 angular.module('app.snippets', [])
 
-.controller('SnippetsController', function($scope, $routeParams, Snippets) {
+.controller('SnippetsController', function($scope, $location, $routeParams, Snippets) {
   $scope.snippets = [];
   $scope.highlights = {};
 
