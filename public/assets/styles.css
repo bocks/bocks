@@ -142,7 +142,7 @@ label {
   height: 500px;
 }
 
-#editor {
+#editor, .editor {
   margin: 0;
   display: inline-block;
   width: 70%;
