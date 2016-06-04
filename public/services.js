@@ -9,14 +9,13 @@ angular.module('app.services', [])
       method: 'GET',
       url: '/user/status'
     }).success( function(data) {
-      console.log('data', data);
       if (data !== 'false') {
         user = JSON.parse(data);
       } else {
         user = false;
       }
     }).error(function(err) {
-      console.log('error in getUserStatus', err);
+      console.log('error in getUserStatus');
       user = false;
     });
   };
@@ -30,21 +29,17 @@ angular.module('app.services', [])
   };
 
   var logUserOut = function() {
-    console.log('in logUserOut Service');
     $http({
       method: 'GET',
       url: '/user/logout'
     }).success( function() {
-      console.log('in success callback');
       user = false;
     }).error( function(err) {
-      console.log('error in logUserOut Service');
+      console.log('error in logUserOut');
     });
   };
 
   var reloadPage = function($route) {
-    console.log('running reload Page');
-    console.log($window.location);
     $window.location.reload();
   };
 
@@ -64,9 +59,8 @@ angular.module('app.services', [])
       url: '/snippets/' + id
     })
     .then(function(res) {
-      console.log('Snippet Res', res);
       return res;
-    })
+    });
   };
 
   var retrieveSnippets = function(options) {
@@ -84,9 +78,8 @@ angular.module('app.services', [])
       }
     })
     .then(function(res) {
-      console.log('Snippets Res', res);
       return res;
-    })
+    });
   };
 
   return {
