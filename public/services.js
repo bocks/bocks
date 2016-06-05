@@ -86,4 +86,21 @@ angular.module('app.services', [])
     retrieveSnippet: retrieveSnippet,
     retrieveSnippets: retrieveSnippets
   };
+})
+
+.factory('Delete', function($http) {
+  var deleteSnippet = function(id) {
+    return $http({
+      method: 'DELETE',
+      url: '/snippets/' + id
+    })
+    .then(function(res) {
+      return res;
+    });
+  };
+
+  return {
+    deleteSnippet: deleteSnippet,
+  };
 });
+
