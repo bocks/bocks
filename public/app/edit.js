@@ -17,15 +17,18 @@ angular.module('app.edit', [])
   editor.$blockScrolling = Infinity;
 
   // Adjust font size in editor when +/- button is clicked
-  $scope.fontSize = 12;
+  $scope.fontSize = 16;
+  $scope.annotationSize = 12;
   editor.setFontSize($scope.fontSize);
 
   $scope.enlargeText = function () {
     $scope.fontSize += 2;
+    $scope.annotationSize++;
     editor.setFontSize($scope.fontSize);
   };
   $scope.reduceText = function () {
     $scope.fontSize -= 2;
+    $scope.annotationSize--;
     editor.setFontSize($scope.fontSize);
   };
 
@@ -115,6 +118,8 @@ angular.module('app.edit', [])
     var snippet = {
       title: $scope.title,
       isPrivate: $scope.isPrivate,
+      fontSize: $scope.fontSize,
+      annotationSize: $scope.annotationSize,
       code: editor.getValue(),
       highlights: $scope.ranges,
       tags: tags
