@@ -141,6 +141,8 @@ angular.module('app.edit', [])
   $scope.init = function() {
     Snippets.retrieveSnippet($routeParams.id)
     .then(function(snippet) {
+      console.log(snippet);
+
       if (snippet !== false) {
         // set editor to display
         $scope.displayEditor = true;
@@ -170,4 +172,26 @@ angular.module('app.edit', [])
       }
     });
   }();
-});
+})
+
+// This directive allows two-way data binding in contenteditable div
+.directive("contenteditable", function() {
+  return {
+    restrict: "A",
+    require: "ngModel",
+    link: function(scope, element, attrs, ngModel) {
+
+      function read() {
+        ngModel.$setViewValue(element.html());
+      }
+
+      ngModel.$render = function() {
+        element.html(ngModel.$viewValue || "");
+      };
+
+      element.bind("blur keyup change", function() {
+        scope.$apply(read);
+      });
+    }
+  };
+})
