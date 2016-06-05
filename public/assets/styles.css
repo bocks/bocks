@@ -36,17 +36,26 @@ h1, h2 {
 
 p.minutiae {
   font-size: smaller;
-  color: #888;
+  color: #666;
 }
 
 /* custom classes */
+
+.bock-icon {
+  background-image: url('/assets/bock.jpg');
+  background-size: 30px;
+  background-repeat: no-repeat;
+  margin: 75px 0 0 10px;
+  height: 30px;
+  padding-left: 40px;
+}
 
 .btn {
   float:right;
   padding: 5px 10px;
   margin: 10px 0 10px 10px;
   background: none;
-  border: 1px solid lightblue;
+  border: 1px solid #3ed8fa;
   border-radius: 5px;
   color: #333;
   font-size: smaller;
@@ -64,7 +73,7 @@ p.minutiae {
 }
 
 .mute:hover {
-  background: #ccc;
+  background: #ddd;
 }
 
 /* home page */
