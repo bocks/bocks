@@ -23,6 +23,12 @@ angular.module('app', [
       controller: 'ViewController',
       authenticate: false
     })
+    .when('/snippet/:id/edit', {
+      templateUrl: 'app/edit.html',
+      controller: 'ViewController',
+      edit: true,
+      authenticate: true
+    })
     .when('/snippets', {
       templateUrl: 'app/snippets.html',
       controller: 'SnippetsController',
