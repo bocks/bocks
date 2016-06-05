@@ -1,7 +1,9 @@
 <div class="snippets" ng-repeat="snippet in snippets" on-finish-render="ngRepeatFinished" ng-click="goToSnippet(snippet._id)">
   <!-- snippet start -->
   <div class="form-wrap">
-    <h2>{{ snippet.title }}</h2>
+    <div class="bock-icon">
+      <h2>{{ snippet.title }}</h2>
+    </div>
     <p class="minutiae">
       Created by: {{ snippet.userName }} at {{ convertTime(snippet.createdAt) }}&nbsp;&nbsp;&nbsp;&nbsp;Tags:
       <span ng-repeat="tag in snippet.tags">
