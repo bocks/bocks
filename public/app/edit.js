@@ -89,6 +89,7 @@ angular.module('app.edit', [])
     range.id = $scope.rangeId;
     range.color = $scope.colorCount;
     range.marker = marker;
+    range.text = '';
     $scope.ranges.push(range);
 
     // TODO: focus cursor to new annotation
@@ -96,16 +97,15 @@ angular.module('app.edit', [])
   };
 
   $scope.snippetsEdit = function() {
-    var ranges = [];
-
-    $scope.ranges.forEach(function(range) {
-      // Using JSON.parse(JSON.stringify()) to break the reference.
-      // Just performing a range.text assignment was breaking the innerText.
-      var tempRange;
-      tempRange = JSON.parse(JSON.stringify(range));
-      tempRange.text = document.getElementById('annotation-' + range.id).childNodes[1].innerText;
-      ranges.push(tempRange);
-    });
+    // var ranges = [];
+    // $scope.ranges.forEach(function(range) {
+    //   // Using JSON.parse(JSON.stringify()) to break the reference.
+    //   // Just performing a range.text assignment was breaking the innerText.
+    //   var tempRange;
+    //   tempRange = JSON.parse(JSON.stringify(range));
+    //   tempRange.text = document.getElementById('annotation-' + range.id).childNodes[1].innerText;
+    //   ranges.push(tempRange);
+    // });
 
     var tags = [];
     if ($scope.tags[0]) { tags.push($scope.tags[0]); }
@@ -116,10 +116,11 @@ angular.module('app.edit', [])
       title: $scope.title,
       isPrivate: $scope.isPrivate,
       code: editor.getValue(),
-      highlights: ranges,
+      highlights: $scope.ranges,
       tags: tags
     };
 
+    console.log('Snippet that we save into database =======>', snippet);
 
     $http({
       method: 'PATCH',
@@ -205,7 +206,7 @@ angular.module('app.edit', [])
     target.setAttribute('data-x', x);
     target.setAttribute('data-y', y);
   });
-  
+
   //jQuery function which handles user actions
   $(document).on('click', '.note', function(e){
       if (! $(this).is(":focus") ) {
