@@ -115,3 +115,12 @@ See [Process Managers for Express Apps](http://expressjs.com/en/advanced/pm.html
 TODO setup forever to start on restart.
 
 ---
+
+### Digital Ocean Redeploy
+
+	ssh root@159.203.207.96
+	su - deploy
+	cd bocks
+	git pull origin master
+	npm install
+	forever restartall
