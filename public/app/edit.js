@@ -108,9 +108,9 @@ angular.module('app.edit', [])
     // });
 
     var tags = [];
-    if ($scope.tags[0]) { tags.push($scope.tags[0]); }
-    if ($scope.tags[1]) { tags.push($scope.tags[1]); }
-    if ($scope.tags[2]) { tags.push($scope.tags[2]); }
+    if ($scope.tags1) { tags.push($scope.tags1); }
+    if ($scope.tags2) { tags.push($scope.tags2); }
+    if ($scope.tags3) { tags.push($scope.tags3); }
 
     var snippet = {
       title: $scope.title,
