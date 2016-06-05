@@ -1,0 +1,57 @@
+<div class="form-wrap">
+  <form ng-submit="snippetsEdit()">
+    <input type="text" class="snippet-title" ng-model="title" placeholder="Snippet title goes here"/>
+    <div class="btn-wrap">
+      <label>Highlight:</label>
+      <button type="button" class="mute" ng-click='annotate()'>
+        <i class="fa fa-magic" aria-hidden="true"></i>
+      </button>
+      <label>Font size:</label>
+      <button type="button" class="mute" ng-click='enlargeText()'>
+        <i class="fa fa-plus-square" aria-hidden="true"></i>
+      </button>
+      <button type="button" class="mute" ng-click='reduceText()'>
+        <i class="fa fa-minus-square" aria-hidden="true"></i>
+      </button>
+      <label>Public Snippet:</label>
+      <input type="radio" name="isPrivate" ng-model="isPrivate" value="false" ng-checked="true">
+      <label>Private Snippet:</label>
+      <input type="radio" name="isPrivate" ng-model="isPrivate" value="true">
+      <label>Export:</label>
+      <button class="mute">
+        <i class="fa fa-external-link-square" aria-hidden="true"></i>
+      </button>
+    </div>
+    <div class="editor-wrap">
+      <div id="editor" ng-model="code"></div><!-- remove space between inline-blocks
+   --><div id="annotations">
+        <div ng-repeat="annotation in ranges" id="annotation-{{ annotation.id }}">
+          <div class="note highlighted-{{ annotation.color }}" spellcheck="false" ng-model="annotation.text" contenteditable="true">{{ annotation.text }}</div>
+          <button type="button" class="trash" ng-click="removeAnnotation()">
+            <i class="fa fa-trash-o" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <p >Tags:</p>
+    <input type="text" class="tags" ng-model="tags[0]" placeholder="Enter a tag" /><br/>
+    <input type="text" class="tags" ng-model="tags[1]" placeholder="Enter a tag" /><br/>
+    <input type="text" class="tags" ng-model="tags[2]" placeholder="Enter a tag" /><br/>
+    <div class="btn-wrap">
+      <button class="btn" type="submit">Save snippet</button>
+    </div>
+  </form>
+</div>
+
+<script>
+  $(function() {
+
+    $(document).on('click', '.note', function(e){
+      if (! $(this).is(":focus") ) {
+        this.focus();
+      }
+    });
+
+    $( "#annotations" ).sortable();
+  });
+</script>

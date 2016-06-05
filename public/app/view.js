@@ -1,5 +1,5 @@
 angular.module('app.view', [])
-.controller('ViewController', function($scope, $http, $routeParams, Snippets) {
+.controller('ViewController', function($scope, $http, $route, $routeParams, Snippets) {
   $scope.displayEditor = false;
 
   var editor = ace.edit("editor");
