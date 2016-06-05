@@ -82,7 +82,31 @@ angular.module('app.services', [])
     });
   };
 
+  var exportImage = function(title) {
+    // replace non-alphanumeric with dashes
+    var escapedTitle = title.replace(/\W/g, '-');
+
+    html2canvas($(".editor-wrap"), {
+      onrendered: function(canvas) {
+        var theCanvas = canvas;
+        theCanvas.style.width = "800px";
+
+        var img = theCanvas.toDataURL("image/png");
+
+        var a = $("<a>")
+            .attr("href", img)
+            .attr("download", "myBock-" + escapedTitle + ".png")
+            .appendTo("body");
+            // use the native DOM trigger rather than jQuery
+            a[0].click();
+
+            a.remove();
+      }
+    });
+  };
+
   return {
+    exportImage: exportImage,
     retrieveSnippet: retrieveSnippet,
     retrieveSnippets: retrieveSnippets
   };

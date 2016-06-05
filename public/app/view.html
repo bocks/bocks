@@ -1,13 +1,15 @@
-<button ng-click="exportImage()">Export!</button>
-
 <div class="form-wrap" ng-show="displayEditor">
   <div data-sp-flash></div>
   <h2>{{ title }}</h2>
   <p class="minutiae">
-    Created by: {{ username }} at {{ convertTime(createdAt) }}&nbsp;&nbsp;&nbsp;&nbsp;Tags:
+    Created by: {{ username }} on {{ convertTime(createdAt) }}
+    &nbsp;&nbsp;||&nbsp;&nbsp;
+    Tags:
     <span ng-repeat="tag in tags">
       <i class="fa fa-tag" aria-hidden="true"></i>&nbsp;{{ tag }}
     </span>
+    &nbsp;&nbsp;||&nbsp;&nbsp;
+    <button class="mute" ng-click="exportImage()">Export!</button>
   </p>
   <div class="editor-wrap">
     <div id="editor" ng-model="code">

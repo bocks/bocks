@@ -51,24 +51,8 @@ angular.module('app.view', [])
     });
   }();
 
+  // download an editor screenshot
   $scope.exportImage = function() {
-    html2canvas($(".editor-wrap"), {
-      onrendered: function(canvas) {
-        var theCanvas = canvas;
-        theCanvas.style.width = "800px";
-
-        var img = theCanvas.toDataURL("image/png");
-
-        var a = $("<a>")
-            .attr("href", img)
-            .attr("download", "myBock.png")
-            .appendTo("body");
-            // use the native DOM trigger rather than jQuery
-            a[0].click();
-
-            a.remove();
-      }
-    });
+    Snippets.exportImage($scope.title);
   };
-
 });

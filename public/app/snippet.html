@@ -20,10 +20,11 @@
       <label>Private Snippet:</label>
       <input type="radio" name="isPrivate" ng-model="isPrivate" value="true">
       <label>Export:</label>
-      <button class="mute">
+      <button type="button" class="mute" ng-click='exportImage()'>
         <i class="fa fa-external-link-square" aria-hidden="true"></i>
       </button>
     </div>
+    <!-- the ace editor -->
     <div class="editor-wrap">
       <div id="editor" ng-model="code">function foo(items) {
   var x = "Fill me in!";

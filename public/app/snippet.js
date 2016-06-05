@@ -1,5 +1,5 @@
 angular.module('app.snippet', [])
-.controller('SnippetController', function($scope, $http, $location, flash, $rootScope) {
+.controller('SnippetController', function($scope, $http, $location, $rootScope, Snippets) {
 
   // a collection of highlighted ranges belonging to the current snippet
   $scope.ranges = [];
@@ -114,7 +114,7 @@ angular.module('app.snippet', [])
       highlights: $scope.ranges,
       tags: tags
     };
-    console.log('Data of snippet that need to be saved into database =======>', snippet);
+    // console.log('Data of snippet that need to be saved into database =======>', snippet);
     $http({
       method: 'POST',
       url: '/snippets',
@@ -128,6 +128,11 @@ angular.module('app.snippet', [])
     }, function(err) {
       console.log('an error occurred in snippetsCreate');
     });
+  };
+
+  // download an editor screenshot
+  $scope.exportImage = function() {
+    Snippets.exportImage($scope.title);
   };
 
   // Make editor of adjustable height
@@ -165,7 +170,7 @@ angular.module('app.snippet', [])
   $( "#annotations" ).sortable({
     start: function(event, div) {
       start_pos = div.item.index();
-      console.log('starting position ===========>', start_pos);
+      // console.log('starting position ===========>', start_pos);
     },
 
     change: function(event, div) {
@@ -176,7 +181,7 @@ angular.module('app.snippet', [])
     },
 
     stop: function(event) {
-      console.log('ending position =============>', end_pos);
+      // console.log('ending position =============>', end_pos);
       // reorder $scope.ranges based on the order of annotations
       var draggedAnnotation = $scope.ranges[start_pos];
       if ( start_pos > end_pos ) {
@@ -189,7 +194,7 @@ angular.module('app.snippet', [])
         }
       }
       $scope.ranges[end_pos] = draggedAnnotation;
-      console.log('Ranges =======>', $scope.ranges);
+      // console.log('Ranges =======>', $scope.ranges);
     }
   });
 
