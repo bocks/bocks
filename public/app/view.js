@@ -1,5 +1,5 @@
 angular.module('app.view', [])
-.controller('ViewController', function($scope, $http, $route, $routeParams, Snippets, Auth) {
+.controller('ViewController', function($scope, $http, $location, $route, $routeParams, Snippets, Auth) {
   $scope.displayEditor = false;
 
   var editor = ace.edit("editor");
@@ -52,6 +52,17 @@ angular.module('app.view', [])
       }
     });
   }();
+
+  // delete the snippet
+  $scope.deleteSnippet = function() {
+    console.log('ang deleteSnippet');
+    if (confirm('Are you sure you want to delete this snippet?')) {
+      Snippets.deleteSnippet($routeParams.id)
+      .then(function(res) {
+        $location.path('/snippets/' + Auth.getUserName());
+      });
+    }
+  };
 
   // download an editor screenshot
   $scope.exportImage = function() {

@@ -185,6 +185,16 @@ label {
   margin-left: 5px;
 }
 
+.snippet-info button.danger {
+  color: #900;
+}
+
+.snippet-info button.danger:hover {
+  background: #cd504a;
+  color: #fff;
+  border-color: #900;
+}
+
 .missing-snippet {
   width: 100%;
   text-align: center;

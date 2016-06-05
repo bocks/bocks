@@ -116,6 +116,8 @@ module.exports = {
     }).then(function (data) {
       if (data) {
         res.json(data);
+      } else {
+        res.status(401);
       }
     });
   }

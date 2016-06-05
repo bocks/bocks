@@ -24,6 +24,9 @@
     <span ng-show="editAccess">
       &nbsp;&nbsp;||&nbsp;&nbsp;
       <a href="/#/snippet/{{id}}/edit"><button type="button" class="mute">Edit <i class="fa fa-edit"></i></button></a>
+
+      &nbsp;&nbsp;||&nbsp;&nbsp;
+      <a ng-click="deleteSnippet()"><button type="button" class="mute danger">Delete <i class="fa fa-trash"></i></button></a>
     </span>
   </div>
 
