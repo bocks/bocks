@@ -89,12 +89,6 @@ p.minutiae {
   margin: 2% 0 3% 0;
 }
 
-/*.browse-wrap {
-  border: 1px solid #eee;
-  padding-top: 25px;
-  margin-bottom: 25px;
-}*/
-
 .search {
   width: 60%;
   padding: 20px 10%;
@@ -193,7 +187,6 @@ label {
 /* editor styles */
 .editor-wrap {
   width: 100%;
-  border: 2px solid white;
   border-radius: 15px;
   min-height: 500px;
 }

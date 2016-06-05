@@ -12,18 +12,20 @@ angular.module('app.view', [])
   // stop the browser's warning message
   editor.$blockScrolling = Infinity;
 
+  $scope.fontSize = 16;
+  editor.setFontSize($scope.fontSize);
+
   // make editor read only
   editor.setReadOnly(true);
 
   $scope.convertTime = function (mongoTime) {
     date = new Date(mongoTime);
     return (date.getMonth() + 1) + '.' + date.getDate() + '.' + date.getFullYear();
-  }
+  };
 
   $scope.init = function() {
     Snippets.retrieveSnippet($routeParams.id)
     .then(function(snippet) {
-      console.log(snippet);
       if (snippet !== false) {
         // set editor to display
         $scope.displayEditor = true;
@@ -48,4 +50,9 @@ angular.module('app.view', [])
       }
     });
   }();
+
+  // download an editor screenshot
+  $scope.exportImage = function() {
+    Snippets.exportImage($scope.title);
+  };
 });
