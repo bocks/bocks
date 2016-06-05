@@ -90,6 +90,7 @@ angular.module('app.snippet', [])
     range.id = $scope.rangeId;
     range.color = $scope.colorCount;
     range.marker = marker;
+    range.text = '';
     $scope.ranges.push(range);
 
     // TODO: focus cursor to new annotation
@@ -97,9 +98,9 @@ angular.module('app.snippet', [])
   };
 
   $scope.snippetsCreate = function() {
-    $scope.ranges.forEach(function(range) {
-      range.text = document.getElementById('annotation-' + range.id).childNodes[1].innerText;
-    });
+    // $scope.ranges.forEach(function(range) {
+    //   range.text = document.getElementById('annotation-' + range.id).childNodes[1].innerText;
+    // });
 
     var tags = [];
     if ($scope.tags1) { tags.push($scope.tags1); }
@@ -113,7 +114,7 @@ angular.module('app.snippet', [])
       highlights: $scope.ranges,
       tags: tags
     };
-
+    console.log('Data of snippet that need to be saved into database =======>', snippet);
     $http({
       method: 'POST',
       url: '/snippets',
@@ -146,9 +147,6 @@ angular.module('app.snippet', [])
     target.style.webkitTransform = target.style.transform =
         'translate(' + 0 + 'px,' + y + 'px)';
 
-    // $( "#annotations, #editor" ).animate({
-    //   height: event.rect.height
-    // }, 0);
     $( "#annotations, #editor" ).height(event.rect.height)
     editor.resize();
 
@@ -156,6 +154,65 @@ angular.module('app.snippet', [])
     target.setAttribute('data-y', y);
   });
 
+  $(document).on('click', '.note', function(e){
+      if (! $(this).is(":focus") ) {
+        this.focus();
+      }
+  });
 
+  var start_pos;
+  var end_pos;
+  $( "#annotations" ).sortable({
+    start: function(event, div) {
+      start_pos = div.item.index();
+      console.log('starting position ===========>', start_pos);
+    },
 
+    change: function(event, div) {
+      end_pos = div.placeholder.index();
+      if ( start_pos < end_pos ) {
+        end_pos -= 1;
+      }
+    },
+
+    stop: function(event) {
+      console.log('ending position =============>', end_pos);
+      // reorder $scope.ranges based on the order of annotations
+      var draggedAnnotation = $scope.ranges[start_pos];
+      if ( start_pos > end_pos ) {
+        for ( var i = start_pos; i > end_pos; i-- ) {
+          $scope.ranges[i] = $scope.ranges[i - 1];
+        }
+      } else {
+        for ( var i = start_pos; i < end_pos; i++ ) {
+          $scope.ranges[i] = $scope.ranges[i + 1];
+        }
+      }
+      $scope.ranges[end_pos] = draggedAnnotation;
+      console.log('Ranges =======>', $scope.ranges);
+    }
+  });
+
+})
+
+// This directive allows two-way data binding in contenteditable div
+.directive("contenteditable", function() {
+  return {
+    restrict: "A",
+    require: "ngModel",
+    link: function(scope, element, attrs, ngModel) {
+
+      function read() {
+        ngModel.$setViewValue(element.html());
+      }
+
+      ngModel.$render = function() {
+        element.html(ngModel.$viewValue || "");
+      };
+
+      element.bind("blur keyup change", function() {
+        scope.$apply(read);
+      });
+    }
+  };
 });
