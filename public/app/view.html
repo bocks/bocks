@@ -6,8 +6,8 @@
     <span ng-repeat="tag in tags">
       <i class="fa fa-tag" aria-hidden="true"></i>&nbsp;{{ tag }}
     </span>
-    <button ng-show="belongsToUser" type="button" class="editBtn" ng-click="editRoute()">Edit</button>
-    <button ng-show="belongsToUser" type="button" class="deleteBtn" ng-click="deleteRoute()">Delete</button>
+    <button ng-show="belongsToUser" type="button" class="bttn" ng-click="deleteRoute()">Delete</button>
+    <button ng-show="belongsToUser" type="button" class="bttn" ng-click="editRoute()">Edit</button>
   </p>
   <div class="editor-wrap">
     <div id="editor" ng-model="code">
