@@ -66,10 +66,10 @@ mongoose.connect('mongodb://localhost/bocks');
 app.get('/auth/github', passport.authenticate('github'));
 
 app.get('/auth/github/callback',
-  passport.authenticate('github', { failureRedirect: '/oops' }),
+  passport.authenticate('github', { failureRedirect: '/' }),
   function(req, res) {
     console.log('in authentication callback, redirecting to home page via /#/testing');
-    res.redirect('/#/testing');
+    res.redirect('/');
 });
 
 app.get('/user/status', function(req, res) {
