@@ -145,6 +145,7 @@ angular.module('app.edit', [])
     Snippets.exportImage($scope.title);
   };
 
+
   $scope.init = function() {
     Snippets.retrieveSnippet($routeParams.id)
     .then(function(snippet) {
@@ -179,6 +180,46 @@ angular.module('app.edit', [])
       }
     });
   }();
+
+  //jQuery function which handles user actions
+  $(document).on('click', '.note', function(e){
+      if (! $(this).is(":focus") ) {
+        this.focus();
+      }
+  });
+
+  var start_pos;
+  var end_pos;
+  $( "#annotations" ).sortable({
+    start: function(event, div) {
+      start_pos = div.item.index();
+      console.log('starting position ===========>', start_pos);
+    },
+
+    change: function(event, div) {
+      end_pos = div.placeholder.index();
+      if ( start_pos < end_pos ) {
+        end_pos -= 1;
+      }
+    },
+
+    stop: function(event) {
+      console.log('ending position =============>', end_pos);
+      // reorder $scope.ranges based on the order of annotations
+      var draggedAnnotation = $scope.ranges[start_pos];
+      if ( start_pos > end_pos ) {
+        for ( var i = start_pos; i > end_pos; i-- ) {
+          $scope.ranges[i] = $scope.ranges[i - 1];
+        }
+      } else {
+        for ( var i = start_pos; i < end_pos; i++ ) {
+          $scope.ranges[i] = $scope.ranges[i + 1];
+        }
+      }
+      $scope.ranges[end_pos] = draggedAnnotation;
+      console.log('Ranges =======>', $scope.ranges);
+    }
+  });
 })
 
 // This directive allows two-way data binding in contenteditable div
