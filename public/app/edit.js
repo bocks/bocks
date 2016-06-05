@@ -101,8 +101,10 @@ angular.module('app.edit', [])
     $scope.ranges.forEach(function(range) {
       // Using JSON.parse(JSON.stringify()) to break the reference.
       // Just performing a range.text assignment was breaking the innerText.
-      ranges[range.id] = JSON.parse(JSON.stringify(range));
-      ranges[range.id].text = document.getElementById('annotation-' + range.id).childNodes[1].innerText;
+      var tempRange;
+      tempRange = JSON.parse(JSON.stringify(range));
+      tempRange.text = document.getElementById('annotation-' + range.id).childNodes[1].innerText;
+      ranges.push(tempRange);
     });
 
     var tags = [];
