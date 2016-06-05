@@ -1,3 +1,4 @@
+var csp = require('content-security-policy');
 var express = require('express');
 var bodyParser = require('body-parser');
 var session = require('express-session');
@@ -18,6 +19,25 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(__dirname + '/../public'));
 app.use('/node_modules', express.static('node_modules'));
+
+var cspPolicy = {
+  "report-uri" : "/reporting",
+  "default-src" : csp.SRC_SELF,
+  "script-src" : [ csp.SRC_ANY ],
+  "frame-ancestors" : [ csp.SRC_ANY ]
+};
+
+var globalCSP = csp.getCSP(csp.STARTER_OPTIONS);
+var localCSP = csp.getCSP(cspPolicy);
+
+app.use(globalCSP);
+
+app.get('/settings',
+  localCSP,
+  function(req, res) {
+    res.render('settings');
+  }
+);
 
 var hour = 3600000;
 var cookieMaxAge = new Date(Date.now() + hour);
