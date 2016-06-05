@@ -193,7 +193,6 @@ label {
 /* editor styles */
 .editor-wrap {
   width: 100%;
-  border: 2px solid white;
   border-radius: 15px;
   min-height: 500px;
 }

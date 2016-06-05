@@ -18,6 +18,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(__dirname + '/../public'));
 app.use('/node_modules', express.static('node_modules'));
+app.use('/libs', express.static('lib/html2canvas'));
 
 var hour = 3600000;
 var cookieMaxAge = new Date(Date.now() + hour);
