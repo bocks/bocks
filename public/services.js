@@ -82,6 +82,16 @@ angular.module('app.services', [])
     });
   };
 
+  var deleteSnippet = function(id) {
+    return $http({
+      method: "DELETE",
+      url: "/snippets/" + id
+    })
+    .then(function(res) {
+      return res;
+    })
+  };
+
   var exportImage = function(title) {
     // replace non-alphanumeric with dashes
     var escapedTitle = title.replace(/\W/g, '-');
@@ -108,6 +118,7 @@ angular.module('app.services', [])
   return {
     exportImage: exportImage,
     retrieveSnippet: retrieveSnippet,
-    retrieveSnippets: retrieveSnippets
+    retrieveSnippets: retrieveSnippets,
+    deleteSnippet: deleteSnippet
   };
 });
