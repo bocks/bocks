@@ -1,6 +1,9 @@
 angular.module('app.snippet', [])
 .controller('SnippetController', function($scope, $http, $location, $rootScope, Snippets) {
 
+  // set the 'private' radio button to disabled
+  document.getElementById('isPrivate').disabled = true;
+
   // a collection of highlighted ranges belonging to the current snippet
   $scope.ranges = [];
   $scope.rangeId = -1;
@@ -114,7 +117,7 @@ angular.module('app.snippet', [])
       highlights: $scope.ranges,
       tags: tags
     };
-    // console.log('Data of snippet that need to be saved into database =======>', snippet);
+    console.log('Data of snippet that need to be saved into database =======>', snippet);
     $http({
       method: 'POST',
       url: '/snippets',
