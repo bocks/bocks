@@ -44,7 +44,7 @@ p.minutiae {
 .btn {
   float:right;
   padding: 5px 10px;
-  margin: 20px 0 10px 10px;
+  margin: 10px 0 10px 10px;
   background: none;
   border: 1px solid lightblue;
   border-radius: 5px;
@@ -68,6 +68,16 @@ p.minutiae {
 }
 
 /* home page */
+.greeting {
+  color: #333;
+  text-align: right;
+  display: block;
+}
+
+.nav-wrap {
+  display: inline-block;
+  float: right;
+}
 
 .welcome {
   text-align: center;
