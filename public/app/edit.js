@@ -110,7 +110,7 @@ angular.module('app.edit', [])
     var tags = [];
     if ($scope.tags[0]) { tags.push($scope.tags[0]); }
     if ($scope.tags[1]) { tags.push($scope.tags[1]); }
-    if ($scope.tags[1]) { tags.push($scope.tags[2]); }
+    if ($scope.tags[2]) { tags.push($scope.tags[2]); }
 
     var snippet = {
       title: $scope.title,
