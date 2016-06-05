@@ -9,7 +9,10 @@
       <i class="fa fa-tag" aria-hidden="true"></i>&nbsp;{{ tag }}
     </span>
     &nbsp;&nbsp;||&nbsp;&nbsp;
-    <button class="mute" ng-click="exportImage()">Export!</button>
+    Export:
+    <button type="button" class="mute" ng-click='exportImage()'>
+      <i class="fa fa-external-link-square" aria-hidden="true"></i>
+    </button>
   </p>
   <div class="editor-wrap">
     <div id="editor" ng-model="code">
