@@ -25,7 +25,7 @@
     <div class="editor-wrap">
       <div id="editor" ng-model="code"></div><!-- remove space between inline-blocks
    --><div id="annotations">
-        <div ng-repeat="annotation in highlights" id="annotation-{{ annotation.id }}">
+        <div ng-repeat="annotation in ranges" id="annotation-{{ annotation.id }}">
           <div class="note highlighted-{{ annotation.color }}" spellcheck="false" contenteditable="true">{{ annotation.text }}</div>
           <button type="button" class="trash" ng-click="removeAnnotation()">
             <i class="fa fa-trash-o" aria-hidden="true"></i>

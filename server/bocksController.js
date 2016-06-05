@@ -93,10 +93,13 @@ module.exports = {
     Bocks.update({
       _id: req.params.id,
       userName: req.session.passport.user.username
-    }, {
+    },
+    {
       title: req.body.title,
-      text: req.body.text,
-      isPrivate: req.body.isPrivate,
+      code: req.body.code,
+      highlights: req.body.highlights,
+      isPrivate: !!req.body.isPrivate,
+      tags: req.body.tags,
       modifiedAt: Date.now()
     }).then(function (data) {
       if (data) {

@@ -101,7 +101,7 @@ app.post('/snippets', bocksController.newBocks);
 app.get('/snippets/:id', bocksController.getOneBocks);
 
 // Edit a specific snippet
-app.put('/snippets/:id', bocksController.changeBocks);
+app.patch('/snippets/:id', bocksController.changeBocks);
 
 // Delete a specific snippet
 app.delete('/snippets/:id', bocksController.remBocks);
