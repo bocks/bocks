@@ -62,20 +62,20 @@ angular.module('app', [
   return {
     restrict : 'A',
     replace : true,
-    template : '<div class="flash" ng-show="{{ successMsg.length }}"><div class="flash-inner" data-ng-repeat="msg in successMsg">{{msg}}</div></div>',
+    template : '<div class="flash" ng-show="{{ flashMsg.length }}"><div class="flash-inner" data-ng-repeat="msg in flashMsg">{{msg}}</div></div>',
     link : function($rootScope, scope, element, attrs) {
-      $rootScope.$watch('successMsg', function(val) {
+      $rootScope.$watch('flashMsg', function(val) {
        if (val && val.length) {
         update();
        }
       }, true);
 
       function update() {
-      $('.flash')
-       .fadeIn(500).delay(3000)
-       .fadeOut(500, function() {
-         $rootScope.successMsg.splice(0, 1);
-        });
+        $('.flash')
+         .fadeIn(500).delay(3000)
+         .fadeOut(500, function() {
+           $rootScope.flashMsg.splice(0, 1);
+          });
       }
     } // end link
   }; // end return

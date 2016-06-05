@@ -100,10 +100,17 @@ angular.module('app.snippet', [])
     return;
   };
 
+  $scope.messages = $rootScope.flashMsg;
+
   $scope.snippetsCreate = function() {
-    // $scope.ranges.forEach(function(range) {
-    //   range.text = document.getElementById('annotation-' + range.id).childNodes[1].innerText;
-    // });
+
+    // require 'title' form field
+    if ($scope.title === undefined) {
+      $location.path('/snippet/');
+      $('html, body').animate({ scrollTop: 0 }, 'fast');
+      $rootScope.flashMsg = ['Snippet title is a required field.  Please try again.'];
+      return;
+    }
 
     var tags = [];
     if ($scope.tags1) { tags.push($scope.tags1); }
@@ -117,7 +124,8 @@ angular.module('app.snippet', [])
       highlights: $scope.ranges,
       tags: tags
     };
-    console.log('Data of snippet that need to be saved into database =======>', snippet);
+
+    // console.log('Data of snippet that need to be saved into database =======>', snippet);
     $http({
       method: 'POST',
       url: '/snippets',
@@ -127,7 +135,7 @@ angular.module('app.snippet', [])
       if (res.data._id) {
         $location.path('/snippet/' + res.data._id);
       }
-      $rootScope.successMsg = ['Successfully saved ' + res.data.title];
+      $rootScope.flashMsg = ['Successfully saved ' + res.data.title];
     }, function(err) {
       console.log('an error occurred in snippetsCreate');
     });

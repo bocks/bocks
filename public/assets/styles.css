@@ -139,7 +139,7 @@ label {
 
 .form-wrap {
   width: 90%;
-  margin: 20px auto;
+  margin: 10px auto;
 }
 
 .form-wrap .snippet-title {
@@ -315,7 +315,7 @@ label {
 .flash {
   width: 90%;
   padding: 2% 5%;
-  border: 1px solid lightgreen;
+  border: 1px solid #3ed8fa;
   text-align: center;
   border-radius: 15px;
 }
