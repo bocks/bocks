@@ -1,30 +1,69 @@
 angular.module('app.snippets', [])
 
-.controller('SnippetsController', function($scope, $location, $routeParams, Snippets) {
+.controller('SnippetsController', function($scope, $location, $routeParams, $anchorScroll, Snippets) {
+  // snippets
   $scope.snippets = [];
   $scope.highlights = {};
 
   var editors = [];
   var Range = ace.require('ace/range').Range;
-  
+
+  // pagination
+  $scope.paginateIsNewer = false;
+  $scope.paginateIsOlder = true;
+  $scope.page = $routeParams.page || 0;
+  var limit = $routeParams.limit || 5;
+  var skip = $scope.page * limit;
+
   $scope.goToSnippet = function (id) {
     $location.path('/snippet/' + id);
   };
-  
+
   $scope.convertTime = function (mongoTime) {
     date = new Date(mongoTime);
     return (date.getMonth() + 1) + '.' + date.getDate() + '.' + date.getFullYear();
   };
-  
+
+  var retrieveSnippets = function() {
+    Snippets.retrieveSnippets({
+      skip: skip,
+      limit: limit,
+      username: $routeParams.username
+    })
+    .then(function(snippets) {
+      $scope.snippets = snippets.data;
+    });
+  };
+
+  $scope.paginateNewer = function() {
+    if ($scope.page < 1) { return; }
+    $scope.page--;
+    skip = $scope.page * limit;
+    retrieveSnippets();
+    $anchorScroll();
+  };
+
+  $scope.paginateOlder = function() {
+    if ($scope.snippets.length < limit) { return; }
+    $scope.page++;
+    skip = $scope.page * limit;
+    retrieveSnippets();
+    $anchorScroll();
+  };
+
+  var updatePagination = function() {
+    $scope.paginateIsNewer = ($scope.page > 0) ? true : false;
+    $scope.paginateIsOlder = ($scope.snippets.length >= limit) ? true : false;
+  };
+
   $scope.init = function() {
-    Snippets.retrieveSnippets({ username: $routeParams.username })
-      .then(function(snippets) {
-        // set snippets data
-        $scope.snippets = snippets.data;
-      });
+    retrieveSnippets();
   }();
 
   $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
+    // clear out old editors
+    editors = [];
+
     $scope.snippets.forEach(function(snippet) {
       // setup ace editor
       editors[snippet._id] = ace.edit('editor-' + snippet._id);
@@ -53,5 +92,9 @@ angular.module('app.snippets', [])
         $scope.highlights[snippet._id].push(highlight);
       });
     });
+
+    // update pagination buttons
+    updatePagination();
   });
+
 });
