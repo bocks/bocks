@@ -3,6 +3,7 @@ angular.module('app', [
   'app.snippet',
   'app.snippets',
   'app.view',
+  'app.edit',
   'app.services',
   'ngRoute',
   'flash'
@@ -25,8 +26,7 @@ angular.module('app', [
     })
     .when('/snippet/:id/edit', {
       templateUrl: 'app/edit.html',
-      controller: 'ViewController',
-      edit: true,
+      controller: 'EditController',
       authenticate: true
     })
     .when('/snippets', {
