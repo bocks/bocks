@@ -1,5 +1,5 @@
 angular.module('app.view', [])
-.controller('ViewController', function($scope, $http, $route, $routeParams, Snippets) {
+.controller('ViewController', function($scope, $http, $route, $routeParams, Snippets, Auth) {
   $scope.displayEditor = false;
 
   var editor = ace.edit("editor");
@@ -30,14 +30,16 @@ angular.module('app.view', [])
         // set editor to display
         $scope.displayEditor = true;
 
-        // set snippet title
+        // set snippet data
+        $scope.id = snippet.data._id;
         $scope.title = snippet.data.title;
         $scope.username = snippet.data.userName;
         $scope.createdAt = snippet.data.createdAt;
         $scope.highlights = snippet.data.highlights;
-
         $scope.tags = snippet.data.tags;
 
+        // determine if user has edit permissions
+        $scope.editAccess = (snippet.data.userName === Auth.getUserName()) ? true : false;
 
         // add code to editor
         editor.setValue(snippet.data.code);

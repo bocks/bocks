@@ -166,6 +166,25 @@ label {
 
 /* snippets view page */
 
+.snippet-info {
+  margin: 15px 0;
+  padding: 5px;
+
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  font-size: smaller;
+
+  color: #666;
+}
+
+.snippet-info button {
+  padding: 8px;
+}
+
+.snippet-info button i {
+  margin-left: 5px;
+}
+
 .missing-snippet {
   width: 100%;
   text-align: center;
