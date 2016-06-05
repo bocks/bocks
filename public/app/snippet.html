@@ -1,4 +1,5 @@
 <div class="form-wrap">
+  <div data-sp-flash></div>
   <form ng-submit="snippetsCreate()">
     <br/>
     <h3>Create a new snippet:</h3>
@@ -16,9 +17,9 @@
         <i class="fa fa-minus-square" aria-hidden="true"></i>
       </button>
       <label>Public Snippet:</label>
-      <input type="radio" name="isPrivate" ng-model="isPrivate" value="false" ng-checked="true">
+      <input type="radio" id="isPublic" ng-model="isPublic" ng-checked="true">
       <label>Private Snippet:</label>
-      <input type="radio" name="isPrivate" ng-model="isPrivate" value="true">
+      <input type="radio" id="isPrivate" ng-model="isPrivate">
       <label>Export:</label>
       <button type="button" class="mute" ng-click='exportImage()'>
         <i class="fa fa-external-link-square" aria-hidden="true"></i>
