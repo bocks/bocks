@@ -3,19 +3,30 @@
   <div class="bock-icon">
     <h2>{{ title }}</h2>
   </div>
-  <p class="minutiae">
-    Created by: {{ username }} on {{ convertTime(createdAt) }}
+
+  <div class="snippet-info btn-wrap">
+    <span>Created by: {{ username }} on {{ convertTime(createdAt) }}</span>
+
     &nbsp;&nbsp;||&nbsp;&nbsp;
-    Tags:
-    <span ng-repeat="tag in tags">
-      <i class="fa fa-tag" aria-hidden="true"></i>&nbsp;{{ tag }}
+    <span>
+      Tags:
+      <span ng-repeat="tag in tags">
+        <i class="fa fa-tag" aria-hidden="true"></i>&nbsp;{{ tag }}
+      </span>
     </span>
+
     &nbsp;&nbsp;||&nbsp;&nbsp;
-    Export:
     <button type="button" class="mute" ng-click='exportImage()'>
+      Export
       <i class="fa fa-external-link-square" aria-hidden="true"></i>
     </button>
-  </p>
+
+    <span ng-show="editAccess">
+      &nbsp;&nbsp;||&nbsp;&nbsp;
+      <a href="/#/snippet/{{id}}/edit"><button type="button" class="mute">Edit <i class="fa fa-edit"></i></button></a>
+    </span>
+  </div>
+
   <div class="editor-wrap">
     <div id="editor" ng-model="code">
     </div><!-- remove space between inline-blocks
