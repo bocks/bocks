@@ -138,7 +138,12 @@ angular.module('app.edit', [])
   $scope.convertTime = function (mongoTime) {
     date = new Date(mongoTime);
     return (date.getMonth() + 1) + '.' + date.getDate() + '.' + date.getFullYear();
-  }
+  };
+
+  // download an editor screenshot
+  $scope.exportImage = function() {
+    Snippets.exportImage($scope.title);
+  };
 
   $scope.init = function() {
     Snippets.retrieveSnippet($routeParams.id)
