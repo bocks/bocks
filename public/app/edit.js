@@ -120,6 +120,7 @@ angular.module('app.edit', [])
       tags: tags
     };
 
+
     $http({
       method: 'PATCH',
       url: '/snippets/' + $routeParams.id,
@@ -181,6 +182,30 @@ angular.module('app.edit', [])
     });
   }();
 
+  // Make editor of adjustable height
+  interact('.editor-wrap')
+  .resizable({
+    preserveAspectRatio: true,
+    edges: { left: false, right: false, bottom: true, top: false }
+  })
+  .on('resizemove', function (event) {
+    var target = event.target,
+        x = (parseFloat(target.getAttribute('data-x')) || 0),
+        y = (parseFloat(target.getAttribute('data-y')) || 0);
+
+    // update the element's style
+    target.style.height = event.rect.height + 'px';
+
+    target.style.webkitTransform = target.style.transform =
+        'translate(' + 0 + 'px,' + y + 'px)';
+
+    $( "#annotations, #editor" ).height(event.rect.height)
+    editor.resize();
+
+    target.setAttribute('data-x', x);
+    target.setAttribute('data-y', y);
+  });
+  
   //jQuery function which handles user actions
   $(document).on('click', '.note', function(e){
       if (! $(this).is(":focus") ) {
@@ -193,7 +218,7 @@ angular.module('app.edit', [])
   $( "#annotations" ).sortable({
     start: function(event, div) {
       start_pos = div.item.index();
-      console.log('starting position ===========>', start_pos);
+      // console.log('starting position ===========>', start_pos);
     },
 
     change: function(event, div) {
@@ -204,7 +229,7 @@ angular.module('app.edit', [])
     },
 
     stop: function(event) {
-      console.log('ending position =============>', end_pos);
+      // console.log('ending position =============>', end_pos);
       // reorder $scope.ranges based on the order of annotations
       var draggedAnnotation = $scope.ranges[start_pos];
       if ( start_pos > end_pos ) {
@@ -217,7 +242,7 @@ angular.module('app.edit', [])
         }
       }
       $scope.ranges[end_pos] = draggedAnnotation;
-      console.log('Ranges =======>', $scope.ranges);
+      // console.log('Ranges =======>', $scope.ranges);
     }
   });
 })
