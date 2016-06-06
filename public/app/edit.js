@@ -1,5 +1,9 @@
 angular.module('app.edit', [])
 .controller('EditController', function($scope, $http, $location, $route, $routeParams, $rootScope, Snippets) {
+
+  // set the 'private' radio button to disabled
+  document.getElementById('isPrivate').disabled = true;
+
   // a collection of highlighted ranges belonging to the current snippet
   $scope.ranges = [];
   $scope.rangeId = -1;
