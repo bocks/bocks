@@ -2,14 +2,53 @@
 
 Automatic deployment is setup to trigger on commits to the `production` branch of `bocks/bocks`.
 
-## How To Deploy
+## Digital Ocean Run Setup
 
-TODO
+As root
+
+	`npm install -g forever`
+
+As root, `nano /etc/environment` and add the following lines to the file:
+
+	export BOCKS_CLIENT_ID="<GITHUB_CLIENT_ID>"
+	export BOCKS_CLIENT_SECRET="<GITHUB_CLIENT_SECRET>"
+	export BOCKS_SESSION_SECRET="<EXPRESS_SESSION_SECRET>"
+	export PORT=3000
+	export NODE_ENV=production
+
+As root, add port forwarding from `80` to `3000`
+
+	sudo iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 3000
+
+As root, add the following to your `/etc/rc.local` file so that the above iptables rule sticks around after a reboot. Add this before the `exit 0` line.
+
+	iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 3000
+
+As `deploy` (user), start up the express app server with
+
+	forever start --watch server/server.js
+
+See [Process Managers for Express Apps](http://expressjs.com/en/advanced/pm.html#forever) for more details on using Forever.
+
+As `deploy` (user), run `crontab -e` and add the following to your cron so that forever will start up the app on reboot.
+
+	@reboot /usr/bin/forever start --watch /home/deploy/bocks/server/server.js
+
+## Digital Ocean Deploy Update
+
+	ssh root@159.203.207.96
+	su - deploy
+	cd bocks
+	git pull origin master
+	npm install
+	forever restartall
+
+## How To Deploy (Advanced Optional)
 
 * `git pull remote production`
 * `git push remote production`
 
-## Deployment Setup
+## Deployment Setup (Advanced Optional)
 
 ### Create a Digital Ocean Droplet
 
@@ -26,7 +65,7 @@ Log onto droplet.
 	adduser deploy
 	chown -R deploy:deploy /var/www
 
-(Local) Create an ssh key for Travis to log in with. When asked, provide the output filename of `deploy_key`.
+(Local) Create an ssh key for Travis to log in with. When asked, provide the output filename of `deploy-key`.
 
 	ssh-keygen
 
@@ -74,53 +113,19 @@ Save the file and exit the editor, then set permissions on the file so that it c
 
 	touch .travis.yml
 
----
+(Local) Encrypt a copy of the deploy key
 
-TODO Finish Auto Deployment
+	gem install travis
+	# or sudo gem install travis -n/usr/local/bin
+	travis login
+	travis encrypt-file deploy-key --add
 
----
+(Local) Now delete the unencrypted deploy-key
 
-### Digital Ocean Run Setup
-
-As root
-
-	`npm install -g forever`
-
-As root, `nano /etc/environment` and add the following lines to the file:
-
-	export BOCKS_CLIENT_ID="<GITHUB_CLIENT_ID>"
-	export BOCKS_CLIENT_SECRET="<GITHUB_CLIENT_SECRET>"
-	export BOCKS_SESSION_SECRET="<EXPRESS_SESSION_SECRET>"
-	export PORT=3000
-	export NODE_ENV=production
-
-As root, add port forwarding from `80` to `3000`
-
-	sudo iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 3000
-
-As root, add the following to your `/etc/rc.local` file so that the above iptables rule sticks around after a reboot. Add this before the `exit 0` line.
-
-	iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 3000
-
-	# do something here
-
-As `deploy` (user), start up the express app server with
-
-	forever start server/server.js
-
-See [Process Managers for Express Apps](http://expressjs.com/en/advanced/pm.html#forever) for more details on using Forever.
+	rm deploy-key
 
 ---
 
-TODO setup forever to start on restart.
+**TODO Finish Deployment**
 
 ---
-
-### Digital Ocean Redeploy
-
-	ssh root@159.203.207.96
-	su - deploy
-	cd bocks
-	git pull origin master
-	npm install
-	forever restartall
