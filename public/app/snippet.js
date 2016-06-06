@@ -1,12 +1,12 @@
 var app = angular.module("flash", []);
 angular.module('app.snippet', [])
 .controller('SnippetController', function($scope, $http, $location, $rootScope, Snippets) {
-  $scope.ranges = [];
 
   // set the 'private' radio button to disabled
   document.getElementById('isPrivate').disabled = true;
 
   // a collection of highlighted ranges belonging to the current snippet
+  $scope.ranges = [];
   $scope.rangeId = -1;
   $scope.colorCount = -1;
 
