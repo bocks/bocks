@@ -158,7 +158,7 @@ angular.module('app.edit', [])
         $scope.tags = snippet.data.tags;
 
         // add code to editor
-        editor.setValue(snippet.data.code);
+        editor.setValue(snippet.data.code, -1);
 
         snippet.data.highlights.forEach(function(highlight) {
           // set markers for highlighted code

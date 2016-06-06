@@ -42,7 +42,7 @@ angular.module('app.view', [])
         $scope.editAccess = (snippet.data.userName === Auth.getUserName()) ? true : false;
 
         // add code to editor
-        editor.setValue(snippet.data.code);
+        editor.setValue(snippet.data.code, -1);
         editor.setFontSize(16);
 
         snippet.data.highlights.forEach(function(highlight) {

@@ -82,7 +82,7 @@ angular.module('app.snippets', [])
       editors[snippet._id].setReadOnly(true);
 
       // add code to editor
-      editors[snippet._id].setValue(snippet.code);
+      editors[snippet._id].setValue(snippet.code, -1);
 
       // setup highlights/annotations array
       $scope.highlights[snippet._id] = [];
