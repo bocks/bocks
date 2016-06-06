@@ -61,17 +61,6 @@ p.minutiae {
   font-size: smaller;
 }
 
-.bttn {
-  float:right;
-  padding: 5px 10px;
-  margin: 0px 0 10px 10px;
-  background: none;
-  border: 1px solid lightblue;
-  border-radius: 5px;
-  color: #333;
-  font-size: smaller;
-}
-
 .btn:hover {
   background: #eee;
 }
