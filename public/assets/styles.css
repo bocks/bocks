@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+
 /* elements */
 body {
   font-family: "Arial", "sans-serif";
@@ -6,6 +8,7 @@ body {
   background: -o-linear-gradient(#D5E6F1, #eee 10%, #fff);
   background: -moz-linear-gradient(#D5E6F1, #eee 10%, #fff);
   background: linear-gradient(#D5E6F1, #eee 10%, #fff);
+  color: #444;
 }
 
 
@@ -26,7 +29,13 @@ body {
 }
 
 h1, h2 {
+  color: #222;
+  font-family: 'Roboto', serif;
+}
+
+h1 {
   text-decoration: underline;
+  font-weight: bold;
 }
 
 h2.bock-icon {
