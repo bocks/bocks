@@ -11,8 +11,6 @@ body {
   color: #444;
 }
 
-
-
 .heading-1, .heading-2 {
   text-align: center;
 }
@@ -30,7 +28,7 @@ body {
 
 h1, h2 {
   color: #222;
-  font-family: 'Roboto', serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 h1 {
