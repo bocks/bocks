@@ -12,6 +12,7 @@
         <i class="fa fa-tag" aria-hidden="true"></i>&nbsp;{{ tag }}
       </span>
     </span>
+<<<<<<< 722a07343ec86efe69d050aa5c19cf86e63a9ff6
 
     &nbsp;&nbsp;||&nbsp;&nbsp;
     <button type="button" class="mute" ng-click='exportImage()'>
@@ -28,6 +29,11 @@
     </span>
   </div>
 
+=======
+    <button ng-show="belongsToUser" type="button" class="editBtn" ng-click="editRoute()">Edit</button>
+    <button ng-show="belongsToUser" type="button" class="deleteBtn" ng-click="deleteRoute()">Delete</button>
+  </p>
+>>>>>>> added edit and delete buttons to view
   <div class="editor-wrap">
     <div id="editor" ng-model="code">
     </div><!-- remove space between inline-blocks

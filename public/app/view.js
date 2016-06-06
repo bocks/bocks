@@ -1,5 +1,6 @@
 angular.module('app.view', [])
-.controller('ViewController', function($scope, $http, $location, $route, $routeParams, Snippets, Auth) {
+
+.controller('ViewController', function($scope, $http, $location, $route, $routeParams, Snippets, Delete, Auth) {
   $scope.displayEditor = false;
 
   var editor = ace.edit("editor");
@@ -18,10 +19,26 @@ angular.module('app.view', [])
   // make editor read only
   editor.setReadOnly(true);
 
+  $scope.editRoute = function (id) {
+    $location.path('/snippet/' + id + '/edit');
+  };
+  
+  $scope.deleteRoute = function (id) {
+    if (confirm('Are you sure you want to delete this snippet?')) {
+      Delete.deleteSnippet($routeParams.id)
+        .then(function () {
+          alert('Snippet successfully deleted');
+          $location.path('/snippets');
+        })
+      ;
+    }
+  }
+
   $scope.convertTime = function (mongoTime) {
     date = new Date(mongoTime);
     return (date.getMonth() + 1) + '.' + date.getDate() + '.' + date.getFullYear();
   };
+
 
   $scope.init = function() {
     Snippets.retrieveSnippet($routeParams.id)
