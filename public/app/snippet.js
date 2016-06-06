@@ -1,3 +1,4 @@
+var app = angular.module("flash", []);
 angular.module('app.snippet', [])
 .controller('SnippetController', function($scope, $http, $location, $rootScope, Snippets) {
 

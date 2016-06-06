@@ -10,21 +10,18 @@ module.exports = function (config) {
     frameworks: ['mocha', 'chai', 'sinon'],
 
     // list of files / patterns to load in the browser. order matters!
-    files: [
+      files: [
       // angular source
-      'client/lib/angular/angular.js',
-      'client/lib/angular-route/angular-route.js',
-      'client/lib/angular-mocks/angular-mocks.js',
+      'node_modules/angular/angular.js',
+      'node_modules/angular-route/angular-route.js',
+      'node_modules/angular-mocks/angular-mocks.js',
 
       // our app code
-      'client/app/**/*.js',
+      'public/**/*.js',
 
       // our spec files - in order of the README
-      'specs/client/authControllerSpec.js',
-      'specs/client/servicesSpec.js',
-      'specs/client/linksControllerSpec.js',
-      'specs/client/shortenControllerSpec.js',
-      'specs/client/routingSpec.js'
+      'test/snippet.js'
+    
     ],
 
     // test results reporter to use

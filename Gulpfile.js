@@ -9,9 +9,9 @@ var browserSync = require('browser-sync').create();
 // The paths to our app files
 var paths = {
   src: {
-    scripts: ['client/app/**/*.js'],
-    html: ['client/app/**/*.html', 'client/index.html'],
-    styles: ['client/styles/style.css']
+    scripts: ['public/app/**/*.js'],
+    html: ['public/app/**/*.html', 'public/index.html'],
+    styles: ['public/assets/style.css']
   },
   compiled: {
     scripts: ['compiled/app/**/*.js'],
@@ -41,7 +41,7 @@ gulp.task('start', ['serve'], function () {
     notify: true,
     injectChanges: true,
     files: paths.src.scripts.concat(paths.src.html, paths.src.style),
-    proxy: 'localhost:8000'
+    proxy: 'localhost:1337'
   });
 });
 
