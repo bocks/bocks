@@ -8,8 +8,9 @@
     "node": ">=4.0.0"
   },
   "scripts": {
-    "start": "nodemon server/server.js",
-    "test": "mocha --reporter spec"
+
+    "start": "gulp start",
+    "test": "gulp karma"
   },
   "dependencies": {
     "ace-builds": "^1.2.2",
@@ -30,7 +31,23 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
-    "mocha": "^2.5.3",
+    "browser-sync": "^2.11.2",
+    "gulp": "^3.8.5",
+    "gulp-babel": "^6.1.2",
+    "gulp-clean": "^0.3.2",
+    "gulp-nodemon": "^2.0.6",
+    "gulp-shell": "^0.5.2",
+    "karma": "^0.13.15",
+    "karma-babel-preprocessor": "^6.0.1",
+    "karma-chai": "^0.1.0",
+    "karma-mocha": "^0.2.1",
+    "karma-nyan-reporter": "^0.2.4",
+    "karma-phantomjs-launcher": "^1.0.0",
+    "karma-sinon": "^1.0.4",
+    "karma-unicorn-reporter": "^0.1.4",
+    "mocha": "^2.3.4",
+    "phantomjs-prebuilt": "^2.1.7",
+    "sinon": "^1.17.2",
     "supertest": "^1.2.0"
   }
 }
