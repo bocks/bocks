@@ -25,11 +25,6 @@
 </div>
 
 <ul class="pager">
-  <li>
-    <a href="#" ng-click="paginateNewer()" ng-class="!paginateIsNewer ? 'inactive' : ''">Newer</a>
-  </li>
-  <li>
-    <a href="#" ng-click="paginateOlder()" ng-class="!paginateIsOlder ? 'inactive' : ''">Older</a>
-  </li>
+  <li ng-click="paginateNewer()" ng-class="!paginateIsNewer ? 'inactive' : ''"><a>Newer</a></li>
+  <li ng-click="paginateOlder()" ng-class="!paginateIsOlder ? 'inactive' : ''"><a>Older</a></li>
 </ul>
-

@@ -1,5 +1,6 @@
 <div class="form-wrap">
   <form ng-submit="snippetsEdit()">
+    <h2 class="bock-icon">Edit Snippet:</h2>
     <input type="text" class="snippet-title" ng-model="title" placeholder="Snippet title goes here"/>
     <div class="btn-wrap">
       <label>Highlight:</label>
@@ -33,12 +34,14 @@
         </div>
       </div>
     </div>
-    <p >Tags:</p>
-    <input type="text" class="tags" ng-model="tags[0]" placeholder="Enter a tag" /><br/>
-    <input type="text" class="tags" ng-model="tags[1]" placeholder="Enter a tag" /><br/>
-    <input type="text" class="tags" ng-model="tags[2]" placeholder="Enter a tag" /><br/>
-    <div class="btn-wrap">
-      <button class="btn" type="submit">Save snippet</button>
+    <div class="form-tags">
+      <p >Tags:</p>
+      <input type="text" class="tags" ng-model="tags[0]" placeholder="Enter a tag" /><br/>
+      <input type="text" class="tags" ng-model="tags[1]" placeholder="Enter a tag" /><br/>
+      <input type="text" class="tags" ng-model="tags[2]" placeholder="Enter a tag" /><br/>
+      <div class="btn-wrap">
+        <button class="btn" type="submit">Save snippet</button>
+      </div>
     </div>
   </form>
 </div>
