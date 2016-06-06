@@ -6,11 +6,11 @@ angular.module('app.main', [])
 
   var editors = [];
   var Range = ace.require('ace/range').Range;
-  
+
   $scope.goToSnippet = function (id) {
     $location.path('/snippet/' + id);
   };
-  
+
   $scope.convertTime = function (mongoTime) {
     date = new Date(mongoTime);
     return (date.getMonth() + 1) + '.' + date.getDate() + '.' + date.getFullYear();
@@ -33,6 +33,8 @@ angular.module('app.main', [])
 
       // stop the browser's warning message
       editors[snippet._id].$blockScrolling = Infinity;
+
+      editors[snippet._id].setFontSize(16);
 
       // make editor read only
       editors[snippet._id].setReadOnly(true);

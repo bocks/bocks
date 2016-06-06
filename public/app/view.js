@@ -43,6 +43,7 @@ angular.module('app.view', [])
 
         // add code to editor
         editor.setValue(snippet.data.code);
+        editor.setFontSize(16);
 
         snippet.data.highlights.forEach(function(highlight) {
           // set markers for highlighted code

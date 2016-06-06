@@ -76,6 +76,7 @@ angular.module('app.snippets', [])
 
       // stop the browser's warning message
       editors[snippet._id].$blockScrolling = Infinity;
+      editors[snippet._id].setFontSize(16);
 
       // make editor read only
       editors[snippet._id].setReadOnly(true);
