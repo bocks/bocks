@@ -10,7 +10,7 @@
     &nbsp;&nbsp;||&nbsp;&nbsp;
     <span>
       Tags:
-      <span ng-repeat="tag in tags">
+      <span ng-repeat="tag in tags track by $index">
         <i class="fa fa-tag" aria-hidden="true"></i>&nbsp;{{ tag }}
       </span>
     </span>
