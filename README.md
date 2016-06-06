@@ -47,6 +47,10 @@ See [deployment.md](docs/deployment.md) for how to deploy.
 * [Schema](docs/schema.md)
 * [Server Endpoints](docs/endpoints.md)
 
+## Legacy Project Ideas
+
+[Github Issues tagged **legacy**](https://github.com/bocks/bocks/labels/legacy)
+
 ## Team
 
 * [Nicole Skoglund](https://github.com/NCSkoglund)
