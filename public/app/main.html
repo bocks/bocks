@@ -1,29 +1,29 @@
 <div class="row welcome">
-  <video class="demo" autoplay loop>
-    <source src="assets/bocksDemo.mp4" type="video/mp4">
-  </video>
-  <br/>
   <h1 class="col-md-12 heading-1">Annotate your code and share</h1>
-  <span class="col-md-4 heading-1">
+  <span class="col-md-10 col-md-offset-1 lead">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna consectetur adipiscing elit, sed do eiusmod tempor aliqua.  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna consectetur adipiscing elit, sed do eiusmod tempor aliqua.  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  </span>
+  <span class="col-md-4">
     <i class="fa fa-code fa-5x" aria-hidden="true"></i>
     <h5>Semantic Code Highlighting</h5>
   </span>
-  <span class="col-md-4 heading-1">
+  <span class="col-md-4">
     <i class="fa fa-pencil-square-o fa-5x" aria-hidden="true"></i>
     <h5>Landscape-Oriented Comments</h5>
   </span>
-  <span class="col-md-4 heading-1">
+  <span class="col-md-4">
     <i class="fa fa-commenting-o fa-5x" aria-hidden="true"></i>
-    <h5>Embed your Custom Slide</h5>
+    <h5>Download your Custom Slide</h5>
   </span>
-  <span class="col-md-12 lead">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna consectetur adipiscing elit, sed do eiusmod tempor aliqua.  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna consectetur adipiscing elit, sed do eiusmod tempor aliqua.  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-  </span>
+  <video class="demo" autoplay loop>
+    <source src="assets/bocksDemo.mp4" type="video/mp4">
+  </video>
   <span class="col-md-12 heading-1">
     <h2>See what others have been building:</h2>
   </span>
   <input class="search" placeholder="Browse snippets by title, author, tag or content" ng-model="search"/>
 </div>
+
 <div class="row snippets col-md-10 col-md-offset-1" ng-repeat="snippet in snippets | filter: search" on-finish-render="ngRepeatFinished" ng-click="goToSnippet(snippet._id)">
   <!-- snippet start -->
     <h2 class="bock-icon">{{ snippet.title }}</h2>
