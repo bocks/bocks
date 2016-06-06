@@ -20,15 +20,10 @@
   <br/>
   <hr/>
   <br/>
-  <h2>See what others have been building</h2>
-
-  <input class="search" placeholder="Browse snippets by title, author or tag"/>
-  <button class="searchBtn">
-    <i class="fa fa-search" aria-hidden="true"></i>
-  </button>
+  <h2>See what others have been building:</h2>
+  <input class="search" placeholder="Browse snippets by title, author, tag or content" ng-model="search"/>
 </div>
-
-<div class="snippets" ng-repeat="snippet in snippets" on-finish-render="ngRepeatFinished" ng-click="goToSnippet(snippet._id)">
+<div class="snippets" ng-repeat="snippet in snippets | filter: search" on-finish-render="ngRepeatFinished" ng-click="goToSnippet(snippet._id)">
   <!-- snippet start -->
   <div class="form-wrap">
     <div class="bock-icon">
@@ -54,3 +49,4 @@
   </div>
   <!-- snippet end -->
 </div>
+<h4><a href="#/snippets">View all snippets</a></h4>
