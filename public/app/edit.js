@@ -1,5 +1,9 @@
 angular.module('app.edit', [])
 .controller('EditController', function($scope, $http, $location, $route, $routeParams, $rootScope, Snippets) {
+
+  // set the 'private' radio button to disabled
+  document.getElementById('isPrivate').disabled = true;
+
   // a collection of highlighted ranges belonging to the current snippet
   $scope.ranges = [];
   $scope.rangeId = -1;
@@ -97,20 +101,10 @@ angular.module('app.edit', [])
   };
 
   $scope.snippetsEdit = function() {
-    // var ranges = [];
-    // $scope.ranges.forEach(function(range) {
-    //   // Using JSON.parse(JSON.stringify()) to break the reference.
-    //   // Just performing a range.text assignment was breaking the innerText.
-    //   var tempRange;
-    //   tempRange = JSON.parse(JSON.stringify(range));
-    //   tempRange.text = document.getElementById('annotation-' + range.id).childNodes[1].innerText;
-    //   ranges.push(tempRange);
-    // });
-
     var tags = [];
-    if ($scope.tags1) { tags.push($scope.tags1); }
-    if ($scope.tags2) { tags.push($scope.tags2); }
-    if ($scope.tags3) { tags.push($scope.tags3); }
+    if ($scope.tags[0]) { tags.push($scope.tags[0]); }
+    if ($scope.tags[1]) { tags.push($scope.tags[1]); }
+    if ($scope.tags[2]) { tags.push($scope.tags[2]); }
 
     var snippet = {
       title: $scope.title,
