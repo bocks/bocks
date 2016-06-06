@@ -221,7 +221,7 @@ label {
 
 #annotations {
   display: inline-block;
-  background: #000;
+  background: #002b36;
   min-height: 500px;
   width: 30%;
   border-top-right-radius: 15px;
@@ -233,9 +233,9 @@ label {
    display:inline-block;
    height: auto;
    width: 80%;
-   font-size: 12px;
+   font-size: 14px;
    padding: 2%;
-   margin: 2% 0 2% 2%;
+   margin: 2% 0 2% 4%;
    vertical-align: top;
    border-radius: 10px;
 }
