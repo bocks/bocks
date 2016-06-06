@@ -18,19 +18,18 @@
     <i class="fa fa-commenting-o fa-5x" aria-hidden="true"></i>
     <h5>Download and Share</h5>
   </span>
-<div class="col-md-12 demo">
-  <iframe src="https://player.vimeo.com/video/169610181?color=3ed8fb&byline=0&portrait=0" width="800" height="456" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+  <div class="col-md-12 demo">
+    <iframe src="https://player.vimeo.com/video/169610181?color=3ed8fb&byline=0&portrait=0" width="800" height="456" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+  </div>
 </div>
-  <span class="col-md-12 heading-1">
 
-  </span>
-</div>
 <div class="heading-wrap">
   <h1 class="heading-2">
     <i class="fa fa-users" aria-hidden="true"></i>
     See what others have been building:
   </h1>
 </div>
+
 <div class="row snippets col-md-10 col-md-offset-1" ng-repeat="snippet in snippets" on-finish-render="ngRepeatFinished" ng-click="goToSnippet(snippet._id)">
   <!-- snippet start -->
     <h2 class="bock-icon">{{ snippet.title }}</h2>
