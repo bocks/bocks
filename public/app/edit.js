@@ -114,7 +114,7 @@ angular.module('app.edit', [])
       tags: tags
     };
 
-    console.log('Snippet that we save into database =======>', snippet);
+    // console.log('Snippet that we save into database =======>', snippet);
 
     $http({
       method: 'PATCH',
@@ -145,7 +145,7 @@ angular.module('app.edit', [])
   $scope.init = function() {
     Snippets.retrieveSnippet($routeParams.id)
     .then(function(snippet) {
-      console.log(snippet);
+      // console.log(snippet);
 
       if (snippet !== false) {
         // set editor to display
@@ -250,7 +250,7 @@ angular.module('app.edit', [])
     link: function(scope, element, attrs, ngModel) {
 
       function read() {
-        ngModel.$setViewValue(element.html());
+        ngModel.$setViewValue(element.text());
       }
 
       ngModel.$render = function() {
