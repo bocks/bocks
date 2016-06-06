@@ -4,7 +4,6 @@ angular.module('app.snippets', [])
   // snippets
   $scope.snippets = [];
   $scope.highlights = {};
-  $scope.user = $routeParams.username;
 
   var editors = [];
   var Range = ace.require('ace/range').Range;
@@ -62,6 +61,10 @@ angular.module('app.snippets', [])
   }();
 
   $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
+
+    // grab the name if we're showing My Snippets page
+    $scope.user = $routeParams.username;
+
     // clear out old editors
     editors = [];
 
