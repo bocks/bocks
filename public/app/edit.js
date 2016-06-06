@@ -89,6 +89,7 @@ angular.module('app.edit', [])
     range.id = $scope.rangeId;
     range.color = $scope.colorCount;
     range.marker = marker;
+    range.text = '';
     $scope.ranges.push(range);
 
     // TODO: focus cursor to new annotation
@@ -96,29 +97,30 @@ angular.module('app.edit', [])
   };
 
   $scope.snippetsEdit = function() {
-    var ranges = [];
-
-    $scope.ranges.forEach(function(range) {
-      // Using JSON.parse(JSON.stringify()) to break the reference.
-      // Just performing a range.text assignment was breaking the innerText.
-      var tempRange;
-      tempRange = JSON.parse(JSON.stringify(range));
-      tempRange.text = document.getElementById('annotation-' + range.id).childNodes[1].innerText;
-      ranges.push(tempRange);
-    });
+    // var ranges = [];
+    // $scope.ranges.forEach(function(range) {
+    //   // Using JSON.parse(JSON.stringify()) to break the reference.
+    //   // Just performing a range.text assignment was breaking the innerText.
+    //   var tempRange;
+    //   tempRange = JSON.parse(JSON.stringify(range));
+    //   tempRange.text = document.getElementById('annotation-' + range.id).childNodes[1].innerText;
+    //   ranges.push(tempRange);
+    // });
 
     var tags = [];
-    if ($scope.tags[0]) { tags.push($scope.tags[0]); }
-    if ($scope.tags[1]) { tags.push($scope.tags[1]); }
-    if ($scope.tags[1]) { tags.push($scope.tags[2]); }
+    if ($scope.tags1) { tags.push($scope.tags1); }
+    if ($scope.tags2) { tags.push($scope.tags2); }
+    if ($scope.tags3) { tags.push($scope.tags3); }
 
     var snippet = {
       title: $scope.title,
       isPrivate: $scope.isPrivate,
       code: editor.getValue(),
-      highlights: ranges,
+      highlights: $scope.ranges,
       tags: tags
     };
+
+    console.log('Snippet that we save into database =======>', snippet);
 
     $http({
       method: 'PATCH',
@@ -144,6 +146,7 @@ angular.module('app.edit', [])
   $scope.exportImage = function() {
     Snippets.exportImage($scope.title);
   };
+
 
   $scope.init = function() {
     Snippets.retrieveSnippet($routeParams.id)
@@ -179,6 +182,70 @@ angular.module('app.edit', [])
       }
     });
   }();
+
+  // Make editor of adjustable height
+  interact('.editor-wrap')
+  .resizable({
+    preserveAspectRatio: true,
+    edges: { left: false, right: false, bottom: true, top: false }
+  })
+  .on('resizemove', function (event) {
+    var target = event.target,
+        x = (parseFloat(target.getAttribute('data-x')) || 0),
+        y = (parseFloat(target.getAttribute('data-y')) || 0);
+
+    // update the element's style
+    target.style.height = event.rect.height + 'px';
+
+    target.style.webkitTransform = target.style.transform =
+        'translate(' + 0 + 'px,' + y + 'px)';
+
+    $( "#annotations, #editor" ).height(event.rect.height)
+    editor.resize();
+
+    target.setAttribute('data-x', x);
+    target.setAttribute('data-y', y);
+  });
+
+  //jQuery function which handles user actions
+  $(document).on('click', '.note', function(e){
+      if (! $(this).is(":focus") ) {
+        this.focus();
+      }
+  });
+
+  var start_pos;
+  var end_pos;
+  $( "#annotations" ).sortable({
+    start: function(event, div) {
+      start_pos = div.item.index();
+      // console.log('starting position ===========>', start_pos);
+    },
+
+    change: function(event, div) {
+      end_pos = div.placeholder.index();
+      if ( start_pos < end_pos ) {
+        end_pos -= 1;
+      }
+    },
+
+    stop: function(event) {
+      // console.log('ending position =============>', end_pos);
+      // reorder $scope.ranges based on the order of annotations
+      var draggedAnnotation = $scope.ranges[start_pos];
+      if ( start_pos > end_pos ) {
+        for ( var i = start_pos; i > end_pos; i-- ) {
+          $scope.ranges[i] = $scope.ranges[i - 1];
+        }
+      } else {
+        for ( var i = start_pos; i < end_pos; i++ ) {
+          $scope.ranges[i] = $scope.ranges[i + 1];
+        }
+      }
+      $scope.ranges[end_pos] = draggedAnnotation;
+      // console.log('Ranges =======>', $scope.ranges);
+    }
+  });
 })
 
 // This directive allows two-way data binding in contenteditable div

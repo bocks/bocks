@@ -25,7 +25,7 @@
     <div class="editor-wrap">
       <div id="editor" ng-model="code"></div><!-- remove space between inline-blocks
    --><div id="annotations">
-        <div ng-repeat="annotation in ranges" id="annotation-{{ annotation.id }}">
+        <div ng-repeat="annotation in ranges track by $index" id="annotation-{{ annotation.id }}">
           <div class="note highlighted-{{ annotation.color }}" spellcheck="false" ng-model="annotation.text" contenteditable="true">{{ annotation.text }}</div>
           <button type="button" class="trash" ng-click="removeAnnotation()">
             <i class="fa fa-trash-o" aria-hidden="true"></i>
@@ -34,24 +34,11 @@
       </div>
     </div>
     <p >Tags:</p>
-    <input type="text" class="tags" ng-model="tags[0]" placeholder="Enter a tag" /><br/>
-    <input type="text" class="tags" ng-model="tags[1]" placeholder="Enter a tag" /><br/>
-    <input type="text" class="tags" ng-model="tags[2]" placeholder="Enter a tag" /><br/>
+    <input type="text" class="tags" ng-model="tags1" placeholder="Enter a tag" /><br/>
+    <input type="text" class="tags" ng-model="tags2" placeholder="Enter a tag" /><br/>
+    <input type="text" class="tags" ng-model="tags3" placeholder="Enter a tag" /><br/>
     <div class="btn-wrap">
       <button class="btn" type="submit">Save snippet</button>
     </div>
   </form>
 </div>
-
-<script>
-  $(function() {
-
-    $(document).on('click', '.note', function(e){
-      if (! $(this).is(":focus") ) {
-        this.focus();
-      }
-    });
-
-    $( "#annotations" ).sortable();
-  });
-</script>
