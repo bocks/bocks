@@ -1,5 +1,5 @@
+<h2 class="form-wrap">Show Snippets for {{ user || "All Users" }}</h2>
 <div class="snippets" ng-repeat="snippet in snippets" on-finish-render="ngRepeatFinished" ng-click="goToSnippet(snippet._id)">
-  <!-- angular conditional for username vs all page title -->
   <!-- snippet start -->
   <div class="form-wrap">
     <h2 class="bock-icon">{{ snippet.title }}</h2>
