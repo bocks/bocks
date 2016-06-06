@@ -34,7 +34,7 @@
       </div><!-- remove space between inline-blocks
    --><div id="annotations">
         <div ng-repeat="annotation in ranges track by $index" id="annotation-{{ annotation.id }}">
-          <div class="note highlighted-{{ annotation.color }}" spellcheck="false" contenteditable="true" ng-model="annotation.text"> {{annotation.text}}
+          <div class="note highlighted-{{ annotation.color }}" spellcheck="false" contenteditable="true" ng-model="annotation.text" style="font-size:{{annotationSize}}px"> {{annotation.text}}
           </div>
           <button type="button" class="trash" ng-click="removeAnnotation()">
             <i class="fa fa-trash-o" aria-hidden="true"></i>

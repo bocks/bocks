@@ -26,7 +26,7 @@
       <div id="editor" ng-model="code"></div><!-- remove space between inline-blocks
    --><div id="annotations">
         <div ng-repeat="annotation in ranges track by $index" id="annotation-{{ annotation.id }}">
-          <div class="note highlighted-{{ annotation.color }}" spellcheck="false" ng-model="annotation.text" contenteditable="true">{{ annotation.text }}</div>
+          <div class="note highlighted-{{ annotation.color }}" spellcheck="false" ng-model="annotation.text" contenteditable="true" style="font-size:{{annotationSize}}px">{{ annotation.text }}</div>
           <button type="button" class="trash" ng-click="removeAnnotation()">
             <i class="fa fa-trash-o" aria-hidden="true"></i>
           </button>
