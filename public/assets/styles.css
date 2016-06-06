@@ -46,17 +46,18 @@ h2.bock-icon {
 }
 
 .demo {
-  width: 90%;
-  height: 700px;
-  padding: 0 5% 25px 5%;
+  padding: 50px 5%;
   margin: 50px auto;
-  border: 3px double #3ed8fa;
-  background: #eee;
+  background: #333;
 }
 
 p.minutiae {
   padding-left: 10px;
   color: #666;
+}
+
+p.minutiae-centered {
+  text-align: center;
 }
 
 .btn-wrap {
