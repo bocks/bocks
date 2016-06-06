@@ -23,10 +23,12 @@
             <img src="assets/bocks.png" height="75px" width="345px" />
           </a>
           <span class="nav navbar-nav navbar-right" ng-cloak>
-            <p class="navbar-text" ng-show="display">
+
+            <a class="btn disabled" ng-show="display">
              <i class="fa fa-user" aria-hidden="true"></i>
              Welcome {{ username }}!
-            </p>
+            </a>
+
             <a class="btn" href="#/snippets">Browse Snippets</a>
             <a class="btn" ng-show="display" href="#/snippets/{{ username }}">My Snippets</a>
             <a class="btn" ng-show="display" href="#/snippet">Create Snippet</a>
