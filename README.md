@@ -14,7 +14,10 @@ Code Annotation
 #### Setup OAuth
 
 * Create a [Github Developer Application](https://github.com/settings/developers)
-* Add `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET` to environment variables as `BOCKS_CLIENT_ID` and `BOCKS_CLIENT_SECRET`.
+	* Use `http://127.0.0.1:1337` for the Homepage URL
+	* Use `http://127.0.0.1:1337/auth/github/callback` for the Authorization Callback URL
+
+* Add the `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET` you receive for your application to environment variables as `BOCKS_CLIENT_ID` and `BOCKS_CLIENT_SECRET`.
 		
 		export BOCKS_CLIENT_ID='GITHUB_CLIENT_ID'
 		export BOCKS_CLIENT_SECRET='GITHUB_CLIENT_SECRET'
