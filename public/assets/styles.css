@@ -2,15 +2,19 @@
 body {
   font-family: "Arial", "sans-serif";
   background: #eee;
-  background: -webkit-linear-gradient(#eee, #fff);
-  background: -o-linear-gradient(#eee, #fff);
-  background: -moz-linear-gradient(#eee, #fff);
-  background: linear-gradient(#eee, #fff);
+  background: -webkit-linear-gradient(#D5E6F1, #eee 10%, #fff);
+  background: -o-linear-gradient(#D5E6F1, #eee 10%, #fff);
+  background: -moz-linear-gradient(#D5E6F1, #eee 10%, #fff);
+  background: linear-gradient(#D5E6F1, #eee 10%, #fff);
 }
 
 .heading-1 {
   padding: 20px 0;
   text-align: center;
+}
+
+h1 {
+  text-decoration: underline;
 }
 
 h2.bock-icon {
@@ -28,12 +32,16 @@ h2.bock-icon {
 
 .welcome p {
   padding: 20px;
+  text-align: justify;
 }
 
 .demo {
   width: 90%;
   height: 700px;
-  margin: 0 5% 25px 5%;
+  padding: 0 5% 25px 5%;
+  margin: 50px auto;
+  border: 3px double #3ed8fa;
+  background: #eee;
 }
 
 p.minutiae {
@@ -173,6 +181,10 @@ label {
 }
 
 /* all snippets page */
+
+.bottom-wrap {
+  border: 1px solid red;
+}
 
 .snippets {
   text-align: left;
