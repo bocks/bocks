@@ -21,7 +21,7 @@ angular.module('app.edit', [])
   editor.$blockScrolling = Infinity;
 
   // Adjust font size in editor when +/- button is clicked
-  $scope.fontSize = 12;
+  $scope.fontSize = 16;
   editor.setFontSize($scope.fontSize);
 
   $scope.enlargeText = function () {
