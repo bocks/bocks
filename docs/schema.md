@@ -1,45 +1,45 @@
 # Schema
 
-## Table BocksSchema
+## Bocks Collection
 
-### userName: String
+	userName: String,
+	title: String,
+	code: String,
+	highlights: Array,
+	isPrivate: Boolean,
+	tags: Array,
+	createdAt: {type: Date, default: Date.now},
+	modifiedAt: {type: Date, default: Date.now}
 
-* Source: server.js (passport auth)
-* Used by: server/bocksController.js
-* Description: GitHub username
+## Snippets Data Object
 
-### title: String
+	snippet = {
+	  userName: "taptapdan",
+	  title: "Example Snippet",
+	  code: "var imaginaryFunction = function(param1, param2) { return 'foon' + param2; }",
+	  highlights = [
+	    {
+	      startRow: 0
+	      endRow: 0,
+	      startCol: 33,
+	      endCol: 38,
+	      text: "param1 isn't actually used in this example."
+	    },
+	    {
+	      startRow: 0
+	      endRow: 0,
+	      startCol: 41,
+	      endCol: 46,
+	      text: "param2 is concatenated with the string 'foon' and returned."
+	    }
+	  ],
+	  isPrivate: false,
+	  tags: [
+	  	'functions',
+	  	'examples',
+	  	'imaginary'
+	  ],
+	  createdAt: ISODate("2016-06-06T02:50:24.029Z"),
+	  modifiedAt: ISODate("2016-06-06T02:50:24.029Z")
+	}
 
-* Source: snippet.html (user form)
-* Used by: server/bocksController.js
-* Description: title, input by user
-
-### code: String
-
-* Source: snippet.html (editor)
-* Used by: server/bocksController.js
-* Description: code from editor, input by user
-
-### highlights: Array
-
-* Source: snippet.html (editor)
-* Used by: server/bocksController.js
-* Description: array of objects, stores highlight start/end and related annotation
-
-### isPrivate: Boolean
-
-* Source: snippet.html (user form)
-* Used by: server/bocksController.js
-* Description: indicates whether the snippet should be private to its author. user checkbox
-
-### createdAt: Date
-
-* Source: bocksModel.js
-* Used by: 
-* Description: timestamp on creation
-
-### modifiedAt: Date
-
-* Source: bocksModel.js, server.js
-* Used by: server/bocksController.js
-* Description: timestamp on modification. updated by server.js on put request

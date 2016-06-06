@@ -9,7 +9,7 @@ TODO
 * `git pull remote production`
 * `git push remote production`
 
-## Deployment Setup
+## Deployment Setup (Optional)
 
 ### Create a Digital Ocean Droplet
 
@@ -80,7 +80,7 @@ TODO Finish Auto Deployment
 
 ---
 
-### Digital Ocean Run Setup
+## Digital Ocean Run Setup
 
 As root
 
@@ -102,19 +102,15 @@ As root, add the following to your `/etc/rc.local` file so that the above iptabl
 
 	iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 3000
 
-	# do something here
-
 As `deploy` (user), start up the express app server with
 
-	forever start server/server.js
+	forever start --watch server/server.js
 
 See [Process Managers for Express Apps](http://expressjs.com/en/advanced/pm.html#forever) for more details on using Forever.
 
----
+As `deploy` (user), run `crontab -e` and add the following to your cron so that forever will start up the app on reboot.
 
-TODO setup forever to start on restart.
-
----
+	@reboot /usr/bin/forever start --watch /home/deploy/bocks/server/server.js
 
 ### Digital Ocean Redeploy
 
