@@ -1,11 +1,10 @@
 <div class="snippets" ng-repeat="snippet in snippets" on-finish-render="ngRepeatFinished" ng-click="goToSnippet(snippet._id)">
+  <!-- angular conditional for username vs all page title -->
   <!-- snippet start -->
   <div class="form-wrap">
-    <div class="bock-icon">
-      <h2>{{ snippet.title }}</h2>
-    </div>
+    <h2 class="bock-icon">{{ snippet.title }}</h2>
     <p class="minutiae">
-      Created by: {{ snippet.userName }} at {{ convertTime(snippet.createdAt) }}&nbsp;&nbsp;&nbsp;&nbsp;Tags:
+      Created by: {{ snippet.userName }} on {{ convertTime(snippet.createdAt) }}&nbsp;&nbsp;||&nbsp;&nbsp;Tags:
       <span ng-repeat="tag in snippet.tags track by $index">
         <i class="fa fa-tag" aria-hidden="true"></i>&nbsp;{{ tag }}
       </span>
@@ -25,7 +24,12 @@
   <!-- snippet end -->
 </div>
 
-<div class="pagination">
-  <span ng-click="paginateNewer()" ng-class="!paginateIsNewer ? 'inactive' : ''">Newer</span>
-  <span ng-click="paginateOlder()" ng-class="!paginateIsOlder ? 'inactive' : ''">Older</span>
-</div>
+<ul class="pager">
+  <li>
+    <a href="#" ng-click="paginateNewer()" ng-class="!paginateIsNewer ? 'inactive' : ''">Newer</a>
+  </li>
+  <li>
+    <a href="#" ng-click="paginateOlder()" ng-class="!paginateIsOlder ? 'inactive' : ''">Older</a>
+  </li>
+</ul>
+

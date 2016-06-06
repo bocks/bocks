@@ -48,7 +48,7 @@ passport.use(new Strategy({
     // User.findOrCreate({ githubId: profile.id }, function (err, user) {
     //   return cb(err, user);
     // });
-    console.log('Hey I logged in');
+    // console.log('Hey I logged in');
     return cb(null, profile);
   }
 ));
@@ -68,7 +68,7 @@ app.get('/auth/github', passport.authenticate('github'));
 app.get('/auth/github/callback',
   passport.authenticate('github', { failureRedirect: '/' }),
   function(req, res) {
-    console.log('in authentication callback, redirecting to home page via /#/testing');
+    // console.log('in authentication callback, redirecting to home page via /');
     res.redirect('/');
 });
 
