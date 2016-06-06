@@ -13,8 +13,11 @@
     <script src="node_modules/angular-route/angular-route.min.js"></script>
     <script src="node_modules/angular-flash/angular-flash.js"></script>
   </head>
-  <body class="container-fluid">
-    <nav class="navbar navbar-default" ng-controller="NavController">
+
+  <body >
+
+  <div class="navbar-container">
+    <nav class="navbar" ng-controller="NavController">
       <div class="container-fluid">
           <a href="#">
             <img src="assets/bocks.png" height="75px" width="345px" />
@@ -33,6 +36,8 @@
           </a>
       </div>
     </nav>
+  </div>
+
     <div ng-view></div>
 
     <footer>

@@ -8,6 +8,11 @@ body {
   background: linear-gradient(#D5E6F1, #eee 10%, #fff);
 }
 
+.navbar-container {
+  width: 100%;
+  background: #E9FEFF;
+}
+
 .heading-1, .heading-2 {
   text-align: center;
 }
