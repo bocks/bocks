@@ -109,3 +109,5 @@ app.delete('/snippets/:id', bocksController.remBocks);
 app.listen(PORT, function() {
   console.log('Server listening', SERVER + ':' + PORT);
 });
+
+module.exports = SERVER;

@@ -9,16 +9,11 @@ var browserSync = require('browser-sync').create();
 // The paths to our app files
 var paths = {
   src: {
-    scripts: ['public/app/**/*.js'],
-    html: ['public/app/**/*.html', 'public/index.html'],
+    scripts: ['public/**/*.js'],
+    html: ['public/**/*.html', 'public/index.html'],
     styles: ['public/assets/style.css']
   },
-  compiled: {
-    scripts: ['compiled/app/**/*.js'],
-    html: ['compiled/app/**/*.html', 'compiled/index.html'],
-    styles: ['compiled/styles/style.css']
-  },
-  test: ['specs/**/*.js'],
+  test: ['test/**/*.js'],
   server: 'server/server.js'
 };
 

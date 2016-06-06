@@ -20,7 +20,7 @@ module.exports = function (config) {
       'public/**/*.js',
 
       // our spec files - in order of the README
-      'test/snippet.js'
+      'test/services.js'
     
     ],
 
