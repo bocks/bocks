@@ -21,87 +21,6 @@ h2.bock-icon {
   padding-left: 40px;
 }
 
-p.minutiae {
-  padding-left: 10px;
-  /*font-size: smaller;*/
-  color: #666;
-}
-
-.btn {
-  padding: 5px 10px;
-  margin: 10px 10px 10px 0;
-  border-radius: 5px;
-  color: #333;
-  font-size: smaller;
-}
-
-.btn:hover {
-  background: #eee;
-}
-
-footer {
-  border-top: 1px solid #ddd;
-  padding: 20px;
-  font-size: smaller;
-  color: #666;
-  text-align: center;
-}
-
-/*navbar a {
-  float: right;
-}*/
-
-/*nav {*/
-  /*width: 90%;*/
-/*  padding: 0 5%;
-  height: 75px;
-  top: 0;
-  left: 0;
-  margin-bottom: 40px;
-  background: #666;
-  background: -webkit-linear-gradient(lightblue, #eee);
-  background: -o-linear-gradient(lightblue, #eee);
-  background: -moz-linear-gradient(lightblue, #eee);
-  background: linear-gradient(lightblue, #eee);*/
-/*}*/
-
-/*h1, h2 {
-  text-decoration: underline;
-  color: #333;
-}
-
-h4 {
-  text-align: center;
-}
-*/
-
-/* custom classes */
-
-
-
-.mute {
-  padding: 5px;
-  border-radius: 5px;
-  border: 1px solid #ddd;
-  background: none;
-}
-
-.mute:hover {
-  background: #ddd;
-}
-
-/* home page */
-/*.greeting {
-  color: #333;
-  text-align: right;
-  display: block;
-}*/
-
-/*.nav-wrap {
-  display: inline-block;
-  float: right;
-}*/
-
 .welcome {
   text-align: center;
   color: #333;
@@ -117,12 +36,34 @@ h4 {
   margin: 0 5% 25px 5%;
 }
 
-/*.trio span {
-  width: 32%;
-  height: 150px ;
-  display:inline-block;
-  margin: 2% 0 3% 0;
-}*/
+p.minutiae {
+  padding-left: 10px;
+  color: #666;
+}
+
+.btn-wrap {
+  display: block;
+  width: 100%;
+  height: 40px;
+}
+
+.btn-wrap .btn {
+  float: left;
+  background: none;
+  border: 1px solid #ddd;
+}
+
+.btn {
+  padding: 5px 10px;
+  margin: 10px 10px 10px 0;
+  border-radius: 5px;
+  color: #333;
+  font-size: smaller;
+}
+
+.btn:hover {
+  background: #eee;
+}
 
 .search {
   width: 80%;
@@ -131,24 +72,15 @@ h4 {
   border-radius: 15px;
 }
 
-/* TODO: make this class responsive */
-.searchBtn {
-  text-align: center;
+footer {
+  border-top: 1px solid #ddd;
   padding: 20px;
-  width: 10%;
-  display: inline-block;
-  border-radius: 10px;
-  background-color: white;
+  font-size: smaller;
+  color: #666;
+  text-align: center;
 }
 
-.teaser {
-  width: 90%;
-  margin: 0 3%;
-  padding: 30px 2%;
-  text-align: left;
-}
-
-/* snippets page */
+/* snippets create form */
 
 label {
   padding: 0 5px 0 25px;
@@ -167,10 +99,10 @@ label {
   border-radius: 10px;
 }
 
-/*.form-wrap h2, .form-wrap p {
+.form-wrap p {
   padding: 5px 10px;
   font-weight: bold;
-}*/
+}
 
 .form-wrap .tags {
   width: 25%;
@@ -179,6 +111,29 @@ label {
   border: 1px solid #ddd;
   border-radius: 10px;
   display: inline-block;
+}
+
+.form-tags button {
+  margin: 0 0 5px 10px;
+  font-weight: bold;
+}
+
+.mute {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  background: none;
+}
+
+.mute:hover {
+  background: #ddd;
+}
+
+.teaser {
+  width: 90%;
+  margin: 0 3%;
+  padding: 30px 2%;
+  text-align: left;
 }
 
 /* snippets view page */
@@ -314,18 +269,6 @@ label {
 .highlighted-1 { background-color: lavender; color: indigo; border: 1px solid indigo;}
 .highlighted-2 { background-color: bisque; color: darkred; border: 1px solid darkred; }
 .highlighted-3 { background-color: lightgreen; color: darkgreen; border: 1px solid darkgreen;}
-
-/* save snippet button */
-
-.btn-wrap {
-  display: block;
-  width: 100%;
-  height: 40px;
-}
-
-.btn-wrap .btn {
-  float: left;
-}
 
 /* UX flash message */
 
