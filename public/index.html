@@ -13,26 +13,33 @@
     <script src="node_modules/angular-route/angular-route.min.js"></script>
     <script src="node_modules/angular-flash/angular-flash.js"></script>
   </head>
-  <body class="container-fluid">
-    <nav class="navbar navbar-default" ng-controller="NavController">
+
+  <body >
+
+  <div class="navbar-container">
+    <nav class="navbar" ng-controller="NavController">
       <div class="container-fluid">
           <a href="#">
             <img src="assets/bocks.png" height="75px" width="345px" />
           </a>
           <span class="nav navbar-nav navbar-right" ng-cloak>
-            <p class="navbar-text" ng-show="display">
+
+            <a class="btn disabled" ng-show="display">
              <i class="fa fa-user" aria-hidden="true"></i>
              Welcome {{ username }}!
-            </p>
+            </a>
+
             <a class="btn" href="#/snippets">Browse Snippets</a>
             <a class="btn" ng-show="display" href="#/snippets/{{ username }}">My Snippets</a>
             <a class="btn" ng-show="display" href="#/snippet">Create Snippet</a>
-            <a class="btn" ng-hide="display" href="/auth/github">Log In with Github</a>
+            <a class="btn" ng-hide="display" href="/auth/github">Log In with Github <i class="fa fa-github" aria-hidden="true"></i></a>
             <a class="btn" ng-show="display" ng-click="logUserOut()">Log out</a>
           </span>
           </a>
       </div>
     </nav>
+  </div>
+
     <div ng-view></div>
 
     <footer>
