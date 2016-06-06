@@ -5,29 +5,33 @@
     <link rel="stylesheet" type="text/css" href="assets/styles.css" />
     <link rel="stylesheet" type="text/css" href="node_modules/normalize.css/normalize.css" />
     <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+
     <link rel="shortcut icon" type="image/png" href="/assets/bock.ico"/>
+
     <script src="node_modules/angular/angular.min.js"></script>
     <script src="node_modules/angular-route/angular-route.min.js"></script>
     <script src="node_modules/angular-flash/angular-flash.js"></script>
   </head>
-  <body>
-    <nav ng-controller="NavController">
-      <a href="#">
-        <img src="assets/bocks.png" height="75px" width="345px" />
-      </a>
-      <span class="nav-wrap" ng-cloak>
-        <p class="greeting" ng-show="display">
-          <i class="fa fa-user" aria-hidden="true"></i>
-          Welcome {{ username }}!
-        </p>
-
-        <!--float right; arrange inverse -->
-        <a class="btn" ng-show="display" ng-click="logUserOut()">Log out</a>
-        <a class="btn" ng-hide="display" href="/auth/github">Log In with Github</a>
-        <a class="btn" ng-show="display" href="#/snippet">Create Snippet</a>
-        <a class="btn" ng-show="display" href="#/snippets/{{ username }}">My Snippets</a>
-        <a class="btn" href="#/snippets">Browse Snippets</a>
-      </span>
+  <body class="container-fluid">
+    <nav class="navbar navbar-default" ng-controller="NavController">
+      <div class="container-fluid">
+          <a href="#">
+            <img src="assets/bocks.png" height="75px" width="345px" />
+          </a>
+          <span class="nav navbar-nav navbar-right" ng-cloak>
+            <p class="navbar-text" ng-show="display">
+             <i class="fa fa-user" aria-hidden="true"></i>
+             Welcome {{ username }}!
+            </p>
+            <a class="btn" href="#/snippets">Browse Snippets</a>
+            <a class="btn" ng-show="display" href="#/snippets/{{ username }}">My Snippets</a>
+            <a class="btn" ng-show="display" href="#/snippet">Create Snippet</a>
+            <a class="btn" ng-hide="display" href="/auth/github">Log In with Github</a>
+            <a class="btn" ng-show="display" ng-click="logUserOut()">Log out</a>
+          </span>
+          </a>
+      </div>
     </nav>
     <div ng-view></div>
 
@@ -39,6 +43,7 @@
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script src="//cdn.jsdelivr.net/interact.js/1.2.6/interact.min.js"></script>
     <script src="node_modules/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="libs/html2canvas.js"></script>
     <script src="app/main.js"></script>
     <script src="app/snippet.js"></script>

@@ -8,58 +8,28 @@ body {
   background: linear-gradient(#eee, #fff);
 }
 
-nav {
-  width: 90%;
-  padding: 0 5%;
-  height: 75px;
-  top: 0;
-  left: 0;
-  margin-bottom: 40px;
-  background: #666;
-  background: -webkit-linear-gradient(lightblue, #eee);
-  background: -o-linear-gradient(lightblue, #eee);
-  background: -moz-linear-gradient(lightblue, #eee);
-  background: linear-gradient(lightblue, #eee);
-}
-
-footer {
-  border-top: 1px solid #ddd;
-  font-size: smaller;
-  color: #666;
+.heading-1 {
+  padding: 20px 0;
   text-align: center;
 }
 
-h1, h2 {
-  text-decoration: underline;
-  color: #333;
-}
-
-h4 {
-  text-align: center;
-}
-
-p.minutiae {
-  font-size: smaller;
-  color: #666;
-}
-
-/* custom classes */
-
-.bock-icon {
+h2.bock-icon {
   background-image: url('/assets/bock.jpg');
   background-size: 30px;
   background-repeat: no-repeat;
-  margin: 75px 0 0 10px;
-  height: 30px;
+  margin: 75px 0 10px 10px;
   padding-left: 40px;
 }
 
+p.minutiae {
+  padding-left: 10px;
+  /*font-size: smaller;*/
+  color: #666;
+}
+
 .btn {
-  float:right;
   padding: 5px 10px;
-  margin: 10px 0 10px 10px;
-  background: none;
-  border: 1px solid #3ed8fa;
+  margin: 10px 10px 10px 0;
   border-radius: 5px;
   color: #333;
   font-size: smaller;
@@ -68,6 +38,50 @@ p.minutiae {
 .btn:hover {
   background: #eee;
 }
+
+hr {
+  border-color: black;
+}
+
+footer {
+  border-top: 1px solid #ddd;
+  padding: 20px;
+  font-size: smaller;
+  color: #666;
+  text-align: center;
+}
+
+/*navbar a {
+  float: right;
+}*/
+
+/*nav {*/
+  /*width: 90%;*/
+/*  padding: 0 5%;
+  height: 75px;
+  top: 0;
+  left: 0;
+  margin-bottom: 40px;
+  background: #666;
+  background: -webkit-linear-gradient(lightblue, #eee);
+  background: -o-linear-gradient(lightblue, #eee);
+  background: -moz-linear-gradient(lightblue, #eee);
+  background: linear-gradient(lightblue, #eee);*/
+/*}*/
+
+/*h1, h2 {
+  text-decoration: underline;
+  color: #333;
+}
+
+h4 {
+  text-align: center;
+}
+*/
+
+/* custom classes */
+
+
 
 .mute {
   padding: 5px;
@@ -81,22 +95,24 @@ p.minutiae {
 }
 
 /* home page */
-.greeting {
+/*.greeting {
   color: #333;
   text-align: right;
   display: block;
-}
+}*/
 
-.nav-wrap {
+/*.nav-wrap {
   display: inline-block;
   float: right;
-}
+}*/
 
 .welcome {
   text-align: center;
   color: #333;
-  width: 90%;
-  margin: 0 5%;
+}
+
+.welcome p {
+  padding: 20px;
 }
 
 .demo {
@@ -105,12 +121,12 @@ p.minutiae {
   margin: 0 5% 25px 5%;
 }
 
-.trio span {
+/*.trio span {
   width: 32%;
   height: 150px ;
   display:inline-block;
   margin: 2% 0 3% 0;
-}
+}*/
 
 .search {
   width: 80%;
@@ -155,10 +171,10 @@ label {
   border-radius: 10px;
 }
 
-.form-wrap h2, .form-wrap p {
+/*.form-wrap h2, .form-wrap p {
   padding: 5px 10px;
   font-weight: bold;
-}
+}*/
 
 .form-wrap .tags {
   width: 25%;

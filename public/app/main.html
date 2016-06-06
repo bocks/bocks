@@ -1,36 +1,33 @@
-<div class="welcome">  <!-- ng-controller="MainController" -->
+<div class="row welcome">
   <img class="demo" src="assets/demo.jpg"/>
   <br/>
-  <h1>Annotate your code and share</h1>
-  <div class="trio">
-    <span>
-      <i class="fa fa-code fa-5x" aria-hidden="true"></i>
-      <p>Semantic Code Highlighting</p>
-    </span>
-    <span>
-      <i class="fa fa-pencil-square-o fa-5x" aria-hidden="true"></i>
-      <p>Landscape-Oriented Comments</p>
-    </span>
-    <span>
-      <i class="fa fa-commenting-o fa-5x" aria-hidden="true"></i>
-      <p>Embed your Custom Slide</p>
-    </span>
-  </div>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna consectetur adipiscing elit, sed do eiusmod tempor aliqua.  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna consectetur adipiscing elit, sed do eiusmod tempor aliqua.  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-  <br/>
-  <hr/>
-  <br/>
-  <h2>See what others have been building:</h2>
+  <h1 class="col-md-12 heading-1">Annotate your code and share</h1>
+  <span class="col-md-4 heading-1">
+    <i class="fa fa-code fa-5x" aria-hidden="true"></i>
+    <h5>Semantic Code Highlighting</h5>
+  </span>
+  <span class="col-md-4 heading-1">
+    <i class="fa fa-pencil-square-o fa-5x" aria-hidden="true"></i>
+    <h5>Landscape-Oriented Comments</h5>
+  </span>
+  <span class="col-md-4 heading-1">
+    <i class="fa fa-commenting-o fa-5x" aria-hidden="true"></i>
+    <h5>Embed your Custom Slide</h5>
+  </span>
+  <span class="col-md-12 lead">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna consectetur adipiscing elit, sed do eiusmod tempor aliqua.  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna consectetur adipiscing elit, sed do eiusmod tempor aliqua.  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  </span>
+  <span class="col-md-12 heading-1">
+    <h2>See what others have been building:</h2>
+  </span>
   <input class="search" placeholder="Browse snippets by title, author, tag or content" ng-model="search"/>
 </div>
-<div class="snippets" ng-repeat="snippet in snippets | filter: search" on-finish-render="ngRepeatFinished" ng-click="goToSnippet(snippet._id)">
+<div class="row snippets col-md-10 col-md-offset-1" ng-repeat="snippet in snippets | filter: search" on-finish-render="ngRepeatFinished" ng-click="goToSnippet(snippet._id)">
   <!-- snippet start -->
   <div class="form-wrap">
-    <div class="bock-icon">
-      <h2>{{ snippet.title }}</h2>
-    </div>
+    <h2 class="bock-icon">{{ snippet.title }}</h2>
     <p class="minutiae">
-      Created by: {{ snippet.userName }} at {{ convertTime(snippet.createdAt) }}&nbsp;&nbsp;&nbsp;&nbsp;Tags:
+      Created by: {{ snippet.userName }} on {{ convertTime(snippet.createdAt) }}&nbsp;&nbsp;||&nbsp;&nbsp;Tags:
       <span ng-repeat="tag in snippet.tags track by $index">
         <i class="fa fa-tag" aria-hidden="true"></i>&nbsp;{{ tag }}
       </span>
@@ -49,4 +46,8 @@
   </div>
   <!-- snippet end -->
 </div>
-<h4><a href="#/snippets">View all snippets</a></h4>
+<div class="row">
+  <h4 class="col-md-12 heading-1">
+    <a href="#/snippets">View all snippets</a>
+  </h4>
+</div>
