@@ -17,13 +17,13 @@ Log onto droplet.
 	adduser deploy
 	su - deploy
 	mkdir bocks
-	
+
 ### Pull down/setup repo
 
 	git clone https://github.com/bocks/bocks.git
 	cd bocks
 	npm install
-	
+
 ### Setup Server Env and Port Forwarding
 
 As root, `nano /etc/environment` and add the following lines to the file:
@@ -41,9 +41,9 @@ As root, add port forwarding from `80` to `3000`
 As root, add the following to your `/etc/rc.local` file so that the above iptables rule sticks around after a reboot. Add this before the `exit 0` line.
 
 	iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 3000
-	
+
 ### Run the App
-	
+
 As root
 
 	`npm install -g forever`
@@ -69,14 +69,14 @@ As `deploy` (user), run `crontab -e` and add the following to your cron so that 
 
 ---
 
+TODO This section is not complete.
+
 ## How To Deploy (Advanced Optional)
 
 * `git pull remote production`
 * `git push remote production`
 
 ## Deployment Setup (Advanced Optional)
-
-TODO This section is not complete.
 
 For setting up automatic deployment is setup to trigger on commits to the `production` branch of `bocks/bocks`.
 
