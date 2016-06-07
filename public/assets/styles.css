@@ -4,10 +4,6 @@
 body {
   font-family: "Arial", "sans-serif";
   background: #eee;
-  background: -webkit-linear-gradient(#D5E6F1, #eee 10%, #fff);
-  background: -o-linear-gradient(#D5E6F1, #eee 10%, #fff);
-  background: -moz-linear-gradient(#D5E6F1, #eee 10%, #fff);
-  background: linear-gradient(#D5E6F1, #eee 10%, #fff);
   color: #444;
 }
 
