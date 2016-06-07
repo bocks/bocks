@@ -1,6 +1,6 @@
 <div class="heading-wrap">
   <h2>Show Snippets for {{ user || "All Users" }}</h2>
-  <input class="search form-wrap" placeholder="Browse snippets by title, author, tag or content" ng-model="search"/>
+  <input class="search" placeholder="Browse snippets by title, author, tag or content" ng-model="search"/>
 </div>
 <div class="snippets" ng-repeat="snippet in snippets | filter: search" on-finish-render="ngRepeatFinished" ng-click="goToSnippet(snippet._id)">
   <!-- snippet start -->
