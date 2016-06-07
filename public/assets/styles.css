@@ -77,7 +77,6 @@ p.minutiae-centered {
   border: 1px solid #ddd;
 }
 
-
 .search {
   width: 100%;
   border-radius: 5px;
@@ -133,7 +132,7 @@ label {
 }
 
 .form-wrap .snippet-title {
-  width: 96%;
+  width: 100%;
   padding: 1% 2%;
   margin: 0 0 20px 0;
   border: 1px solid #ccc;
@@ -317,7 +316,7 @@ label {
 /* UX flash message */
 
 .flash {
-  width: 90%;
+  width: 100%;
   padding: 2% 5%;
   border: 1px solid #3ed8fa;
   text-align: center;
